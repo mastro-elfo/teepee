@@ -1,0 +1,23 @@
+html {
+  background: white;
+  overflow: hidden auto;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: auto;
+}
+
+html,
+body,
+#root,
+#root > div {
+  height: 100%;
+}
+
+@media print {
+  [role="presentation"] {
+    display: none;
+  }
+}

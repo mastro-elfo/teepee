@@ -1,0 +1,186 @@
+import React, { createRef, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { shell } from "electron";
+
+import { Badge, Box, IconButton, Typography } from "@material-ui/core";
+
+import {
+  Content,
+  DrawerIconButton,
+  DrawerLists,
+  Header,
+  Page,
+  Push,
+  SearchField,
+  pluralize
+} from "mastro-elfo-mui";
+
+import GitHubIcon from "@material-ui/icons/GitHub";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+
+import { drawer as about } from "./about";
+import { drawer as backup } from "./backup";
+import { drawer as cart } from "./cart";
+import { drawer as help } from "./help";
+import { drawer as product } from "./product";
+import { drawer as settings } from "./settings";
+import { drawer as stock } from "./stock";
+import { drawer as update } from "./update";
+
+import { useCart } from "./cart/context";
+import { totalCount } from "./cart/utils";
+import NoResults from "./dashboard/NoResults";
+import ResultCard from "./dashboard/ResultCard";
+import { search } from "./product/model";
+import { useStock } from "./stock/context";
+import subheader from "../utils/subheader";
+
+const ref = createRef();
+
+function Component() {
+  const { push } = useHistory();
+  const [shoppingCart] = useCart();
+  const [stockList] = useStock();
+  const [results, setResults] = useState();
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    document.title = "Teepee";
+    ref.current.focus();
+  }, []);
+
+  const handleSearch = (q, d) => {
+    setQuery(q);
+    return search(d).then(r => {
+      setResults(r);
+      // TODO: replace location with `q`
+    });
+  };
+
+  const handleClear = () => {
+    setResults();
+    setQuery("");
+    // TODO: replace location without `q`
+  };
+
+  return (
+    <Page
+      header={
+        <Header
+          LeftAction={
+            <DrawerIconButton IconButtonProps={{ title: "Apri il menù" }}>
+              <DrawerLists
+                lists={[
+                  {
+                    key: "pages",
+                    header: "Pagine",
+                    leftFill: true,
+                    items: [
+                      {
+                        ...cart,
+                        onClick: () => push("/cart"),
+                        secondary:
+                          shoppingCart.length > 0
+                            ? `${totalCount(shoppingCart)} ${pluralize(
+                                totalCount(shoppingCart),
+                                "prodotto",
+                                "prodotti"
+                              )}`
+                            : ""
+                      },
+                      {
+                        ...stock,
+                        onClick: () => push("/stock"),
+                        secondary:
+                          stockList.length > 0
+                            ? `${stockList.length} ${pluralize(
+                                stockList.length,
+                                "modifica",
+                                "modifiche"
+                              )} in sospeso`
+                            : ""
+                      },
+                      { ...product, onClick: () => push("/product") }
+                    ]
+                  },
+                  {
+                    key: "actions",
+                    header: "Azioni",
+                    leftFill: true,
+                    items: [
+                      { ...backup, onClick: () => push("/backup") },
+                      { ...settings, onClick: () => push("/settings") },
+                      { ...update, onClick: () => push("/update") }
+                    ]
+                  },
+                  {
+                    key: "application",
+                    header: "Applicazione",
+                    leftFill: true,
+                    items: [
+                      { ...help, onClick: () => push("/help") },
+                      { ...about, onClick: () => push("/about") },
+                      {
+                        key: "github",
+                        primary: "mastro-elfo/teepee",
+                        onClick: () =>
+                          shell.openExternal("https://github.com/mastro-elfo"),
+                        icon: <GitHubIcon />
+                      }
+                    ]
+                  }
+                ]}
+              />
+            </DrawerIconButton>
+          }
+          RightActions={
+            <Push Component={IconButton} href="/cart" title="Apri la lista">
+              <Badge color="secondary" badgeContent={totalCount(shoppingCart)}>
+                <ShoppingBasketIcon />
+              </Badge>
+            </Push>
+          }
+        >
+          Dashboard
+        </Header>
+      }
+      content={
+        <Content>
+          <SearchField
+            fullWidth
+            label="Cerca"
+            placeholder="Codice, nome o descrizione"
+            onSearch={handleSearch}
+            onClear={handleClear}
+            inputRef={ref}
+            SearchButtonProps={{ title: "Cerca" }}
+            ClearButtonProps={{ title: "Cancella" }}
+          />
+
+          {!!results && results.length === 0 && <NoResults query={query} />}
+
+          {!!results && results.length > 0 && (
+            <Box px={2}>
+              <Typography variant="body2" color="textSecondary">
+                {subheader(results)}
+              </Typography>
+            </Box>
+          )}
+
+          {!!results &&
+            results.length > 0 &&
+            results.map((item, i) => (
+              <ResultCard key={item.id} item={item} expand={i === 0} />
+            ))}
+        </Content>
+      }
+      TopFabProps={{ color: "primary" }}
+    />
+  );
+}
+
+export const route = {
+  path: "/",
+  exact: true,
+  component: Component
+};

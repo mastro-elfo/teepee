@@ -2,8 +2,30 @@
   "name": "teepee",
   "productName": "teepee",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "A simple management application",
   "main": ".webpack/main",
+  "homepage": "https://github.com/mastro-elfo/teepee#README",
+  "bugs": {
+    "url": "https://github.com/mastro-elfo/teepee/issues"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "electron",
+    "electro-app",
+    "webpack",
+    "material-ui"
+  ],
+  "author": {
+    "name": "mastro-elfo",
+    "email": "francesco.209@gmail.com",
+    "url": "https://mastro-elfo.github.io/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mastro-elfo/teepee.git"
+  },
   "scripts": {
     "start": "electron-forge start",
     "prestart": "yarn run init",
@@ -14,12 +36,6 @@
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
-  "keywords": [],
-  "author": {
-    "name": "mastro-elfo",
-    "email": "francesco.209@gmail.com"
-  },
-  "license": "MIT",
   "config": {
     "forge": {
       "packagerConfig": {},

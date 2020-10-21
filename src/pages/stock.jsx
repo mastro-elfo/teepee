@@ -10,8 +10,12 @@ import {
   Header,
   Page,
   ResultList,
-  SearchField
+  // SearchField,
+  useSearchParams
 } from "mastro-elfo-mui";
+
+// TODO: Workaround
+import SearchField from "../components/SearchField";
 
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import CloseIcon from "@material-ui/icons/CheckCircle";
@@ -20,15 +24,19 @@ import StorageIcon from "@material-ui/icons/Storage";
 
 import CloseDialog from "./stock/CloseDialog";
 import { useStock } from "./stock/context";
+import Table from "./stock/Table";
+import { addStockProduct } from "./stock/utils";
 import { search } from "./product/model";
 import subheader from "../utils/subheader";
 
 const ref = createRef();
 
 function Component() {
+  const { q } = useSearchParams();
   const { enqueueSnackbar } = useSnackbar();
   const [stock, setStock] = useStock();
   const [results, setResults] = useState();
+  const [query, setQuery] = useState(q);
 
   useEffect(() => {
     document.title = "Teepee - Magazzino";
@@ -36,19 +44,10 @@ function Component() {
   });
 
   const handleAdd = product => {
-    const copy = stock.slice();
-    const index = copy.findIndex(i => i.id === product.id);
-    if (index !== -1) {
-      if (copy[index].stock + 1 === product.stock) {
-        copy.splice(index, 1);
-      } else {
-        copy[index].stock += 1;
-      }
-    } else {
-      copy.push({ ...product, stock: product.stock + 1 });
-    }
-    setStock(copy);
+    setStock(addStockProduct(stock, product, 1));
     setResults();
+    ref.current.focus();
+    ref.current.select();
   };
 
   const handleSearch = (q, d) =>
@@ -68,9 +67,10 @@ function Component() {
       }
     });
 
-  const handleClear = () => setResults();
-
-  // TODO: Add table of changes
+  const handleClear = () => {
+    setQuery("");
+    setResults();
+  };
 
   return (
     <Page
@@ -93,8 +93,15 @@ function Component() {
             onClear={handleClear}
             SearchButtonProps={{ title: "Cerca" }}
             ClearButtonProps={{ title: "Cancella" }}
+            value={query}
+            onChange={({ target: { value } }) => setQuery(value)}
           />
-          <ResultList results={results} mapper={mapper} subheader={subheader} />
+          <ResultList
+            results={results}
+            mapper={r => ({ ...mapper(r, stock, handleAdd) })}
+            subheader={subheader}
+          />
+          <Table />
         </Content>
       }
       TopFabProps={{ color: "primary" }}
@@ -116,58 +123,15 @@ export const drawer = {
   title: "Gestione magazzino"
 };
 
-function mapper(product) {
-  const [stockList, setStock] = useStock();
-
-  const productInStock = stockList.find(i => i.id === product.id);
-
-  const handleAdd = product => {
-    const copy = stockList.slice();
-    const index = copy.findIndex(i => i.id === product.id);
-
-    if (index !== -1) {
-      if (copy[index].stock + 1 === product.stock) {
-        copy.splice(index, 1);
-      } else {
-        copy[index].stock += 1;
-      }
-    } else {
-      copy.push({ ...product, stock: product.stock + 1 });
-    }
-    setStock(copy);
-  };
-
-  const handleSubtract = product => {
-    const copy = stockList.slice();
-    const index = copy.findIndex(i => i.id === product.id);
-    if (index !== -1) {
-      if (copy[index].stock - 1 === product.stock) {
-        copy.splice(index, 1);
-      } else {
-        copy[index].stock = Math.max(0, copy[index].stock - 1);
-      }
-    } else {
-      copy.push({ ...product, stock: Math.max(0, product.stock - 1) });
-    }
-    setStock(copy);
-  };
-
+function mapper(product, stockList, handler) {
   const { id, name, description, barcode, stock } = product;
+  const productInStock = stockList.find(i => i.id === product.id);
 
   return {
     key: id,
     primary: name,
     secondary: description || barcode,
     LeftIcon: <span>{productInStock ? productInStock.stock : stock}</span>,
-    rightAction: (
-      <ListItemSecondaryAction>
-        <IconButton onClick={() => handleAdd(product)}>
-          <AddBoxIcon />
-        </IconButton>
-        <IconButton onClick={() => handleSubtract(product)}>
-          <MinusBoxIcon />
-        </IconButton>
-      </ListItemSecondaryAction>
-    )
+    onClick: () => handler(product)
   };
 }

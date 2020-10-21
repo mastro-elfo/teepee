@@ -17,15 +17,14 @@ import {
 
 import SaveIcon from "@material-ui/icons/Save";
 
-import { defaultValue, del, read, update } from "./model";
-
-// TODO: use Conditional
+import Loading from "../loading";
+import { del, read, update } from "./model";
 
 function Component() {
   const { enqueueSnackbar } = useSnackbar();
   const { go, goBack } = useHistory();
   const { id } = useParams();
-  const [model, setModel] = useState(defaultValue);
+  const [model, setModel] = useState();
 
   useEffect(() => {
     document.title = "Teepee - Modifica Prodotto";
@@ -64,6 +63,8 @@ function Component() {
         enqueueSnackbar(err.message, { variant: "error" });
       });
   };
+
+  if (!model) return <Loading header="Modifica prodotto" />;
 
   const { barcode, name, description, price, stock } = model;
 

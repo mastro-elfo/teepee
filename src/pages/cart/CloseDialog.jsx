@@ -18,14 +18,15 @@ import {
 
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import DoneIcon from "@material-ui/icons/AssignmentTurnedIn";
-import CloseIcon from "@material-ui/icons/CheckCircle";
 import PrintIcon from "@material-ui/icons/Print";
 
 import { useCart } from "./context";
 import { update } from "../product/model";
+import { useNotifications } from "../../components/notifications";
 
 export default function CloseDialog() {
   const { enqueueSnackbar } = useSnackbar();
+  const [_, pushNotification] = useNotifications();
   const [cart, setCart] = useCart();
   const [open, setOpen] = useState(false);
 
@@ -33,10 +34,17 @@ export default function CloseDialog() {
     //
     Promise.all(
       cart.map(item => {
-        const { id, quantity, stock } = item;
+        const { id, quantity, stock, name, barcode } = item;
         const diff = stock - quantity;
         // TODO: if diff < 0 there is an error in the count
         // this can add a warning in dashboard
+        if (diff < 0) {
+          pushNotification({
+            content: `Ho riscontrato un problema con la quantità di "${name}" (${barcode}) in magazzino. Controlla quanti prodotti sono presenti e, se necessario, aggiorna il database.`,
+            type: "warning",
+            href: `/stock?q=${name}`
+          });
+        }
         return update(id, { ...item, stock: Math.max(0, diff) });
       })
     )
@@ -66,7 +74,7 @@ export default function CloseDialog() {
         disabled={cart.length === 0}
         title="Chiudi il conto"
       >
-        <CloseIcon />
+        <DoneIcon />
       </IconButton>
 
       <Dialog open={open} onClose={() => setOpen(false)}>

@@ -4,6 +4,7 @@ import { hot } from "react-hot-loader";
 import { MemoryRouter } from "react-router-dom";
 import primary from "@material-ui/core/colors/orange";
 import secondary from "@material-ui/core/colors/deepPurple";
+import warning from "@material-ui/core/colors/yellow";
 import { AppContainer } from "mastro-elfo-mui";
 
 import { route as about } from "./pages/about";
@@ -18,12 +19,16 @@ import { route as update } from "./pages/update";
 
 import { CartProvider } from "./pages/cart/context";
 import { StockProvider } from "./pages/stock/context";
+import { NotificationsProvider } from "./components/notifications";
+import { loadPalette } from "./pages/settings/store";
+
+const palette = loadPalette({ type: "light" });
 
 function App() {
   return (
     <AppContainer
       ThemeProps={{
-        palette: { primary, secondary }
+        palette: { primary, secondary, warning, ...palette }
       }}
       RouterProps={{
         Router: MemoryRouter,
@@ -42,7 +47,8 @@ function App() {
       WrapperProps={{
         Children: [
           { Component: CartProvider, defaultValue: [] },
-          { Component: StockProvider, defaultValue: [] }
+          { Component: StockProvider, defaultValue: [] },
+          { Component: NotificationsProvider }
         ]
       }}
     />

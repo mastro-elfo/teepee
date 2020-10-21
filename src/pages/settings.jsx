@@ -1,13 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+
+import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
+
+import DarkIcon from "@material-ui/icons/Brightness4";
+import LightIcon from "@material-ui/icons/Brightness7";
 import SettingsIcon from "@material-ui/icons/Settings";
 
+// TODO: Workaround
+import { Context as PaletteContext } from "mastro-elfo-mui/dist/utils/usePalette";
+
+import { storePalette } from "./settings/store";
+
 function Component() {
+  // const [palette, setPalette] = usePalette();
+  const [palette, setPalette] = useContext(PaletteContext);
+
+  // console.log(palette);
+
+  useEffect(() => {
+    storePalette(palette);
+  }, [palette]);
+
   useEffect(() => {
     document.title = "Teepee - Impostazioni";
   });
 
-  // TODO:
+  const { type } = palette;
+  const typeName = { dark: "Scuro", light: "Chiaro" }[type] || "Chiaro";
+
+  const handleToggleThemeType = () => {
+    setPalette({ ...palette, type: type === "dark" ? "light" : "dark" });
+  };
+
   return (
     <Page
       header={
@@ -15,7 +41,18 @@ function Component() {
           Impostazioni
         </Header>
       }
-      content={<Content>Work in progress</Content>}
+      content={
+        <Content>
+          <List>
+            <ListItem button onClick={handleToggleThemeType}>
+              <ListItemIcon>
+                {type === "dark" ? <LightIcon /> : <DarkIcon />}
+              </ListItemIcon>
+              <ListItemText primary={typeName} secondary="Tema" />
+            </ListItem>
+          </List>
+        </Content>
+      }
       TopFabProps={{ color: "primary" }}
     />
   );

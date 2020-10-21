@@ -31,6 +31,7 @@ import { useCart } from "./cart/context";
 import { totalCount } from "./cart/utils";
 import NoResults from "./dashboard/NoResults";
 import ResultCard from "./dashboard/ResultCard";
+import Notifications from "../components/notifications";
 import { search } from "./product/model";
 import { useStock } from "./stock/context";
 import subheader from "../utils/subheader";
@@ -146,6 +147,8 @@ function Component() {
       }
       content={
         <Content>
+          <Notifications />
+
           <SearchField
             fullWidth
             label="Cerca"

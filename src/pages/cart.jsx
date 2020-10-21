@@ -43,6 +43,8 @@ function Component() {
     }
     setCart(copy);
     setResults();
+    ref.current.focus();
+    ref.current.select();
   };
 
   const handleSearch = (q, d) =>
@@ -54,7 +56,6 @@ function Component() {
           handleAdd(r[0]);
           ref.current.focus();
           ref.current.select();
-          // TODO: finish
         } else {
           setResults(r);
         }
@@ -91,9 +92,8 @@ function Component() {
           />
           <ResultList
             results={results}
-            mapper={r => ({ ...mapper(r), onClick: () => handleAdd(r) })}
+            mapper={r => ({ ...mapper(r, handleAdd) })}
             subheader={subheader}
-            style={{ position: "absolute", width: "100%", background: "#fff" }}
           />
           <Table />
         </Content>
@@ -118,11 +118,13 @@ export const drawer = {
   title: "Apri il carrello"
 };
 
-function mapper({ id, name, description, barcode }) {
+function mapper(product, handler) {
+  const { id, name, description, barcode } = product;
   return {
     key: id,
     primary: name,
-    secondary: description || barcode
+    secondary: description || barcode,
+    onClick: () => handler(product)
   };
 }
 

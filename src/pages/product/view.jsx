@@ -10,12 +10,14 @@ import { BackIconButton, Content, Header, Page, Push } from "mastro-elfo-mui";
 import EditIcon from "@material-ui/icons/Edit";
 import PrintIcon from "@material-ui/icons/Print";
 
-import { defaultValue, read } from "./model";
+import Details from "./details";
+import Loading from "../loading";
+import { read } from "./model";
 
 function Component() {
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
-  const [model, setModel] = useState(defaultValue);
+  const [model, setModel] = useState();
 
   useEffect(() => {
     document.title = "Teepee - Scheda Prodotto";
@@ -33,6 +35,8 @@ function Component() {
   }, [id]);
 
   const handlePrint = () => window.print();
+
+  if (!model) return <Loading header="Scheda prodotto" />;
 
   const { barcode, name, description, price, stock, _create, _update } = model;
 
@@ -90,18 +94,18 @@ function Component() {
                 secondary="Data di creazione"
               />
             </ListItem>
-            {!!_update && (
-              <ListItem>
-                <ListItemText
-                  primary={new Date(_update).toLocaleString()}
-                  secondary="Ultima modifica"
-                />
-              </ListItem>
-            )}
+            <ListItem>
+              <ListItemText
+                primary={
+                  _update === 0 ? "Mai" : new Date(_update).toLocaleString()
+                }
+                secondary="Ultima modifica"
+              />
+            </ListItem>
           </List>
         </Content>
       }
-      print={<h1>{`// TODO`}</h1>}
+      print={<Details {...model} />}
       TopFabProps={{ color: "primary" }}
     />
   );

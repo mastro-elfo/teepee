@@ -19,7 +19,6 @@ import {
 
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import DoneIcon from "@material-ui/icons/AssignmentTurnedIn";
-import CloseIcon from "@material-ui/icons/CheckCircle";
 import PrintIcon from "@material-ui/icons/Print";
 
 import { useStock } from "./context";
@@ -58,7 +57,7 @@ export default function CloseDialog() {
         title="Applica le modifiche"
       >
         <Badge color="secondary" badgeContent={stockList.length}>
-          <CloseIcon />
+          <DoneIcon />
         </Badge>
       </IconButton>
 

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { IconButton } from "@material-ui/core";
+
 import {
   BackIconButton,
   Content,
@@ -15,19 +16,43 @@ import {
 } from "mastro-elfo-mui";
 
 import AddIcon from "@material-ui/icons/Add";
-import PrintIcon from "@material-ui/icons/Print";
 
-import { search } from "./model";
+import PrintDialogIconButton from "./print-dialog";
+import PrintTable from "./print-table";
+import { readAll, search } from "./model";
 import subheader from "../../utils/subheader";
 
 function Component() {
   const [results, setResults] = useState();
+  const [printList, setPrintList] = useState({ list: [], callback: () => {} });
 
   useEffect(() => {
     document.title = "Teepee - Prodotti";
   });
 
-  const handlePrint = () => window.print();
+  const handleCallback = back => {
+    setTimeout(() => {
+      window.print();
+      setPrintList({ list: [], callback: () => {} });
+      back();
+    }, 0);
+  };
+
+  const handlePrint = (type, back) => {
+    if (type === "partial") {
+      setPrintList({
+        list: results,
+        callback: () => handleCallback(back)
+      });
+    } else if (type === "whole") {
+      readAll().then(r => {
+        setPrintList({
+          list: r,
+          callback: () => handleCallback(back)
+        });
+      });
+    }
+  };
 
   const handleSearch = (q, d) =>
     search(d).then(r => {
@@ -42,13 +67,7 @@ function Component() {
         <Header
           LeftAction={<BackIconButton title="Torna indietro" />}
           RightActions={[
-            <IconButton
-              key="print"
-              title="Stampa il report"
-              onClick={handlePrint}
-            >
-              <PrintIcon />
-            </IconButton>,
+            <PrintDialogIconButton key="print" onConfirm={handlePrint} />,
             <Push
               key="create"
               Component={IconButton}
@@ -76,7 +95,7 @@ function Component() {
           <ResultList mapper={mapper} results={results} subheader={subheader} />
         </Content>
       }
-      print={<h1>{`// TODO: `}</h1>}
+      print={<PrintTable {...printList} />}
       TopFabProps={{ color: "primary" }}
     />
   );

@@ -49,7 +49,9 @@ function Component() {
 
   const handleSearch = (q, d) =>
     search(d).then(r => {
-      if (r.length === 1) {
+      if (!r) {
+        setResults(r);
+      } else if (r.length === 1) {
         const { barcode } = r[0];
         if (barcode === q) {
           // Exact match with barcode

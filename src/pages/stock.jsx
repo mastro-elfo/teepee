@@ -52,7 +52,9 @@ function Component() {
 
   const handleSearch = (q, d) =>
     search(d).then(r => {
-      if (r.length === 1) {
+      if (!r) {
+        setResults(r);
+      } else if (r.length === 1) {
         const { name, barcode } = r[0];
         if (barcode === q) {
           handleAdd(r[0]);

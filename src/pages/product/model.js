@@ -50,6 +50,8 @@ export function del(id) {
 }
 
 export function search(query) {
+  if (query === "") return Promise.resolve(undefined);
+
   const queries = query.split(" ");
   return readAll(table).then(r =>
     r

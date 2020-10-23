@@ -36,7 +36,6 @@ import { search } from "./product/model";
 import { useStock } from "./stock/context";
 import subheader from "../utils/subheader";
 import background from "../assets/dashboard.svg";
-console.log(background);
 
 const ref = createRef();
 
@@ -46,7 +45,6 @@ function Component() {
     push,
     replace
   } = useHistory();
-  // console.log(state);
   const [shoppingCart] = useCart();
   const [stockList] = useStock();
   const [results, setResults] = useState((state && state.results) || undefined);

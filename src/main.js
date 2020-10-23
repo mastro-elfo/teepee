@@ -19,8 +19,16 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
-  // Open the DevTools.
-  if (!app.isPackaged) mainWindow.webContents.openDevTools();
+  if (!app.isPackaged) {
+    // Open the DevTools.
+    mainWindow.webContents.openDevTools();
+  }
+
+  if (app.isPackaged) {
+    globalShortcut.register("CommandOrControl+Shift+I", () => {
+      mainWindow.webContents.openDevTools();
+    });
+  }
 };
 
 // This method will be called when Electron has finished
@@ -48,9 +56,3 @@ app.on("activate", () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 if (app.isPackaged) Menu.setApplicationMenu(null);
-
-// app.on("ready", () => {
-//   globalShortcut.register("CommandOrControl+Q", () => {
-//     app.quit();
-//   });
-// });

@@ -30,6 +30,10 @@ function App() {
       ThemeProps={{
         palette: { primary, secondary, warning, ...palette }
       }}
+      NotifyProps={{
+        // anchorOrigin: { horizontal: "center", vertical: "bottom" },
+        preventDuplicate: true
+      }}
       RouterProps={{
         Router: MemoryRouter,
         routes: [

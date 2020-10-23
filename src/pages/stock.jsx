@@ -28,6 +28,7 @@ import Table from "./stock/Table";
 import { addStockProduct } from "./stock/utils";
 import { search } from "./product/model";
 import subheader from "../utils/subheader";
+import background from "../assets/stock.svg";
 
 const ref = createRef();
 
@@ -107,6 +108,15 @@ function Component() {
         </Content>
       }
       TopFabProps={{ color: "primary" }}
+      PaperProps={{
+        style: {
+          minHeight: "100%",
+          backgroundImage: `url(${background})`,
+          backgroundSize: "50%",
+          backgroundPosition: "right bottom",
+          backgroundRepeat: "no-repeat"
+        }
+      }}
     />
   );
 }

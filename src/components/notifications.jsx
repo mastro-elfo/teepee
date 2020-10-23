@@ -96,10 +96,12 @@ export default function Notifications() {
   // There are no notifications
   if (!first) return null;
   // Render
-  return [<NotificationCard key={ns.length} {...first} dismiss={dismiss} />];
+  return [
+    <NotificationContainer key={ns.length} {...first} dismiss={dismiss} />
+  ];
 }
 
-function NotificationCard({ id, content, href, dismiss, type }) {
+function NotificationContainer({ id, content, href, dismiss, type }) {
   const { push } = useHistory();
   const theme = useTheme();
   const classes = useStyles();
@@ -108,7 +110,6 @@ function NotificationCard({ id, content, href, dismiss, type }) {
   // Effect
   useEffect(() => {
     if (!zoom) {
-      // const to = setTimeout(dismiss, theme.transitions.duration.standard, id);
       const to = setTimeout(() => {
         dismiss(id);
         if (open) {
@@ -123,57 +124,53 @@ function NotificationCard({ id, content, href, dismiss, type }) {
     setZoom(false);
   };
   const handleOpen = () => {
-    // dismiss(id);
-    // push(href);
     setZoom(false);
     setOpen(true);
   };
-  // Header properties
-  // const header =
-  //   { info: "", success: "", warning: "Attenzione", error: "Errore" }[type] ||
-  //   "";
-  //
-  // const icon = {
-  //   info: <InfoIcon />,
-  //   success: <SuccessIcon />,
-  //   warning: <WarningIcon />,
-  //   error: <ErrorIcon />
-  // }[type] || <span />;
-
   // Render
   return (
     <Zoom in={zoom}>
-      <Card className={classes[type]}>
-        {
-          // <CardHeader title={header} avatar={icon} />
-        }
-        <CardContent>
-          <Typography>{content}</Typography>
-        </CardContent>
-        <CardActions>
-          {!!href && (
-            <Button
-              size="small"
-              title="Apri"
-              color="inherit"
-              variant="outlined"
-              onClick={handleOpen}
-            >
-              Apri
-            </Button>
-          )}
+      <NotificationCard
+        type={type}
+        content={content}
+        handleOpen={!!href && handleOpen}
+        handleClose={handleClose}
+      />
+    </Zoom>
+  );
+}
 
+export function NotificationCard({ type, content, handleOpen, handleClose }) {
+  const classes = useStyles();
+
+  return (
+    <Card className={classes[type]}>
+      <CardContent>
+        <Typography>{content}</Typography>
+      </CardContent>
+      <CardActions>
+        {!!handleOpen && (
           <Button
             size="small"
-            title="Chiudi notifica"
+            title="Apri"
             color="inherit"
             variant="outlined"
-            onClick={handleClose}
+            onClick={handleOpen}
           >
-            Annulla
+            Apri
           </Button>
-        </CardActions>
-      </Card>
-    </Zoom>
+        )}
+
+        <Button
+          size="small"
+          title="Chiudi notifica"
+          color="inherit"
+          variant="outlined"
+          onClick={handleClose}
+        >
+          Annulla
+        </Button>
+      </CardActions>
+    </Card>
   );
 }

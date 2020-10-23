@@ -35,16 +35,22 @@ import Notifications from "../components/notifications";
 import { search } from "./product/model";
 import { useStock } from "./stock/context";
 import subheader from "../utils/subheader";
+import background from "../assets/dashboard.svg";
+console.log(background);
 
 const ref = createRef();
 
 function Component() {
-  const { push } = useHistory();
+  const {
+    location: { state = {} },
+    push,
+    replace
+  } = useHistory();
+  // console.log(state);
   const [shoppingCart] = useCart();
   const [stockList] = useStock();
-  const [results, setResults] = useState();
-  // TODO: Use searchParams
-  const [query, setQuery] = useState("");
+  const [results, setResults] = useState((state && state.results) || undefined);
+  const [query, setQuery] = useState((state && state.q) || "");
 
   useEffect(() => {
     document.title = "Teepee";
@@ -55,14 +61,14 @@ function Component() {
     setQuery(q);
     return search(d).then(r => {
       setResults(r);
-      // TODO: replace location with `q`
+      replace({ state: { q, results: r } });
     });
   };
 
   const handleClear = () => {
     setResults();
     setQuery("");
-    // TODO: replace location without `q`
+    replace({ state: { q: "", results: undefined } });
   };
 
   return (
@@ -159,6 +165,8 @@ function Component() {
             inputRef={ref}
             SearchButtonProps={{ title: "Cerca" }}
             ClearButtonProps={{ title: "Cancella" }}
+            value={query}
+            onChange={({ target: { value } }) => setQuery(value)}
           />
 
           {!!results && results.length === 0 && <NoResults query={query} />}
@@ -179,6 +187,15 @@ function Component() {
         </Content>
       }
       TopFabProps={{ color: "primary" }}
+      PaperProps={{
+        style: {
+          minHeight: "100%",
+          backgroundImage: `url(${background})`,
+          backgroundSize: "50%",
+          backgroundPosition: "right bottom",
+          backgroundRepeat: "no-repeat"
+        }
+      }}
     />
   );
 }

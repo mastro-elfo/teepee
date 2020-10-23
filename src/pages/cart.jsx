@@ -20,6 +20,7 @@ import { useCart } from "./cart/context";
 import { total } from "./cart/utils";
 import { search } from "./product/model";
 import subheader from "../utils/subheader";
+import background from "../assets/cart.svg";
 
 const ref = createRef();
 
@@ -102,6 +103,15 @@ function Component() {
       }
       print={<Print />}
       TopFabProps={{ color: "primary" }}
+      PaperProps={{
+        style: {
+          minHeight: "100%",
+          backgroundImage: `url(${background})`,
+          backgroundSize: "50%",
+          backgroundPosition: "right bottom",
+          backgroundRepeat: "no-repeat"
+        }
+      }}
     />
   );
 }

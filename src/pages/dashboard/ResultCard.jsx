@@ -112,14 +112,18 @@ export default function ResultCard({ item, expand = false }) {
             >
               <VisibilityIcon />
             </Push>
+
             <IconButton title="Aggiungi al carrello" onClick={handleAddCart}>
               <AddShoppingCartIcon />
             </IconButton>
-            {
-              //   <IconButton size="small" title="Gestisci magazzino">
-              //   <StorageIcon />
-              // </IconButton>
-            }
+
+            <Push
+              href={`/stock?q=${name}`}
+              Component={IconButton}
+              title="Gestisci magazzino"
+            >
+              <StorageIcon />
+            </Push>
           </CardActions>
         </Collapse>
       </Card>

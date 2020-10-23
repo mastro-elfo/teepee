@@ -9,7 +9,7 @@ import changelog from "./about/changelog.json";
 function Component() {
   useEffect(() => {
     document.title = "Teepee - Informazioni";
-  });
+  }, []);
 
   return (
     <Page

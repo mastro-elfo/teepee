@@ -6,7 +6,7 @@ import { Header, Page } from "mastro-elfo-mui";
 export default function Component({ header = "Sto caricando..." }) {
   useEffect(() => {
     document.title = "Teepee - Caricamento";
-  });
+  }, []);
 
   return (
     <Page

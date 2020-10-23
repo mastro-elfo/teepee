@@ -28,7 +28,7 @@ function Component() {
 
   useEffect(() => {
     document.title = "Teepee - Modifica Prodotto";
-  });
+  }, []);
 
   useEffect(() => {
     read(id)

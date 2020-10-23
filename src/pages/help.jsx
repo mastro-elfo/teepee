@@ -5,7 +5,7 @@ import HelpIcon from "@material-ui/icons/Help";
 function Component() {
   useEffect(() => {
     document.title = "Teepee - Aiuto";
-  });
+  }, []);
 
   // TODO:
 

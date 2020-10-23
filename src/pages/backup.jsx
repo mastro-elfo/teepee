@@ -25,7 +25,7 @@ function Component() {
 
   useEffect(() => {
     document.title = "Teepee - Backup";
-  });
+  }, []);
 
   useEffect(() => {
     stat().then(({ size }) => setSize(size));

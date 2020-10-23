@@ -25,7 +25,7 @@ function Component() {
 
   useEffect(() => {
     document.title = "Teepee - Impostazioni";
-  });
+  }, []);
 
   const { type } = palette;
   const typeName = { dark: "Scuro", light: "Chiaro" }[type] || "Chiaro";

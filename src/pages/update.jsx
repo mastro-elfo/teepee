@@ -5,7 +5,7 @@ import UpdateIcon from "@material-ui/icons/Update";
 function Component() {
   useEffect(() => {
     document.title = "Teepee - Aggiornamenti";
-  });
+  }, []);
 
   // TODO:
 

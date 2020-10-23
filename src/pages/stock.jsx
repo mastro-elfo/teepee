@@ -10,12 +10,12 @@ import {
   Header,
   Page,
   ResultList,
-  // SearchField,
+  SearchField,
   useSearchParams
 } from "mastro-elfo-mui";
 
 // TODO: Workaround
-import SearchField from "../components/SearchField";
+// import SearchField from "../components/SearchField";
 
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import CloseIcon from "@material-ui/icons/CheckCircle";
@@ -36,12 +36,12 @@ function Component() {
   const { enqueueSnackbar } = useSnackbar();
   const [stock, setStock] = useStock();
   const [results, setResults] = useState();
-  const [query, setQuery] = useState(q);
+  const [query, setQuery] = useState(q || "");
 
   useEffect(() => {
     document.title = "Teepee - Magazzino";
     ref.current.focus();
-  });
+  }, []);
 
   const handleAdd = product => {
     setStock(addStockProduct(stock, product, 1));
@@ -103,7 +103,7 @@ function Component() {
             mapper={r => ({ ...mapper(r, stock, handleAdd) })}
             subheader={subheader}
           />
-          <Table />
+          {stock.length > 0 && <Table />}
         </Content>
       }
       TopFabProps={{ color: "primary" }}

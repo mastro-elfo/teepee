@@ -28,7 +28,7 @@ function Component() {
 
   useEffect(() => {
     document.title = "Teepee - Prodotti";
-  });
+  }, []);
 
   const handleCallback = back => {
     setTimeout(() => {

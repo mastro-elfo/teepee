@@ -97,7 +97,7 @@ function Component() {
             mapper={r => ({ ...mapper(r, handleAdd) })}
             subheader={subheader}
           />
-          <Table />
+          {cart.length > 0 && <Table />}
         </Content>
       }
       print={<Print />}

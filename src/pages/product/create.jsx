@@ -25,7 +25,7 @@ function Component() {
 
   useEffect(() => {
     document.title = "Teepee - Crea Prodotto";
-  });
+  }, []);
 
   const handleSave = () => {
     create(model)

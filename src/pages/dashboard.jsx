@@ -43,6 +43,7 @@ function Component() {
   const [shoppingCart] = useCart();
   const [stockList] = useStock();
   const [results, setResults] = useState();
+  // TODO: Use searchParams
   const [query, setQuery] = useState("");
 
   useEffect(() => {
@@ -110,8 +111,8 @@ function Component() {
                     leftFill: true,
                     items: [
                       { ...backup, onClick: () => push("/backup") },
-                      { ...settings, onClick: () => push("/settings") },
-                      { ...update, onClick: () => push("/update") }
+                      { ...settings, onClick: () => push("/settings") }
+                      // { ...update, onClick: () => push("/update") }
                     ]
                   },
                   {

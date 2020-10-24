@@ -28,6 +28,7 @@ function Component() {
   // const { enqueueSnackbar } = useSnackbar();
   const [cart, setCart] = useCart();
   const [results, setResults] = useState();
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     document.title = "Teepee - Carrello";
@@ -69,7 +70,9 @@ function Component() {
 
   const handleClear = () => {
     setResults();
+    setQuery("");
   };
+  const handleChange = ({ target: { value } }) => setQuery(value);
 
   return (
     <Page
@@ -92,6 +95,8 @@ function Component() {
             onClear={handleClear}
             SearchButtonProps={{ title: "Cerca" }}
             ClearButtonProps={{ title: "Cancella" }}
+            value={query}
+            onChange={handleChange}
           />
           <ResultList
             results={results}

@@ -21,8 +21,10 @@ import PrintDialogIconButton from "./print-dialog";
 import PrintTable from "./print-table";
 import { readAll, search } from "./model";
 import subheader from "../../utils/subheader";
+import background from "../../assets/product.svg";
 
 function Component() {
+  const [query, setQuery] = useState("");
   const [results, setResults] = useState();
   const [printList, setPrintList] = useState({ list: [], callback: () => {} });
 
@@ -59,7 +61,11 @@ function Component() {
       setResults(r);
     });
 
-  const handleClear = () => setResults();
+  const handleClear = () => {
+    setResults();
+    setQuery("");
+  };
+  const handleChange = ({ target: { value } }) => setQuery(value);
 
   return (
     <Page
@@ -91,12 +97,23 @@ function Component() {
             onClear={handleClear}
             SearchButtonProps={{ title: "Cerca" }}
             ClearButtonProps={{ title: "Cancella" }}
+            value={query}
+            onChange={handleChange}
           />
           <ResultList mapper={mapper} results={results} subheader={subheader} />
         </Content>
       }
       print={<PrintTable {...printList} />}
       TopFabProps={{ color: "primary" }}
+      PaperProps={{
+        style: {
+          minHeight: "100%",
+          backgroundImage: `url(${background})`,
+          backgroundSize: "50%",
+          backgroundPosition: "right bottom",
+          backgroundRepeat: "no-repeat"
+        }
+      }}
     />
   );
 }

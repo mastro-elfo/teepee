@@ -130,7 +130,9 @@ function Component() {
                         key: "github",
                         primary: "mastro-elfo/teepee",
                         onClick: () =>
-                          shell.openExternal("https://github.com/mastro-elfo"),
+                          shell.openExternal(
+                            "https://github.com/mastro-elfo/teepee"
+                          ),
                         icon: <GitHubIcon />
                       }
                     ]

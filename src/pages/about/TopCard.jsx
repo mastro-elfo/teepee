@@ -53,7 +53,9 @@ export default function Component() {
           variant="contained"
           color="primary"
           size="small"
-          onClick={() => shell.openExternal("https://github.com/mastro-elfo/")}
+          onClick={() =>
+            shell.openExternal("https://github.com/mastro-elfo/teepee")
+          }
         >
           Codice
         </Button>
@@ -63,6 +65,19 @@ export default function Component() {
           Sviluppatore
         </Typography>
         <Typography>Francesco Michienzi</Typography>
+      </CardContent>
+      <CardContent>
+        <Typography variant="h6" color="textSecondary">
+          Immagini
+        </Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          onClick={() => shell.openExternal("https://undraw.co")}
+        >
+          unDraw
+        </Button>
       </CardContent>
     </Card>
   );

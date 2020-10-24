@@ -20,7 +20,10 @@ export class Database {
 
     this.readKey("lastid")
       .then(lastid => (this.lastid = parseInt(lastid)))
-      .catch(_ => (this.lastid = 0));
+      .catch(_ => {
+        this.lastid = 0;
+        return this.writeKey("lastid", 0);
+      });
   }
 
   create(table, data) {
@@ -88,7 +91,7 @@ export class Database {
   }
 
   _isArray(obj) {
-    return typeof obj === "object" && obj.map;
+    return typeof obj === "object" && obj.join;
   }
 
   _join(list) {

@@ -5530,9 +5530,9 @@ markdown-escapes@^1.0.0:
   integrity sha512-8z4efJYk43E0upd0NbVXwgSTQs6cT3T06etieCMEg7dRbzCbxUCK/GHlX8mhHRDcp+OLlHkPKsvqQTCvsRl2cg==
 
 mastro-elfo-mui@^1.16.0:
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/mastro-elfo-mui/-/mastro-elfo-mui-1.19.0.tgz#273eb38a5b9c72500f0aa5f9f1ac0b90f965d039"
-  integrity sha512-U+bvKgmXwbfRhmXkngvzEhkwdF3SsKh1y3pwM34az5R+81RDQKl1APnnYDpcoN+2yhX+sRRdnYZ67RF11vQVkQ==
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/mastro-elfo-mui/-/mastro-elfo-mui-1.21.0.tgz#b782bc8aea316ddca9f4f29d7175931ec7613d42"
+  integrity sha512-03Ue/sgsGf6MV/Udde00PETWyEImXh//03yb0Lc7DjYWkuM64zYLUADlLzcvJuLRW2GV0tSOpHPKvbCaz0km8Q==
 
 matcher@^3.0.0:
   version "3.0.0"

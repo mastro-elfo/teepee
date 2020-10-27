@@ -1,7 +1,25 @@
 # Teepee
 
-A simple management application
+A simple management application.
+
+This application allows you to create a database of products. Each product has:
+
+- barcode;
+- name;
+- description;
+- price;
+- stock quantity.
+
+From the **Cart view** you can add products to the shopping list.
+
+Stock quantities are managed from the **Stock view**.
+
+# Screenshots
+
+![Welcome](./screenshots/welcome.png)
+![Cart](./screenshots/cart.png)
+![Stock](./screenshots/stock.png)
 
 # Attribution
 
-Images from https://undraw.co
+Images from [Undraw](https://undraw.co).

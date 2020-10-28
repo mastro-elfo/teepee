@@ -1,6 +1,5 @@
 import React, { createRef, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { shell } from "electron";
 
 import { Badge, Box, IconButton, Typography } from "@material-ui/core";
 
@@ -15,7 +14,6 @@ import {
   pluralize
 } from "mastro-elfo-mui";
 
-import GitHubIcon from "@material-ui/icons/GitHub";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 
 import { drawer as about } from "./about";
@@ -125,16 +123,7 @@ function Component() {
                     leftFill: true,
                     items: [
                       { ...help, onClick: () => push("/help") },
-                      { ...about, onClick: () => push("/about") },
-                      {
-                        key: "github",
-                        primary: "mastro-elfo/teepee",
-                        onClick: () =>
-                          shell.openExternal(
-                            "https://github.com/mastro-elfo/teepee"
-                          ),
-                        icon: <GitHubIcon />
-                      }
+                      { ...about, onClick: () => push("/about") }
                     ]
                   }
                 ]}

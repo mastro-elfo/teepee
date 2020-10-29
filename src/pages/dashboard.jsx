@@ -113,8 +113,8 @@ function Component() {
                     leftFill: true,
                     items: [
                       { ...backup, onClick: () => push("/backup") },
-                      { ...settings, onClick: () => push("/settings") }
-                      // { ...update, onClick: () => push("/update") }
+                      { ...settings, onClick: () => push("/settings") },
+                      { ...update, onClick: () => push("/update") }
                     ]
                   },
                   {

@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useState } from "react";
 
-import { useSnackbar } from "notistack";
+// import { useSnackbar } from "notistack";
 
 import { IconButton, ListItemSecondaryAction } from "@material-ui/core";
 
@@ -34,7 +34,7 @@ const ref = createRef();
 
 function Component() {
   const { q } = useSearchParams();
-  const { enqueueSnackbar } = useSnackbar();
+  // const { enqueueSnackbar } = useSnackbar();
   const [stock, setStock] = useStock();
   const [results, setResults] = useState();
   const [query, setQuery] = useState(q || "");
@@ -61,7 +61,7 @@ function Component() {
           handleAdd(r[0]);
           ref.current.focus();
           ref.current.select();
-          enqueueSnackbar(`${name} aggiunto a magazzino`, { variant: "info" });
+          // enqueueSnackbar(`${name} aggiunto a magazzino`, { variant: "info" });
         } else {
           setResults(r);
         }

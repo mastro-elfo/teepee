@@ -15,7 +15,7 @@ import { route as help } from "./pages/help";
 import { route as product } from "./pages/product";
 import { route as settings } from "./pages/settings";
 import { route as stock } from "./pages/stock";
-import { route as update } from "./pages/update";
+// import { route as update } from "./pages/update";
 
 import { CartProvider } from "./pages/cart/context";
 import { StockProvider } from "./pages/stock/context";
@@ -44,8 +44,8 @@ function App() {
           help,
           product,
           settings,
-          stock,
-          update
+          stock
+          // update
         ]
       }}
       WrapperProps={{

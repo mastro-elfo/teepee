@@ -23,7 +23,7 @@ import { drawer as help } from "./help";
 import { drawer as product } from "./product";
 import { drawer as settings } from "./settings";
 import { drawer as stock } from "./stock";
-import { drawer as update } from "./update";
+// import { drawer as update } from "./update";
 
 import { useCart } from "./cart/context";
 import { totalCount } from "./cart/utils";
@@ -113,8 +113,8 @@ function Component() {
                     leftFill: true,
                     items: [
                       { ...backup, onClick: () => push("/backup") },
-                      { ...settings, onClick: () => push("/settings") },
-                      { ...update, onClick: () => push("/update") }
+                      { ...settings, onClick: () => push("/settings") }
+                      // { ...update, onClick: () => push("/update") }
                     ]
                   },
                   {

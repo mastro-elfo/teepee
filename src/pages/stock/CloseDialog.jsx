@@ -30,8 +30,13 @@ export default function CloseDialog() {
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
-    //
-    Promise.all(stockList.map(item => update(item.id, item)))
+    // Close all changes and update db
+    Promise.all(
+      stockList.map(({ delta, stock, ...item }) =>
+        // Update db with the new stock value
+        update(item.id, { ...item, stock: Math.max(0, stock + delta) })
+      )
+    )
       .then(() => {
         setStock([]);
         setOpen(false);

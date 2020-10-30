@@ -49,12 +49,14 @@ export default function StockTable() {
         <TableFooter></TableFooter>
         <TableBody>
           {stock.map(product => {
-            const { id, name, stock } = product;
+            const { delta, id, name, stock } = product;
 
             return (
               <TableRow key={id}>
                 <TableCell>{name}</TableCell>
-                <TableCell>{stock}</TableCell>
+                <TableCell>
+                  {stock + delta} ({`${delta > 0 ? "+" : ""}${delta}`})
+                </TableCell>
                 <TableCell>
                   <IconButton
                     title="Aggiungi"

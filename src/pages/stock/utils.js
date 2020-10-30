@@ -3,9 +3,11 @@ export function addStockProduct(stock, product, delta) {
   const index = copy.findIndex(i => i.id === product.id);
 
   if (index !== -1) {
-    copy[index].stock = Math.max(0, copy[index].stock + delta);
+    // Product already exists, update delta
+    copy[index].delta = Math.max(-copy[index].stock, copy[index].delta + delta);
   } else {
-    copy.push({ ...product, stock: Math.max(0, product.stock + delta) });
+    // Product not in changes list, add with delta
+    copy.push({ ...product, delta: Math.max(-product.stock, delta) });
   }
 
   return copy;

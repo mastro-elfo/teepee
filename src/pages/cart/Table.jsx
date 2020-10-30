@@ -14,8 +14,8 @@ import {
 import { TableHeadCell } from "mastro-elfo-mui";
 
 import AddBoxIcon from "@material-ui/icons/AddBox";
+import BackspaceIcon from "@material-ui/icons/Backspace";
 import MinusBoxIcon from "@material-ui/icons/IndeterminateCheckBox";
-import RemoveShoppingCartIcon from "@material-ui/icons/RemoveShoppingCart";
 
 import { total, totalCount } from "./utils";
 import { useCart } from "./context";
@@ -86,7 +86,7 @@ export default function CartTable() {
                   onClick={() => handleDelete(id)}
                   tabIndex={-1}
                 >
-                  <RemoveShoppingCartIcon />
+                  <BackspaceIcon />
                 </IconButton>
               </TableCell>
             </TableRow>

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import path from "path";
 import { remote, shell } from "electron";
-// BUG: There is a problem with fs-extra when app is packaged
-import fs from "electron-fs-extra";
+import fs from "fs";
 import { useSnackbar } from "notistack";
 
 import {

@@ -152,6 +152,10 @@ function Component() {
             aggiunto automaticamente, altrimenti basta cliccare sul risultato
             corrispondente.
           </P>
+          <P>
+            Si può regolare la quantità cliccando sui bottoni corrispondenti{" "}
+            <AddBoxIcon /> <MinusBoxIcon /> <BackspaceIcon />.
+          </P>
 
           <H2>Chiudere una spesa</H2>
           <P>
@@ -221,7 +225,12 @@ function Component() {
           </P>
           <P>
             Si può regolare la quantità cliccando sui bottoni corrispondenti{" "}
-            <AddBoxIcon /> <MinusBoxIcon /> <BackspaceIcon />
+            <AddBoxIcon /> <MinusBoxIcon /> <BackspaceIcon />.
+          </P>
+          <P>
+            La colonna <EM>Quantità</EM> indica il numero totale di prodotti
+            (quelli già presenti più quelli che vengono aggiunti), e fra
+            parentesi la differenza.
           </P>
           <P>
             Le modifiche al magazzino non sono immediatamente salvate sul

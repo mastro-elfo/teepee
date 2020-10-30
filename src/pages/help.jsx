@@ -229,8 +229,7 @@ function Component() {
           </P>
           <P>
             La colonna <EM>Quantità</EM> indica il numero totale di prodotti
-            (quelli già presenti più quelli che vengono aggiunti), e fra
-            parentesi la differenza.
+            (quelli già presenti più quelli che vengono aggiunti).
           </P>
           <P>
             Le modifiche al magazzino non sono immediatamente salvate sul

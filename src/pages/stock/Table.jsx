@@ -43,6 +43,7 @@ export default function StockTable() {
           <TableRow>
             <TableHeadCell>Prodotto</TableHeadCell>
             <TableHeadCell>Quantità</TableHeadCell>
+            <TableHeadCell>Differenza</TableHeadCell>
             <TableHeadCell colSpan={3}>Azioni</TableHeadCell>
           </TableRow>
         </TableHead>
@@ -54,9 +55,8 @@ export default function StockTable() {
             return (
               <TableRow key={id}>
                 <TableCell>{name}</TableCell>
-                <TableCell>
-                  {stock + delta} ({`${delta > 0 ? "+" : ""}${delta}`})
-                </TableCell>
+                <TableCell>{stock + delta}</TableCell>
+                <TableCell>{`${delta > 0 ? "+" : ""}${delta}`}</TableCell>
                 <TableCell>
                   <IconButton
                     title="Aggiungi"
@@ -64,16 +64,12 @@ export default function StockTable() {
                   >
                     <AddBoxIcon />
                   </IconButton>
-                </TableCell>
-                <TableCell>
                   <IconButton
                     title="Sottrai"
                     onClick={() => handleSubtract(product)}
                   >
                     <MinusBoxIcon />
                   </IconButton>
-                </TableCell>
-                <TableCell>
                   <IconButton
                     title="Elimina riga"
                     onClick={() => handleDelete(id)}

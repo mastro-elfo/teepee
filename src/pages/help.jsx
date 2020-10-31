@@ -50,6 +50,7 @@ function Component() {
               color="primary"
               variant="contained"
               size="small"
+              title="Apri la pagina prodotti"
             >
               Prodotti
             </Push>
@@ -59,6 +60,7 @@ function Component() {
               href="/product/c"
               color="primary"
               size="small"
+              title="Crea prodotto"
             >
               <AddIcon />
             </Push>
@@ -80,6 +82,7 @@ function Component() {
               color="primary"
               variant="contained"
               size="small"
+              title="Apri la pagina prodotti"
             >
               Prodotti
             </Push>
@@ -106,6 +109,7 @@ function Component() {
               color="primary"
               variant="contained"
               size="small"
+              title="Apri la pagina prodotti"
             >
               Prodotti
             </Push>
@@ -137,6 +141,7 @@ function Component() {
               color="primary"
               variant="contained"
               size="small"
+              title="Apri la pagina carrello"
             >
               Carrello
             </Push>
@@ -168,6 +173,7 @@ function Component() {
               color="primary"
               variant="contained"
               size="small"
+              title="Apri la pagina carrello"
             >
               Carrello
             </Push>
@@ -204,6 +210,7 @@ function Component() {
               color="primary"
               variant="contained"
               size="small"
+              title="Apri la pagina carrello"
             >
               Magazzino
             </Push>
@@ -263,6 +270,7 @@ function Component() {
               href="/cart"
               color="primary"
               size="small"
+              ttle="Apri il carrello"
             >
               <ShoppingBasketIcon />
             </Push>{" "}
@@ -311,6 +319,7 @@ function Component() {
               color="primary"
               variant="contained"
               size="small"
+              title="Apri la pagina impostazioni"
             >
               Impostazioni
             </Push>

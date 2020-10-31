@@ -40,7 +40,10 @@ export default function Component({
 
   return (
     <Fragment>
-      <IconButton onClick={() => setOpen(true)}>
+      <IconButton
+        onClick={() => setOpen(true)}
+        title="Stampa l'elenco dei prodotti"
+      >
         <PrintIcon />
       </IconButton>
       <Dialog open={open} onClose={() => setOpen(false)}>
@@ -51,6 +54,7 @@ export default function Component({
               button
               disabled={!!printing}
               onClick={() => handleConfirm("partial")}
+              title="Stampa"
             >
               <ListItemIcon>
                 <SearchIcon />
@@ -69,6 +73,7 @@ export default function Component({
               button
               disabled={!!printing}
               onClick={() => handleConfirm("whole")}
+              title="Stampa"
             >
               <ListItemIcon>
                 <WholeIcon />

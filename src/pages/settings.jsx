@@ -44,7 +44,11 @@ function Component() {
       content={
         <Content>
           <List>
-            <ListItem button onClick={handleToggleThemeType}>
+            <ListItem
+              button
+              onClick={handleToggleThemeType}
+              title="Inverti il tema"
+            >
               <ListItemIcon>
                 {type === "dark" ? <LightIcon /> : <DarkIcon />}
               </ListItemIcon>

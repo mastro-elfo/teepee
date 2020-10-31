@@ -144,31 +144,3 @@ function mapper(product, handler) {
     onClick: () => handler(product)
   };
 }
-
-/*
-[
-  <IconButton
-    key="print"
-    title="Stampa ricevuta"
-    onClick={handlePrint}
-  >
-    <PrintIcon />
-  </IconButton>,
-  ,
-  <ConfirmDialogButton
-    key="delete"
-    isIcon
-    onConfirm={handleDeleteAll}
-    DialogProps={{
-      title: "Svuota il carrello",
-      content: [
-        "Questa operazione elimina gli elementi dal carrello e non può essere annullata."
-      ],
-      confirm: "Elimina",
-      cancel: "Annulla"
-    }}
-  >
-    <DeleteForeverIcon />
-  </ConfirmDialogButton>
-]
- */

@@ -41,6 +41,7 @@ export default function Component() {
             content: license.split("\n"),
             confirm: "Letto"
           }}
+          title="Legi il testo"
         >
           Leggi
         </ConfirmDialogButton>
@@ -56,6 +57,7 @@ export default function Component() {
           onClick={() =>
             shell.openExternal("https://github.com/mastro-elfo/teepee")
           }
+          title="Apri la repository su Github"
         >
           Codice
         </Button>
@@ -75,6 +77,7 @@ export default function Component() {
           color="primary"
           size="small"
           onClick={() => shell.openExternal("https://undraw.co")}
+          title="Apri il sito Undraw"
         >
           unDraw
         </Button>

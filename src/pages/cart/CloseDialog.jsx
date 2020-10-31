@@ -36,8 +36,7 @@ export default function CloseDialog() {
       cart.map(item => {
         const { id, quantity, stock, name, barcode } = item;
         const diff = stock - quantity;
-        // TODO: if diff < 0 there is an error in the count
-        // this can add a warning in dashboard
+        // if diff < 0 notify a warning in stock quantity
         if (diff < 0) {
           pushNotification({
             content: `Ho riscontrato un problema con la quantità di "${name}" (${barcode}) in magazzino. Controlla quante unità sono presenti in magazzino e, se necessario, aggiorna il database.`,

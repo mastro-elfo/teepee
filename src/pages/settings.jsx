@@ -2,22 +2,22 @@ import React, { useContext, useEffect } from "react";
 
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 
-import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
+import {
+  BackIconButton,
+  Content,
+  Header,
+  Page,
+  usePalette
+} from "mastro-elfo-mui";
 
 import DarkIcon from "@material-ui/icons/Brightness4";
 import LightIcon from "@material-ui/icons/Brightness7";
 import SettingsIcon from "@material-ui/icons/Settings";
 
-// TODO: Workaround
-import { Context as PaletteContext } from "mastro-elfo-mui/dist/utils/usePalette";
-
 import { storePalette } from "./settings/store";
 
 function Component() {
-  // const [palette, setPalette] = usePalette();
-  const [palette, setPalette] = useContext(PaletteContext);
-
-  // console.log(palette);
+  const [palette, setPalette] = usePalette();
 
   useEffect(() => {
     storePalette(palette);

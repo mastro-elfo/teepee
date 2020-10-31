@@ -353,6 +353,6 @@ export const drawer = {
   key: "help",
   primary: "Aiuto",
   secondary: "",
-  icon: <HelpIcon fontSize="small" />,
+  icon: <HelpIcon />,
   title: "Aiuto"
 };

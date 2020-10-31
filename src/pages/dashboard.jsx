@@ -171,7 +171,11 @@ function Component() {
           {!!results &&
             results.length > 0 &&
             results.map((item, i) => (
-              <ResultCard key={item.id} item={item} expand={i === 0} />
+              <ResultCard
+                key={`${item.id}-${i === 0}`}
+                item={item}
+                expand={i === 0}
+              />
             ))}
         </Content>
       }

@@ -13,7 +13,7 @@ export function resetdb() {
 export function initdb() {
   Promise.all(
     ["product"].map(table =>
-      _db.readKey(table).catch(_ => _db.writeKey([table], []))
+      _db.readKey(table).catch(_ => _db.writeKey([table], {}))
     )
   ).then(_ => resetdb());
 }

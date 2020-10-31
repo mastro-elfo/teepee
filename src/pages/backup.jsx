@@ -14,7 +14,7 @@ import RestoreBackupIcon from "@material-ui/icons/Restore";
 
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 
-import { resetdb } from "./product/model";
+import { resetdb } from "../utils/database";
 import { filename, stat } from "../database";
 
 const defaultPath = path.join(remote.app.getPath("documents"), "teepee.backup");

@@ -21,7 +21,11 @@ import { CartProvider } from "./pages/cart/context";
 import { StockProvider } from "./pages/stock/context";
 import { NotificationsProvider } from "./components/notifications";
 import { loadPalette } from "./pages/settings/store";
+import { initdb } from "./utils/database";
 
+// Initialize database
+initdb();
+// Load palette
 const palette = loadPalette({ type: "light" });
 
 function App() {

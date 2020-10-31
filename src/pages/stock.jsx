@@ -14,9 +14,6 @@ import {
   useSearchParams
 } from "mastro-elfo-mui";
 
-// TODO: Workaround
-// import SearchField from "../components/SearchField";
-
 import AddBoxIcon from "@material-ui/icons/AddBox";
 import CloseIcon from "@material-ui/icons/CheckCircle";
 import MinusBoxIcon from "@material-ui/icons/IndeterminateCheckBox";

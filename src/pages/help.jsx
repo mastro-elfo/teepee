@@ -19,7 +19,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import MinusBoxIcon from "@material-ui/icons/IndeterminateCheckBox";
 import PrintIcon from "@material-ui/icons/Print";
 import SaveIcon from "@material-ui/icons/Save";
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import StorageIcon from "@material-ui/icons/Storage";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import { NotificationCard } from "../components/notifications";
@@ -42,8 +42,8 @@ function Component() {
           <H2>Aggiungere un prodotto al database</H2>
           <P>
             Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon />, poi selezionare la
-            pagina{" "}
+            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
+            selezionare la pagina{" "}
             <Push
               Component={Button}
               href="/product"
@@ -68,14 +68,14 @@ function Component() {
           </P>
           <P>
             Dopo aver compilato i campi, cliccare sull'icona di salvataggio in
-            alto a destra <SaveIcon />.
+            alto a destra <SaveIcon fontSize="small" />.
           </P>
 
           <H2>Modificare un prodotto</H2>
           <P>
             Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon />, poi selezionare la
-            pagina{" "}
+            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
+            selezionare la pagina{" "}
             <Push
               Component={Button}
               href="/product"
@@ -95,14 +95,14 @@ function Component() {
           </P>
           <P>
             Dopo aver modificato i campi, cliccare sull'icona di salvataggio in
-            alto a destra <SaveIcon />.
+            alto a destra <SaveIcon fontSize="small" />.
           </P>
 
           <H2>Eliminare un prodotto</H2>
           <P>
             Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon />, poi selezionare la
-            pagina{" "}
+            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
+            selezionare la pagina{" "}
             <Push
               Component={Button}
               href="/product"
@@ -133,8 +133,8 @@ function Component() {
           <H2>Iniziare una nuova spesa</H2>
           <P>
             Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon />, poi selezionare la
-            pagina{" "}
+            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
+            selezionare la pagina{" "}
             <Push
               Component={Button}
               href="/cart"
@@ -159,14 +159,15 @@ function Component() {
           </P>
           <P>
             Si può regolare la quantità cliccando sui bottoni corrispondenti{" "}
-            <AddBoxIcon /> <MinusBoxIcon /> <BackspaceIcon />.
+            <AddBoxIcon fontSize="small" /> <MinusBoxIcon fontSize="small" />{" "}
+            <BackspaceIcon fontSize="small" />.
           </P>
 
           <H2>Chiudere una spesa</H2>
           <P>
             Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon />, poi selezionare la
-            pagina{" "}
+            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
+            selezionare la pagina{" "}
             <Push
               Component={Button}
               href="/cart"
@@ -180,8 +181,8 @@ function Component() {
             .
           </P>
           <P>
-            Cliccare sull'icona in alto a destra <DoneIcon /> e selezionare
-            l'azione desiderata:
+            Cliccare sull'icona in alto a destra <DoneIcon fontSize="small" /> e
+            selezionare l'azione desiderata:
           </P>
           <UL>
             <LI>
@@ -202,8 +203,8 @@ function Component() {
           <H2>Aggiornare le quantità in magazzino</H2>
           <P>
             Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon />, poi selezionare la
-            pagina{" "}
+            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
+            selezionare la pagina{" "}
             <Push
               Component={Button}
               href="/stock"
@@ -232,7 +233,8 @@ function Component() {
           </P>
           <P>
             Si può regolare la quantità cliccando sui bottoni corrispondenti{" "}
-            <AddBoxIcon /> <MinusBoxIcon /> <BackspaceIcon />.
+            <AddBoxIcon fontSize="small" /> <MinusBoxIcon fontSize="small" />{" "}
+            <BackspaceIcon fontSize="small" />.
           </P>
           <P>
             La colonna <EM>Quantità</EM> indica il numero totale di prodotti
@@ -241,7 +243,8 @@ function Component() {
           <P>
             Le modifiche al magazzino non sono immediatamente salvate sul
             database. Per completare la procedura è necessario cliccare
-            sull'icona in alto a destra e selezionare l'azione desiderata:
+            sull'icona in alto a destra <DoneIcon fontSize="small" /> e
+            selezionare l'azione desiderata:
           </P>
           <UL>
             <LI>
@@ -260,8 +263,8 @@ function Component() {
             principali.
           </H3>
           <P>
-            Cliccare sull'icona in alto a sinistra <MenuIcon /> per aprire il
-            menù e accedere alle diverse pagine dell'applicazione.
+            Cliccare sull'icona in alto a sinistra <MenuIcon fontSize="small" />{" "}
+            per aprire il menù e accedere alle diverse pagine dell'applicazione.
           </P>
           <P>
             Cliccare l'icona in alto a destra{" "}
@@ -272,7 +275,7 @@ function Component() {
               size="small"
               ttle="Apri il carrello"
             >
-              <ShoppingBasketIcon />
+              <ShoppingCartIcon />
             </Push>{" "}
             per accedere rapidamente al carrello. Quando ci sono prodotti nel
             carrello l'icona mostra la quantità.
@@ -284,13 +287,15 @@ function Component() {
           </P>
           <UL>
             <LI>
-              <VisibilityIcon /> per aprire la scheda prodotto;
+              <VisibilityIcon fontSize="small" /> per aprire la scheda prodotto;
             </LI>
             <LI>
-              <AddShoppingCartIcon /> per aggiungere il prodotto al carrello;
+              <AddShoppingCartIcon fontSize="small" /> per aggiungere il
+              prodotto al carrello;
             </LI>
             <LI>
-              <StorageIcon /> per gestire la quantità in magazzino del prodotto.
+              <StorageIcon fontSize="small" /> per gestire la quantità in
+              magazzino del prodotto.
             </LI>
           </UL>
 
@@ -302,7 +307,7 @@ function Component() {
 
           <NotificationCard
             type="warning"
-            content='Ho riscontrato un problema con la quantità di "Prodotto" (1234567890) in magazzino. Controlla quanti prodotti sono presenti e, se necessario, aggiorna il database.'
+            content='Ho riscontrato un problema con la quantità di "Prodotto" (1234567890) in magazzino. Controlla quante unità sono presenti in magazzino e, se necessario, aggiorna il database.'
             handleOpen={() => {}}
             handleClose={() => {}}
           />
@@ -311,8 +316,8 @@ function Component() {
           <H2>Cambiare il tema chiaro/scuro</H2>
           <P>
             Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon />, poi selezionare la
-            pagina{" "}
+            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
+            selezionare la pagina{" "}
             <Push
               Component={Button}
               href="/settings"
@@ -348,6 +353,6 @@ export const drawer = {
   key: "help",
   primary: "Aiuto",
   secondary: "",
-  icon: <HelpIcon />,
+  icon: <HelpIcon fontSize="small" />,
   title: "Aiuto"
 };

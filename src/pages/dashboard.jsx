@@ -14,7 +14,7 @@ import {
   pluralize
 } from "mastro-elfo-mui";
 
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 import { drawer as about } from "./about";
 import { drawer as backup } from "./backup";
@@ -131,9 +131,9 @@ function Component() {
             </DrawerIconButton>
           }
           RightActions={
-            <Push Component={IconButton} href="/cart" title="Apri la lista">
+            <Push Component={IconButton} href="/cart" title="Apri carrello">
               <Badge color="secondary" badgeContent={totalCount(shoppingCart)}>
-                <ShoppingBasketIcon />
+                <ShoppingCartIcon />
               </Badge>
             </Push>
           }
@@ -178,7 +178,7 @@ function Component() {
       TopFabProps={{ color: "primary" }}
       PaperProps={{
         style: {
-          minHeight: "100%",
+          // minHeight: "100%",
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",
           backgroundPosition: "right bottom",

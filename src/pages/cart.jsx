@@ -11,7 +11,7 @@ import {
   SearchField
 } from "mastro-elfo-mui";
 
-import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 import CloseDialog from "./cart/CloseDialog";
 import Print from "./cart/Print";
@@ -110,7 +110,7 @@ function Component() {
       TopFabProps={{ color: "primary" }}
       PaperProps={{
         style: {
-          minHeight: "100%",
+          // minHeight: "100%",
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",
           backgroundPosition: "right bottom",
@@ -131,7 +131,7 @@ export const drawer = {
   key: "cart",
   primary: "Carrello",
   secondary: "",
-  icon: <ShoppingBasketIcon />,
+  icon: <ShoppingCartIcon />,
   title: "Apri il carrello"
 };
 

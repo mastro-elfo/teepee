@@ -163,12 +163,12 @@ export function NotificationCard({ type, content, handleOpen, handleClose }) {
 
         <Button
           size="small"
-          title="Chiudi notifica"
+          title="Ignora notifica"
           color="inherit"
           variant="outlined"
           onClick={handleClose}
         >
-          Annulla
+          Ignora
         </Button>
       </CardActions>
     </Card>

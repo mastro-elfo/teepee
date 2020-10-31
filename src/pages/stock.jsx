@@ -110,7 +110,7 @@ function Component() {
       TopFabProps={{ color: "primary" }}
       PaperProps={{
         style: {
-          minHeight: "100%",
+          // minHeight: "100%",
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",
           backgroundPosition: "right bottom",

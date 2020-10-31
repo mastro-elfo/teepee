@@ -40,7 +40,7 @@ export default function CloseDialog() {
         // this can add a warning in dashboard
         if (diff < 0) {
           pushNotification({
-            content: `Ho riscontrato un problema con la quantità di "${name}" (${barcode}) in magazzino. Controlla quanti prodotti sono presenti e, se necessario, aggiorna il database.`,
+            content: `Ho riscontrato un problema con la quantità di "${name}" (${barcode}) in magazzino. Controlla quante unità sono presenti in magazzino e, se necessario, aggiorna il database.`,
             type: "warning",
             href: `/stock?q=${name}`
           });

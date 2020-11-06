@@ -33,6 +33,7 @@
     "init": "node ./scripts/init.js",
     "make": "electron-forge make",
     "make:deb": "electron-forge make --targets @electron-forge/maker-deb",
+    "premake:deb": "node ./scripts/premakedeb.js",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
@@ -54,7 +55,20 @@
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {}
+          "config": {
+            "categories": [
+              "Office"
+            ],
+            "description": "A simple management app for non-profit organizations",
+            "genericName": "Management",
+            "homepage": "https://github.com/mastro-elfo/teepee",
+            "icon": "./src/assets/logo.png",
+            "maintainer": "Francesco Michienzi",
+            "name": "teepee",
+            "productDescription": "A simple management app for non-profit organizations",
+            "productName": "Teepee",
+            "version": "1.0.0"
+          }
         },
         {
           "name": "@electron-forge/maker-rpm",

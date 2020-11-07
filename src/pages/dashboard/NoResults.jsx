@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useTranslation } from "react-i18next";
+
 import {
   Avatar,
   Box,
@@ -10,7 +12,7 @@ import {
   CardHeader,
   // CardMedia,
   // IconButton,
-  Typography
+  Typography,
 } from "@material-ui/core";
 
 import { Push } from "mastro-elfo-mui";
@@ -19,6 +21,8 @@ import SadIcon from "@material-ui/icons/SentimentVeryDissatisfied";
 // import NotFoundImage from "../../assets/404.png";
 
 export default function NoResultFound({ query }) {
+  const { t } = useTranslation();
+
   const field = query.match(/^\d+$/) ? "barcode" : "name";
 
   return (
@@ -32,7 +36,7 @@ export default function NoResultFound({ query }) {
           // />
         }
         <CardHeader
-          title="Nessun prodotto trovato"
+          title={t("DashboardNoResultCard:Header")}
           action={
             <Box mt={2} mr={1}>
               <SadIcon color="secondary" />
@@ -51,16 +55,11 @@ export default function NoResultFound({ query }) {
             href={`/product/c?${field}=${query}`}
             color="primary"
             variant="contained"
-            title="Crea nuovo prodotto"
+            title={t("DashboardNoResultCard:create-new-title")}
             size="small"
           >
-            Aggiungi
+            {t("Add")}
           </Push>
-          {
-            //   <IconButton size="small" title="Apri scheda prodotto">
-            //     <VisibilityIcon />
-            //   </IconButton>
-          }
         </CardActions>
       </Card>
     </Box>

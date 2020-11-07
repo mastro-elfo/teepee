@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
+import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
@@ -10,7 +11,7 @@ import {
   CardContent,
   // CardHeader,
   Typography,
-  Zoom
+  Zoom,
 } from "@material-ui/core";
 
 // import InfoIcon from "@material-ui/icons/Info";
@@ -34,21 +35,21 @@ export function NotificationsProvider({ children }) {
     store(ns);
   }, [ns]);
 
-  const dismiss = id => {
+  const dismiss = (id) => {
     // console.log(
     //   "dismiss",
     //   id,
     //   ns,
     //   ns.filter(n => n.id !== id)
     // );
-    set(ns.filter(n => n.id !== id));
+    set(ns.filter((n) => n.id !== id));
   };
 
   const push = (n = { content: "", type: "info", href: false }) => {
     // console.log(id, n.content);
-    set(ns => [
+    set((ns) => [
       ...ns,
-      { ...n, id: Math.max(0, ...ns.map(({ id }) => id)) + 1 }
+      { ...n, id: Math.max(0, ...ns.map(({ id }) => id)) + 1 },
     ]);
   };
 
@@ -84,7 +85,7 @@ const useStyles = makeStyles(
     info: { backgroundColor: info.main, color: info.contrastText },
     success: { backgroundColor: success.main, color: success.contrastText },
     warning: { backgroundColor: warning.main, color: warning.contrastText },
-    error: { backgroundColor: error.main, color: error.contrastText }
+    error: { backgroundColor: error.main, color: error.contrastText },
   })
 );
 
@@ -97,7 +98,7 @@ export default function Notifications() {
   if (!first) return null;
   // Render
   return [
-    <NotificationContainer key={ns.length} {...first} dismiss={dismiss} />
+    <NotificationContainer key={ns.length} {...first} dismiss={dismiss} />,
   ];
 }
 
@@ -141,6 +142,7 @@ function NotificationContainer({ id, content, href, dismiss, type }) {
 }
 
 export function NotificationCard({ type, content, handleOpen, handleClose }) {
+  const { t } = useTranslation();
   const classes = useStyles();
 
   return (
@@ -152,23 +154,23 @@ export function NotificationCard({ type, content, handleOpen, handleClose }) {
         {!!handleOpen && (
           <Button
             size="small"
-            title="Apri"
+            title={t("Open")}
             color="inherit"
             variant="outlined"
             onClick={handleOpen}
           >
-            Apri
+            {t("Open")}
           </Button>
         )}
 
         <Button
           size="small"
-          title="Ignora notifica"
+          title={t("Cancel")}
           color="inherit"
           variant="outlined"
           onClick={handleClose}
         >
-          Ignora
+          {t("Cancel")}
         </Button>
       </CardActions>
     </Card>

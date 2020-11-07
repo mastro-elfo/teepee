@@ -1,5 +1,6 @@
 import React, { createRef, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { Badge, Box, IconButton, Typography } from "@material-ui/core";
 
@@ -11,7 +12,7 @@ import {
   Page,
   Push,
   SearchField,
-  pluralize
+  pluralize,
 } from "mastro-elfo-mui";
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -32,7 +33,7 @@ import ResultCard from "./dashboard/ResultCard";
 import Notifications from "../components/notifications";
 import { search } from "./product/model";
 import { useStock } from "./stock/context";
-import subheader from "../utils/subheader";
+// import subheader from "../utils/subheader";
 import background from "../assets/dashboard.svg";
 
 const ref = createRef();
@@ -41,8 +42,9 @@ function Component() {
   const {
     location: { state = {} },
     push,
-    replace
+    replace,
   } = useHistory();
+  const { t } = useTranslation();
   const [shoppingCart] = useCart();
   const [stockList] = useStock();
   const [results, setResults] = useState((state && state.results) || undefined);
@@ -55,7 +57,7 @@ function Component() {
 
   const handleSearch = (q, d) => {
     setQuery(q);
-    return search(d).then(r => {
+    return search(d).then((r) => {
       setResults(r);
       replace({ state: { q, results: r } });
     });
@@ -72,12 +74,14 @@ function Component() {
       header={
         <Header
           LeftAction={
-            <DrawerIconButton IconButtonProps={{ title: "Apri il menù" }}>
+            <DrawerIconButton
+              IconButtonProps={{ title: t("Dashboard:Open Menu") }}
+            >
               <DrawerLists
                 lists={[
                   {
                     key: "pages",
-                    header: "Pagine",
+                    header: t("Drawer:Pages"),
                     leftFill: true,
                     items: [
                       {
@@ -85,60 +89,59 @@ function Component() {
                         onClick: () => push("/cart"),
                         secondary:
                           shoppingCart.length > 0
-                            ? `${totalCount(shoppingCart)} ${pluralize(
-                                totalCount(shoppingCart),
-                                "prodotto",
-                                "prodotti"
-                              )}`
-                            : ""
+                            ? t("Drawer:cart-secondary", {
+                                count: shoppingCart.length,
+                              })
+                            : "",
                       },
                       {
                         ...stock,
                         onClick: () => push("/stock"),
                         secondary:
                           stockList.length > 0
-                            ? `${stockList.length} ${pluralize(
-                                stockList.length,
-                                "modifica",
-                                "modifiche"
-                              )} in sospeso`
-                            : ""
+                            ? t("Drawer:stock-secondary", {
+                                count: stockList.length,
+                              })
+                            : "",
                       },
-                      { ...product, onClick: () => push("/product") }
-                    ]
+                      { ...product, onClick: () => push("/product") },
+                    ],
                   },
                   {
                     key: "actions",
-                    header: "Azioni",
+                    header: t("Drawer:Actions"),
                     leftFill: true,
                     items: [
                       { ...backup, onClick: () => push("/backup") },
-                      { ...settings, onClick: () => push("/settings") }
-                      // { ...update, onClick: () => push("/update") }
-                    ]
+                      { ...settings, onClick: () => push("/settings") },
+                    ],
                   },
                   {
                     key: "application",
-                    header: "Applicazione",
+                    header: t("Drawer:Application"),
                     leftFill: true,
                     items: [
                       { ...help, onClick: () => push("/help") },
-                      { ...about, onClick: () => push("/about") }
-                    ]
-                  }
+                      { ...about, onClick: () => push("/about") },
+                    ],
+                  },
                 ]}
               />
             </DrawerIconButton>
           }
           RightActions={
-            <Push Component={IconButton} href="/cart" title="Apri carrello">
+            <Push
+              Component={IconButton}
+              href="/cart"
+              title={t("Dashboard:Open Cart")}
+            >
               <Badge color="secondary" badgeContent={totalCount(shoppingCart)}>
                 <ShoppingCartIcon />
               </Badge>
             </Push>
           }
         >
-          Dashboard
+          {t("Dashboard:Header")}
         </Header>
       }
       content={
@@ -147,13 +150,13 @@ function Component() {
 
           <SearchField
             fullWidth
-            label="Cerca"
-            placeholder="Codice, nome o descrizione"
+            label={t("Search")}
+            placeholder={t("Search-placeholder")}
             onSearch={handleSearch}
             onClear={handleClear}
             inputRef={ref}
-            SearchButtonProps={{ title: "Cerca" }}
-            ClearButtonProps={{ title: "Cancella" }}
+            SearchButtonProps={{ title: t("Search") }}
+            ClearButtonProps={{ title: t("Cancel") }}
             value={query}
             onChange={({ target: { value } }) => setQuery(value)}
           />
@@ -163,7 +166,7 @@ function Component() {
           {!!results && results.length > 0 && (
             <Box px={2}>
               <Typography variant="body2" color="textSecondary">
-                {subheader(results)}
+                {t("Product:subheader", { count: results.length })}
               </Typography>
             </Box>
           )}
@@ -186,8 +189,8 @@ function Component() {
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",
           backgroundPosition: "right bottom",
-          backgroundRepeat: "no-repeat"
-        }
+          backgroundRepeat: "no-repeat",
+        },
       }}
     />
   );
@@ -196,5 +199,5 @@ function Component() {
 export const route = {
   path: "/",
   exact: true,
-  component: Component
+  component: Component,
 };

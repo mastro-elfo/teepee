@@ -1,5 +1,6 @@
 import React, { createRef, useEffect, useState } from "react";
-
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 // import { useSnackbar } from "notistack";
 
 import {
@@ -8,7 +9,7 @@ import {
   Header,
   Page,
   ResultList,
-  SearchField
+  SearchField,
 } from "mastro-elfo-mui";
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
@@ -19,25 +20,26 @@ import Table from "./cart/Table";
 import { useCart } from "./cart/context";
 import { total } from "./cart/utils";
 import { search } from "./product/model";
-import subheader from "../utils/subheader";
+// import subheader from "../utils/subheader";
 import background from "../assets/cart.svg";
 
 const ref = createRef();
 
 function Component() {
+  const { t } = useTranslation();
   // const { enqueueSnackbar } = useSnackbar();
   const [cart, setCart] = useCart();
   const [results, setResults] = useState();
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    document.title = "Teepee - Carrello";
+    document.title = `Teepee - ${t("Cart:Title")}`;
     ref.current.focus();
   }, []);
 
-  const handleAdd = product => {
+  const handleAdd = (product) => {
     const copy = cart.slice();
-    const index = copy.findIndex(i => i.id === product.id);
+    const index = copy.findIndex((i) => i.id === product.id);
     if (index !== -1) {
       copy[index].quantity += 1;
     } else {
@@ -50,7 +52,7 @@ function Component() {
   };
 
   const handleSearch = (q, d) =>
-    search(d).then(r => {
+    search(d).then((r) => {
       if (!r) {
         setResults(r);
       } else if (r.length === 1) {
@@ -78,30 +80,32 @@ function Component() {
     <Page
       header={
         <Header
-          LeftAction={<BackIconButton title="Torna indietro" />}
+          LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={<CloseDialog />}
         >
-          Totale spesa: {total(cart).toFixed(2)}€
+          {t("Cart:Header")}: {total(cart).toFixed(2)}€
         </Header>
       }
       content={
         <Content>
           <SearchField
             fullWidth
-            label="Cerca"
-            placeholder="Codice, nome o descrizione"
+            label={t("Search")}
+            placeholder={t("Search-placeholder")}
             inputRef={ref}
             onSearch={handleSearch}
             onClear={handleClear}
-            SearchButtonProps={{ title: "Cerca" }}
-            ClearButtonProps={{ title: "Cancella" }}
+            SearchButtonProps={{ title: t("Search") }}
+            ClearButtonProps={{ title: t("Cancel") }}
             value={query}
             onChange={handleChange}
           />
           <ResultList
             results={results}
-            mapper={r => ({ ...mapper(r, handleAdd) })}
-            subheader={subheader}
+            mapper={(r) => ({ ...mapper(r, handleAdd) })}
+            subheader={(r) =>
+              !!r ? t("Product:subheader", { count: r.length }) : ""
+            }
           />
           {cart.length > 0 && <Table />}
         </Content>
@@ -110,12 +114,11 @@ function Component() {
       TopFabProps={{ color: "primary" }}
       PaperProps={{
         style: {
-          // minHeight: "100%",
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",
           backgroundPosition: "right bottom",
-          backgroundRepeat: "no-repeat"
-        }
+          backgroundRepeat: "no-repeat",
+        },
       }}
     />
   );
@@ -124,15 +127,15 @@ function Component() {
 export const route = {
   path: "/cart",
   exact: true,
-  component: Component
+  component: Component,
 };
 
 export const drawer = {
   key: "cart",
-  primary: "Carrello",
+  primary: i18n.t("Cart:drawer-primary"),
   secondary: "",
   icon: <ShoppingCartIcon />,
-  title: "Apri il carrello"
+  title: i18n.t("Cart:drawer-title"),
 };
 
 function mapper(product, handler) {
@@ -141,6 +144,6 @@ function mapper(product, handler) {
     key: id,
     primary: name,
     secondary: description || barcode,
-    onClick: () => handler(product)
+    onClick: () => handler(product),
   };
 }

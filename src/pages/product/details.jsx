@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { useTranslation } from "react-i18next";
 
 import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 
@@ -9,11 +10,13 @@ export default function Component({
   price,
   stock,
   _create,
-  _update
+  _update,
 }) {
+  const { t } = useTranslation();
+
   return (
     <Fragment>
-      <Typography variant="h5">Scheda Prodotto</Typography>
+      <Typography variant="h5">{t("ProductView:Header")}</Typography>
       <Typography variant="h6" color="textSecondary">
         {name}
       </Typography>
@@ -21,32 +24,38 @@ export default function Component({
 
       <List>
         <ListItem>
-          <ListItemText primary={barcode} secondary="Codice a barre" />
+          <ListItemText primary={barcode} secondary={t("Product:Barcode")} />
         </ListItem>
         <ListItem>
-          <ListItemText primary={name} secondary="Nome" />
+          <ListItemText primary={name} secondary={t("Product:Name")} />
         </ListItem>
         <ListItem>
-          <ListItemText primary={description} secondary="Descrizione" />
+          <ListItemText
+            primary={description}
+            secondary={t("Product:Description")}
+          />
         </ListItem>
         <ListItem>
-          <ListItemText primary={`${price.toFixed(2)}€`} secondary="Prezzo" />
+          <ListItemText
+            primary={`${price.toFixed(2)}€`}
+            secondary={t("Product:Price")}
+          />
         </ListItem>
         <ListItem>
-          <ListItemText primary={stock} secondary="Magazzino" />
+          <ListItemText primary={stock} secondary={t("Product:Stock")} />
         </ListItem>
         <ListItem>
           <ListItemText
             primary={new Date(_create).toLocaleString()}
-            secondary="Data di creazione"
+            secondary={t("Product:Created")}
           />
         </ListItem>
         <ListItem>
           <ListItemText
             primary={new Date(_update).toLocaleString()}
-            secondary="Ultima modifica"
+            secondary={t("Product:Updated")}
           />
-        </ListItem>{" "}
+        </ListItem>
       </List>
     </Fragment>
   );

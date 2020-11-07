@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   Table,
@@ -7,7 +8,7 @@ import {
   TableContainer,
   TableFooter,
   TableHead,
-  TableRow
+  TableRow,
 } from "@material-ui/core";
 
 import { TableHeadCell } from "mastro-elfo-mui";
@@ -16,6 +17,7 @@ import { total, totalCount } from "./utils";
 import { useCart } from "./context";
 
 export default function CartTable() {
+  const { t } = useTranslation();
   const [cart, setCart] = useCart();
 
   return (
@@ -23,15 +25,15 @@ export default function CartTable() {
       <Table>
         <TableHead>
           <TableRow>
-            <TableHeadCell>Prodotto</TableHeadCell>
-            <TableHeadCell>Prezzo</TableHeadCell>
-            <TableHeadCell>Quantità</TableHeadCell>
-            <TableHeadCell>Totale</TableHeadCell>
+            <TableHeadCell>{t("Cart:Product")}</TableHeadCell>
+            <TableHeadCell>{t("Cart:Price")}</TableHeadCell>
+            <TableHeadCell>{t("Cart:Quantity")}</TableHeadCell>
+            <TableHeadCell>{t("Cart:Total")}</TableHeadCell>
           </TableRow>
         </TableHead>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={2}>Totale</TableCell>
+            <TableCell colSpan={2}>{t("Cart:Product")}</TableCell>
             <TableCell> {totalCount(cart)}</TableCell>
             <TableCell>{total(cart).toFixed(2)}€</TableCell>
           </TableRow>

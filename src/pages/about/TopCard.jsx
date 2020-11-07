@@ -1,4 +1,6 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+
 import LogoIcon from "../../assets/Logo";
 
 import { shell } from "electron";
@@ -9,7 +11,7 @@ import {
   Card,
   CardHeader,
   CardContent,
-  Typography
+  Typography,
 } from "@material-ui/core";
 
 import { ConfirmDialogButton } from "mastro-elfo-mui";
@@ -17,6 +19,8 @@ import { ConfirmDialogButton } from "mastro-elfo-mui";
 import { version } from "../../version.json";
 
 export default function Component() {
+  const { t } = useTranslation();
+
   return (
     <Card>
       <CardHeader
@@ -26,29 +30,29 @@ export default function Component() {
           </Avatar>
         }
         title={`Teepee (${version})`}
-        subheader="Applicazione gestionale rivolto alle associazioni che promuovono commercio equo e solidale"
+        subheader={t("About:description")}
       />
       <CardContent>
         <Typography variant="h6" color="textSecondary">
-          Software distribuito con licenza MIT{" "}
+          {t("About:license-header")}
         </Typography>
         <ConfirmDialogButton
           variant="contained"
           color="primary"
           size="small"
           DialogProps={{
-            title: "Licenza",
+            title: t("License"),
             content: license.split("\n"),
-            confirm: "Letto"
+            confirm: t("Read"),
           }}
           title="Legi il testo"
         >
-          Leggi
+          {t("Read-it")}
         </ConfirmDialogButton>
       </CardContent>
       <CardContent>
         <Typography variant="h6" color="textSecondary">
-          Software OpenSource{" "}
+          {t("About:open-source")}
         </Typography>
         <Button
           variant="contained"
@@ -57,27 +61,27 @@ export default function Component() {
           onClick={() =>
             shell.openExternal("https://github.com/mastro-elfo/teepee")
           }
-          title="Apri la repository su Github"
+          title={t("About:code-button-title")}
         >
-          Codice
+          {t("About:code-button-label")}
         </Button>
       </CardContent>
       <CardContent>
         <Typography variant="h6" color="textSecondary">
-          Sviluppatore
+          {t("Development")}
         </Typography>
         <Typography>Francesco Michienzi</Typography>
       </CardContent>
       <CardContent>
         <Typography variant="h6" color="textSecondary">
-          Immagini
+          {t("Attributions")}
         </Typography>
         <Button
           variant="contained"
           color="primary"
           size="small"
           onClick={() => shell.openExternal("https://undraw.co")}
-          title="Apri il sito Undraw"
+          title={t("About:undraw-button-title")}
         >
           unDraw
         </Button>

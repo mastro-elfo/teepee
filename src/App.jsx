@@ -23,6 +23,8 @@ import { NotificationsProvider } from "./components/notifications";
 import { loadPalette } from "./pages/settings/store";
 import { initdb } from "./utils/database";
 
+// Initialize i18n
+import "./i18n";
 // Initialize database
 initdb();
 // Load palette
@@ -32,11 +34,11 @@ function App() {
   return (
     <AppContainer
       ThemeProps={{
-        palette: { primary, secondary, warning, ...palette }
+        palette: { primary, secondary, warning, ...palette },
       }}
       NotifyProps={{
         // anchorOrigin: { horizontal: "center", vertical: "bottom" },
-        preventDuplicate: true
+        preventDuplicate: true,
       }}
       RouterProps={{
         Router: MemoryRouter,
@@ -48,16 +50,15 @@ function App() {
           help,
           product,
           settings,
-          stock
-          // update
-        ]
+          stock,
+        ],
       }}
       WrapperProps={{
         Children: [
           { Component: CartProvider, defaultValue: [] },
           { Component: StockProvider, defaultValue: [] },
-          { Component: NotificationsProvider }
-        ]
+          { Component: NotificationsProvider },
+        ],
       }}
     />
   );

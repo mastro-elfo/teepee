@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
@@ -10,7 +11,7 @@ import {
   Content,
   Header,
   Page,
-  useSearchParams
+  useSearchParams,
 } from "mastro-elfo-mui";
 
 import SaveIcon from "@material-ui/icons/Save";
@@ -18,13 +19,14 @@ import SaveIcon from "@material-ui/icons/Save";
 import { create, defaultValue } from "./model";
 
 function Component() {
+  const { t } = useTranslation();
   const { replace } = useHistory();
   const { enqueueSnackbar } = useSnackbar();
   const searchParams = useSearchParams();
   const [model, setModel] = useState({ ...defaultValue, ...searchParams });
 
   useEffect(() => {
-    document.title = "Teepee - Crea Prodotto";
+    document.title = `Teepee - ${t("ProductCreate:Header")}`;
   }, []);
 
   const handleSave = () => {
@@ -32,7 +34,7 @@ function Component() {
       .then(({ id }) => {
         replace(`/product/v/${id}`);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
       });
@@ -44,9 +46,9 @@ function Component() {
     <Page
       header={
         <Header
-          LeftAction={<BackIconButton title="Torna indietro" />}
+          LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={
-            <IconButton title="Salva prodotto" onClick={handleSave}>
+            <IconButton title={t("Product:Save product")} onClick={handleSave}>
               <SaveIcon />
             </IconButton>
           }
@@ -60,7 +62,7 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                label="Codice a barre"
+                label={t("Product:Barcode")}
                 value={barcode}
                 onChange={({ target: { value } }) =>
                   setModel({ ...model, barcode: value })
@@ -71,7 +73,7 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                label="Nome"
+                label={t("Product:Name")}
                 value={name}
                 onChange={({ target: { value } }) =>
                   setModel({ ...model, name: value })
@@ -84,7 +86,7 @@ function Component() {
                 fullWidth
                 multiline
                 rowsMax={2}
-                label="Descrizione"
+                label={t("Product:Description")}
                 value={description}
                 onChange={({ target: { value } }) =>
                   setModel({ ...model, description: value })
@@ -95,7 +97,7 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                label="Prezzo"
+                label={t("Product:Price")}
                 type="number"
                 value={price}
                 onChange={({ target: { value } }) =>
@@ -105,7 +107,7 @@ function Component() {
                   setModel({ ...model, price: Math.abs(parseFloat(price)) })
                 }
                 inputProps={{
-                  min: 0
+                  min: 0,
                 }}
               />
             </ListItem>
@@ -113,7 +115,7 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                label="Magazzino"
+                label={t("Product:Stock")}
                 type="number"
                 value={stock}
                 onChange={({ target: { value } }) =>
@@ -123,7 +125,7 @@ function Component() {
                   setModel({ ...model, stock: Math.abs(parseInt(stock)) })
                 }
                 inputProps={{
-                  min: 0
+                  min: 0,
                 }}
               />
             </ListItem>
@@ -138,5 +140,5 @@ function Component() {
 export const route = {
   path: "/product/c",
   exact: true,
-  component: Component
+  component: Component,
 };

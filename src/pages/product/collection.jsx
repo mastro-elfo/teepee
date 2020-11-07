@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
 import { IconButton } from "@material-ui/core";
@@ -12,7 +12,7 @@ import {
   Push,
   SearchField,
   ResultList,
-  pluralize
+  pluralize,
 } from "mastro-elfo-mui";
 
 import AddIcon from "@material-ui/icons/Add";
@@ -24,15 +24,16 @@ import subheader from "../../utils/subheader";
 import background from "../../assets/product.svg";
 
 function Component() {
+  const { t } = useTranslation();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState();
   const [printList, setPrintList] = useState({ list: [], callback: () => {} });
 
   useEffect(() => {
-    document.title = "Teepee - Prodotti";
+    document.title = `Teepee - ${t("ProductCollection:Header")}`;
   }, []);
 
-  const handleCallback = back => {
+  const handleCallback = (back) => {
     setTimeout(() => {
       window.print();
       setPrintList({ list: [], callback: () => {} });
@@ -44,20 +45,20 @@ function Component() {
     if (type === "partial") {
       setPrintList({
         list: results,
-        callback: () => handleCallback(back)
+        callback: () => handleCallback(back),
       });
     } else if (type === "whole") {
-      readAll().then(r => {
+      readAll().then((r) => {
         setPrintList({
           list: r,
-          callback: () => handleCallback(back)
+          callback: () => handleCallback(back),
         });
       });
     }
   };
 
   const handleSearch = (q, d) =>
-    search(d).then(r => {
+    search(d).then((r) => {
       setResults(r);
     });
 
@@ -71,36 +72,42 @@ function Component() {
     <Page
       header={
         <Header
-          LeftAction={<BackIconButton title="Torna indietro" />}
+          LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={[
             <PrintDialogIconButton key="print" onConfirm={handlePrint} />,
             <Push
               key="create"
               Component={IconButton}
               href="/product/c"
-              title="Crea un nuovo prodotto"
+              title={t("ProductCollection:add-title")}
             >
               <AddIcon />
-            </Push>
+            </Push>,
           ]}
         >
-          Prodotti
+          {t("ProductCollection:Header")}
         </Header>
       }
       content={
         <Content>
           <SearchField
             fullWidth
-            label="Cerca"
-            placeholder="Codice, nome o descrizione"
+            label={t("Search")}
+            placeholder={t("Search-placeholder")}
             onSearch={handleSearch}
             onClear={handleClear}
-            SearchButtonProps={{ title: "Cerca" }}
-            ClearButtonProps={{ title: "Cancella" }}
+            SearchButtonProps={{ title: t("Search") }}
+            ClearButtonProps={{ title: t("Cancel") }}
             value={query}
             onChange={handleChange}
           />
-          <ResultList mapper={mapper} results={results} subheader={subheader} />
+          <ResultList
+            mapper={mapper}
+            results={results}
+            subheader={(r) =>
+              !!r ? t("Product:subheader", { count: r.length }) : ""
+            }
+          />
         </Content>
       }
       print={<PrintTable {...printList} />}
@@ -111,8 +118,8 @@ function Component() {
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",
           backgroundPosition: "right bottom",
-          backgroundRepeat: "no-repeat"
-        }
+          backgroundRepeat: "no-repeat",
+        },
       }}
     />
   );
@@ -121,7 +128,7 @@ function Component() {
 export const route = {
   path: "/product",
   exact: true,
-  component: Component
+  component: Component,
 };
 
 function mapper({ id, name, description, barcode }) {
@@ -131,6 +138,6 @@ function mapper({ id, name, description, barcode }) {
     primary: name,
     secondary: description || barcode,
     onClick: () => push(`/product/v/${id}`),
-    title: `Apri la scheda prodotto`
+    title: `Apri la scheda prodotto`,
   };
 }

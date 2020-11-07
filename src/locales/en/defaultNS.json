@@ -1,0 +1,155 @@
+{
+  "translation": {
+    "Add": "Add",
+    "Attributions": "Attributions",
+    "Cancel": "Cancel",
+    "Delete": "Delete",
+    "Delete row": "Delete row",
+    "Development": "Development",
+    "Go Back": "Go Back",
+    "License": "License",
+    "Loading": "Loading",
+    "Print": "Stampa",
+    "Read": "Read",
+    "Read-it": "Read",
+    "Search": "Search",
+    "Search-placeholder": "Barcode, name or description",
+    "Subtract": "Subtract",
+    "Under development": "Under development"
+  },
+  "About": {
+    "Header": "About",
+    "drawer-title": "About the application",
+    "description": "Management application for non-profit organizations",
+    "license-header": "Software distributed with MIT license",
+    "open-source": "Software Open Source",
+    "code-button-title": "Open Github repository",
+    "code-button-label": "Code",
+    "undraw-button-title": "Open unDraw website"
+  },
+  "Backup": {
+    "Header": "Backup",
+    "drawer-title": "Create/Restore Backup",
+    "Save backup": "Save backup",
+    "Backup saved": "Backup saved",
+    "Restore backup": "Restore backup",
+    "Invalid backup": "Invalid backup",
+    "Backup restored": "Backup restored"
+  },
+  "Cart": {
+    "Header": "Total shopping",
+    "drawer-primary": "Cart",
+    "drawer-title": "Open shoppping cart",
+    "Title": "Shopping Cart",
+    "Remove from cart": "Remove from cart"
+  },
+  "CartCloseDialog": {
+    "warning-content": "Ther's a problem with the quantity of \"{{name}}\" ({{barcode}}) in stock. Check how many units are in stock and, if necessary, update the database.",
+    "snackbar-content": "Stock quantities have been update",
+    "Button-title": "Close shopping",
+    "Title": "Close shopping",
+    "Print invoice": "Print the invoice",
+    "Close shopping": "Close shopping",
+    "Update stock quantities": "Update stock quantities",
+    "Cancel shopping": "Cancel shopping",
+    "Empty cart without update stock quantities": "Empty cart without update stock quantities"
+  },
+  "Dashboard": {
+    "Header": "Dashboard",
+    "Open Menu": "Open Menu",
+    "Open Cart": "Open Cart"
+  },
+  "DashboardResultCard": {
+    "added-to-cart": "{{name}} added to cart",
+    "open-product-view": "Open product detail",
+    "add-to-cart": "Add to cart",
+    "manage-stock": "Manage stock quantity"
+  },
+  "DashboardNoResultCard": {
+    "Header": "Nessun prodotto trovato",
+    "create-new-title": "Crea nuovo prodotto"
+  },
+  "Drawer": {
+    "Pages": "Pages",
+    "Actions": "Actions",
+    "Application": "Application",
+    "cart-secondary": "1 product",
+    "cart-secondary_plural": "{{count}} products",
+    "stock-secondary": "1 edit pending",
+    "stock-secondary_plural": "{{count}} edits pending"
+  },
+  "Help": {
+    "Header": "Help"
+  },
+  "Loading": {
+    "Header": "Loading..."
+  },
+  "Product": {
+    "drawer-primary": "Products",
+    "drawer-title": "Gestione prodotti",
+    "subheader": "1 product found",
+    "subheader_plural": "{{count}} products found",
+    "Product": "Product",
+    "Quantity": "Quantity",
+    "Difference": "Difference",
+    "Actions": "Actions",
+    "Price": "Price",
+    "Total": "Total",
+    "Barcode": "Barcode",
+    "Name": "Name",
+    "Description": "Description",
+    "Stock": "Stock",
+    "Created": "Created Date/Time",
+    "Updated": "Updated Date/Time",
+    "Save product": "Save product"
+  },
+  "ProductCollection": {
+    "Header": "Products",
+    "add-title": "Create a new product"
+  },
+  "ProductCreate": {
+    "Header": "Create product",
+    "Save product": "Save product"
+  },
+  "ProductView": {
+    "Header": "Product Details",
+    "Print-title": "Print product details",
+    "Edit-title": "Edit product"
+  },
+  "ProductEdit": {
+    "Header": "Edit Product",
+    "product-deleted": "{{name}} deleted",
+    "delete-product": "Delete forever",
+    "delete-product-title": "Do you really want to delete this product?",
+    "delete-product-content": [
+      "This operation can't be undone. A deleted product can't be restored, consider doing a backup before."
+    ]
+  },
+  "ProductPrintDialog": {
+    "button-title": "Stampa l'elenco dei prodotti",
+    "dialog-title": "Stampa la lista",
+    "partial-primary": "Risultati di ricerca",
+    "partial-secondary": "Stampa i risulati della ricerca attuale",
+    "whole-primary": "Elenco completo",
+    "whole-secondary": "Stampa tutti i prodotti presenti nel database"
+  },
+  "Settings": {
+    "Header": "Settings",
+    "drawer-title": "Apri le impostazioni",
+    "Light": "Light",
+    "Dark": "Dark",
+    "Toggle theme": "Toggle theme",
+    "Theme": "Theme"
+  },
+  "Stock": {
+    "Header": "Stock",
+    "drawer-title": "Stock management"
+  },
+  "StockCloseDialog": {
+    "stock-updated": "Stock quantities have been updated",
+    "apply-changes": "Apply changes",
+    "update-stock-quantities": "Update stock quantities",
+    "discard-changes": "Discard changes",
+    "dont-update-stock-quantities": "Don't update stock quantities"
+  }
+}

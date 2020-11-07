@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
-
-// import {Link} from 'react-router-dom'
+import React, { Fragment, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
 import { Button, IconButton } from "@material-ui/core";
 
 import { BackIconButton, Content, Header, Page, Push } from "mastro-elfo-mui";
+// import Markdown from "../components/Markdown";
 
 import { H1, H2, H3, P, UL, LI, EM } from "./help/HelpContent";
+import Loading from "./loading";
 
 import AddIcon from "@material-ui/icons/Add";
 import AddBoxIcon from "@material-ui/icons/AddBox";
@@ -25,249 +27,212 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import { NotificationCard } from "../components/notifications";
 
 function Component() {
+  const { t } = useTranslation();
+
   useEffect(() => {
-    document.title = "Teepee - Aiuto";
+    document.title = `Teepee - ${t("Help:Header")}`;
   }, []);
 
   return (
     <Page
       header={
-        <Header LeftAction={<BackIconButton title="Torna indietro" />}>
-          Aiuto
+        <Header LeftAction={<BackIconButton title={t("Go Back")} />}>
+          {t("Help:Header")}
         </Header>
       }
       content={
         <Content>
-          <H1>Prodotti</H1>
-          <H2>Aggiungere un prodotto al database</H2>
+          <H1>{t("HelpContent:H1.0")}</H1>
+          <H2>{t("HelpContent:H2.0")}</H2>
           <P>
-            Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
-            selezionare la pagina{" "}
+            {t("HelpContent:P.0")} <MenuIcon fontSize="small" />
+            {t("HelpContent:P.1")}
             <Push
               Component={Button}
               href="/product"
               color="primary"
               variant="contained"
               size="small"
-              title="Apri la pagina prodotti"
+              title={t("HelpContent:title.0")}
             >
-              Prodotti
+              {t("HelpContent:Label.0")}
             </Push>
-            , infine sull'icona in alto a destra{" "}
+            {t("HelpContent:P.2")}
             <Push
               Component={IconButton}
               href="/product/c"
               color="primary"
               size="small"
-              title="Crea prodotto"
+              title={t("HelpContent:title.1")}
             >
               <AddIcon />
             </Push>
             .
           </P>
           <P>
-            Dopo aver compilato i campi, cliccare sull'icona di salvataggio in
-            alto a destra <SaveIcon fontSize="small" />.
+            {t("HelpContent:P.3")} <SaveIcon fontSize="small" />.
           </P>
 
-          <H2>Modificare un prodotto</H2>
+          <H2>{t("HelpContent:H2.1")}</H2>
           <P>
-            Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
-            selezionare la pagina{" "}
+            {t("HelpContent:P.0")} <MenuIcon fontSize="small" />
+            {t("HelpContent:P.1")}
             <Push
               Component={Button}
               href="/product"
               color="primary"
               variant="contained"
               size="small"
-              title="Apri la pagina prodotti"
+              title={t("HelpContent:title.0")}
             >
-              Prodotti
+              {t("HelpContent:Label.0")}
             </Push>
             .
           </P>
+          <P>{t("HelpContent:P.4")}</P>
           <P>
-            Cercare il prodotto inserendo il codice a barre, oppure il nome,
-            oppure la descrizione (la ricerca non fa differenza fra maiuscole e
-            minuscole), poi cliccare sul risultato corrispondente.
-          </P>
-          <P>
-            Dopo aver modificato i campi, cliccare sull'icona di salvataggio in
-            alto a destra <SaveIcon fontSize="small" />.
+            {t("HelpContent:P.5")}
+            <SaveIcon fontSize="small" />.
           </P>
 
-          <H2>Eliminare un prodotto</H2>
+          <H2>{t("HelpContent:H2.2")}</H2>
           <P>
-            Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
-            selezionare la pagina{" "}
+            {t("HelpContent:P.0")} <MenuIcon fontSize="small" />
+            {t("HelpContent:P.1")}
             <Push
               Component={Button}
               href="/product"
               color="primary"
               variant="contained"
               size="small"
-              title="Apri la pagina prodotti"
+              title={t("HelpContent:title.0")}
             >
-              Prodotti
+              {t("HelpContent:Label.0")}
             </Push>
             .
           </P>
+          <P>{t("HelpContent:P.4")}</P>
           <P>
-            Cercare il prodotto inserendo il codice a barre, oppure il nome,
-            oppure la descrizione (la ricerca non fa differenza fra maiuscole e
-            minuscole), poi cliccare sul risultato corrispondente.
-          </P>
-          <P>
-            Per eliminare definitivamente il prodotto dal database, cliccare sul
-            bottone in fondo alla pagina{" "}
+            {t("HelpContent:P.6")}
             <Button variant="outlined" color="primary" size="small">
               Elimina
             </Button>
             .
           </P>
 
-          <H1>Spesa</H1>
-          <H2>Iniziare una nuova spesa</H2>
+          <H1>{t("HelpContent:H1.1")}</H1>
+          <H2>{t("HelpContent:H2.3")}</H2>
           <P>
-            Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
-            selezionare la pagina{" "}
+            {t("HelpContent:P.0")}
+            <MenuIcon fontSize="small" />
+            {t("HelpContent:P.1")}
             <Push
               Component={Button}
               href="/cart"
               color="primary"
               variant="contained"
               size="small"
-              title="Apri la pagina carrello"
+              title={t("HelpContent:title.2")}
             >
-              Carrello
+              {t("HelpContent:Label.1")}
             </Push>
             .
           </P>
+          <P>{t("HelpContent:P.4")}</P>
+          <P>{t("HelpContent:P.7")}</P>
           <P>
-            Cercare il prodotto che si vuole aggiungere al carrello inserendo il
-            codice a barre, oppure il nome, oppure la descrizione (la ricerca
-            non fa differenza fra maiuscole e minuscole).
-          </P>
-          <P>
-            Se la corrispondenza col codice a barre è esatta, il prodotto viene
-            aggiunto automaticamente, altrimenti basta cliccare sul risultato
-            corrispondente.
-          </P>
-          <P>
-            Si può regolare la quantità cliccando sui bottoni corrispondenti{" "}
+            {t("HelpContent:P.8")}
             <AddBoxIcon fontSize="small" /> <MinusBoxIcon fontSize="small" />{" "}
             <BackspaceIcon fontSize="small" />.
           </P>
 
-          <H2>Chiudere una spesa</H2>
+          <H2>{t("HelpContent:H2.4")}</H2>
           <P>
-            Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
-            selezionare la pagina{" "}
+            {t("HelpContent:P.0")}
+            <MenuIcon fontSize="small" />
+            {t("HelpContent:P.1")}
             <Push
               Component={Button}
               href="/cart"
               color="primary"
               variant="contained"
               size="small"
-              title="Apri la pagina carrello"
+              title={t("HelpContent:title.2")}
             >
-              Carrello
+              {t("HelpContent:Label.1")}
             </Push>
             .
           </P>
           <P>
-            Cliccare sull'icona in alto a destra <DoneIcon fontSize="small" /> e
-            selezionare l'azione desiderata:
+            {t("HelpContent:P.9")} <DoneIcon fontSize="small" />
+            {t("HelpContent:P.10")}
           </P>
           <UL>
             <LI>
-              <EM>Stampa la ricevuta</EM>, per salvare in formato PDF una copia
-              della lista prodotti acquistati;
+              <EM>{t("HelpContent:LI.0.0")}</EM>
+              {t("HelpContent:LI.0.1")}
             </LI>
             <LI>
-              <EM>Chiudi spesa</EM>, per terminare l'operazione e aggiornare sul
-              database le quantità in magazzino;
+              <EM>{t("HelpContent:LI.1.0")}</EM>
+              {t("HelpContent:LI.1.1")}
             </LI>
             <LI>
-              <EM>Annulla spesa</EM>, per eliminare il carrello senza agiornare
-              il database.
+              <EM>{t("HelpContent:LI.2.0")}</EM>
+              {t("HelpContent:LI.2.1")}
             </LI>
           </UL>
 
-          <H1>Magazzino</H1>
-          <H2>Aggiornare le quantità in magazzino</H2>
+          <H1>{t("HelpContent:H1.2")}</H1>
+          <H2>{t("HelpContent:H2.5")}</H2>
           <P>
-            Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
-            selezionare la pagina{" "}
+            {t("HelpContent:P.0")}
+            <MenuIcon fontSize="small" />
+            {t("HelpContent:P.1")}
             <Push
               Component={Button}
               href="/stock"
               color="primary"
               variant="contained"
               size="small"
-              title="Apri la pagina carrello"
+              title={t("HelpContent:title.2")}
             >
-              Magazzino
+              {t("HelpContent:Label.2")}
             </Push>
             .
           </P>
+          <P>{t("HelpContent:P.4")}</P>
+          <P>{t("HelpContent:P.7")}</P>
+          <P>{t("HelpContent:P.11")}</P>
           <P>
-            Cercare il prodotto da aggiornare inserendo il codice a barre,
-            oppure il nome, oppure la descrizione (la ricerca non fa differenza
-            fra maiuscole e minuscole).
-          </P>
-          <P>
-            Se la corrispondenza col codice a barre è esatta, il prodotto viene
-            aggiunto automaticamente, altrimenti basta cliccare sul risultato
-            corrispondente.
-          </P>
-          <P>
-            Ogni volta che un prodotto è aggiunto, la quantità è automaticamente
-            incrementata di 1.
-          </P>
-          <P>
-            Si può regolare la quantità cliccando sui bottoni corrispondenti{" "}
+            {t("HelpContent:P.8")}
             <AddBoxIcon fontSize="small" /> <MinusBoxIcon fontSize="small" />{" "}
             <BackspaceIcon fontSize="small" />.
           </P>
           <P>
-            La colonna <EM>Quantità</EM> indica il numero totale di prodotti
-            (quelli già presenti più quelli che vengono aggiunti).
-          </P>
-          <P>
-            Le modifiche al magazzino non sono immediatamente salvate sul
-            database. Per completare la procedura è necessario cliccare
-            sull'icona in alto a destra <DoneIcon fontSize="small" /> e
-            selezionare l'azione desiderata:
+            {t("HelpContent:P.12")}
+            <DoneIcon fontSize="small" />
+            {t("HelpContent:P.10")}
           </P>
           <UL>
             <LI>
-              <EM>Applica le modifiche</EM>, per applicare le modifiche ed
-              aggiornare il database;
+              <EM>{t("HelpContent:LI.3.0")}</EM>
+              {t("HelpContent:LI.3.1")}
             </LI>
             <LI>
-              <EM>Scarta le modifiche</EM>, per annullare le modifiche senza
-              aggiornare il database.
+              <EM>{t("HelpContent:LI.4.0")}</EM>
+              {t("HelpContent:LI.4.1")}
             </LI>
           </UL>
 
-          <H1>Pagina principale (Dashboard)</H1>
-          <H3>
-            La pagina principale consente un rapido accesso alle funzioni
-            principali.
-          </H3>
+          <H1>{t("HelpContent:H1.3")}</H1>
+          <H3>{t("HelpContent:H3.0")}</H3>
           <P>
-            Cliccare sull'icona in alto a sinistra <MenuIcon fontSize="small" />{" "}
-            per aprire il menù e accedere alle diverse pagine dell'applicazione.
+            {t("HelpContent:P.13")}
+            <MenuIcon fontSize="small" />
+            {t("HelpContent:P.14")}
           </P>
           <P>
-            Cliccare l'icona in alto a destra{" "}
+            {t("HelpContent:P.9")}
             <Push
               Component={IconButton}
               href="/cart"
@@ -276,64 +241,56 @@ function Component() {
               ttle="Apri il carrello"
             >
               <ShoppingCartIcon />
-            </Push>{" "}
-            per accedere rapidamente al carrello. Quando ci sono prodotti nel
-            carrello l'icona mostra la quantità.
+            </Push>
+            {t("HelpContent:P.15")}
           </P>
-          <P>
-            I risultati di ricerca nella pagina principale mostrano le
-            informazioni principali di ogni prodotto. Per ogni risultato sono
-            presenti diverse azioni rapide:
-          </P>
+          <P>{t("HelpContent:P.16")}</P>
           <UL>
             <LI>
-              <VisibilityIcon fontSize="small" /> per aprire la scheda prodotto;
+              <VisibilityIcon fontSize="small" />
+              {t("HelpContent:LI.5")}
             </LI>
             <LI>
-              <AddShoppingCartIcon fontSize="small" /> per aggiungere il
-              prodotto al carrello;
+              <AddShoppingCartIcon fontSize="small" />
+              {t("HelpContent:LI.6")}
             </LI>
             <LI>
-              <StorageIcon fontSize="small" /> per gestire la quantità in
-              magazzino del prodotto.
+              <StorageIcon fontSize="small" />
+              {t("HelpContent:LI.7")}
             </LI>
           </UL>
 
-          <P>
-            Quando l'applicazione riscontra un problema, ad esempio con il
-            calcolo delle quantità in magazzino, visualizza un messaggio nella
-            pagina principale, ad esempio:
-          </P>
+          <P>{t("HelpContent:P.17")}</P>
 
           <NotificationCard
             type="warning"
-            content='Ho riscontrato un problema con la quantità di "Prodotto" (1234567890) in magazzino. Controlla quante unità sono presenti in magazzino e, se necessario, aggiorna il database.'
+            content={t("CartCloseDialog:warning-content", {
+              name: t("Product:Product"),
+              barcode: "0123456789",
+            })}
             handleOpen={() => {}}
             handleClose={() => {}}
           />
 
-          <H1>Impostazioni</H1>
-          <H2>Cambiare il tema chiaro/scuro</H2>
+          <H1>{t("HelpContent:H1.4")}</H1>
+          <H2>{t("HelpContent:H2.6")}</H2>
           <P>
-            Nella pagina principale (Dashboard), aprire il menù cliccando
-            sull'icona in alto a sinistra <MenuIcon fontSize="small" />, poi
-            selezionare la pagina{" "}
+            {t("HelpContent:P.0")}
+            <MenuIcon fontSize="small" />
+            {t("HelpContent:P.1")}
             <Push
               Component={Button}
               href="/settings"
               color="primary"
               variant="contained"
               size="small"
-              title="Apri la pagina impostazioni"
+              title={t("HelpContent:title.3")}
             >
-              Impostazioni
+              {t("HelpContent:Label.3")}
             </Push>
             .
           </P>
-          <P>
-            Cliccare sulla riga corrispondente al <EM>Tema</EM> per invertire i
-            colori chiaro/scuro.
-          </P>
+          <P>{t("HelpContent:P.18")}</P>
 
           <P></P>
         </Content>
@@ -346,13 +303,12 @@ function Component() {
 export const route = {
   path: "/help",
   exact: true,
-  component: Component
+  component: Component,
 };
 
 export const drawer = {
   key: "help",
-  primary: "Aiuto",
-  secondary: "",
+  primary: i18n.t("Help:Header"),
   icon: <HelpIcon />,
-  title: "Aiuto"
+  title: i18n.t("Help:Header"),
 };

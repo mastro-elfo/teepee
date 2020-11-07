@@ -1,0 +1,63 @@
+{
+  "H1": ["Products", "Shopping", "Stock", "Dashboard", "Settings"],
+  "H2": [
+    "Add product to database",
+    "Edit a product",
+    "Delete a product",
+    "Start new shopping",
+    "Close current shopping",
+    "Update stock quantities",
+    "Change theme setting"
+  ],
+  "H3": ["The Dashboard gives rapid access to the main functions"],
+  "P": [
+    "From the Dashboard, open the main menu clicking on the top left icon",
+    ", then select the page",
+    ", finally click the top right icon",
+    "Fill all the fields, then click on the top right icon",
+    "Search for the product typing in the input field the barcode, the name, or the description (the search is case insensitive), then click the corresponding item in the results list.",
+    "Edit the fields then click on the top right icon",
+    "To delete the product forever, click on the button at the end of the page",
+    "If an exact barcode is found, the product is automatically added, otherwise you have to select one from the result list.",
+    "It is possible to change the quantities clicking on the corresponding buttons",
+    "Click on the top right icon",
+    "then select an action:",
+    "When a product is added it's quantity is already incremented by 1.",
+    "Once you update a stock quantity the change is pending. To apply the pending changes you have to click on the top right icon",
+    "Click on the top left icon",
+    "to open the menu and select the application's pages.",
+    "to open the shopping cart. If there are products in the shopping cart, the quantity is displayed.",
+    "Search results in the Dashboard show the main details for each product. There are some rapid actions:",
+    "When an error occurs, such as a mismatch of the stock quantity of a product, a warning message is displayed:",
+    "Click on the Theme row to toggle theme type: light/dark."
+  ],
+  "LI": [
+    ["Print the invoice", ", to save a PDF document with the shopping list;"],
+    [
+      "End shopping",
+      ", to close the current shopping list and update the stock quantities;"
+    ],
+    [
+      "Cancel shopping",
+      ", to delete the shopping cart without updating the database."
+    ],
+    [
+      "Apply pending changes",
+      ", to apply the changes and update the database;"
+    ],
+    [
+      "Discard changes",
+      ", to cancel the changes without updating the database."
+    ],
+    "to open the product detail;",
+    "to add the product to the shopping cart;",
+    "to manage the product's stock quantity."
+  ],
+  "Label": ["Products", "Cart", "Stock", "Settings"],
+  "title": [
+    "Open Products page",
+    "Create new product",
+    "Open shopping cart",
+    "Open settings page"
+  ]
+}

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-
+import { useTranslation } from "react-i18next";
 import { useSnackbar } from "notistack";
 
 import {
@@ -14,7 +14,7 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
 } from "@material-ui/core/";
 
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
@@ -25,6 +25,7 @@ import { useStock } from "./context";
 import { update } from "../product/model";
 
 export default function CloseDialog() {
+  const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const [stockList, setStock] = useStock();
   const [open, setOpen] = useState(false);
@@ -40,9 +41,11 @@ export default function CloseDialog() {
       .then(() => {
         setStock([]);
         setOpen(false);
-        enqueueSnackbar("Il magazzino è stato aggiornato", { variant: "info" });
+        enqueueSnackbar(t("StockCloseDialog:stock-updated"), {
+          variant: "info",
+        });
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
       });
@@ -59,7 +62,7 @@ export default function CloseDialog() {
         key="close"
         onClick={() => setOpen(true)}
         disabled={stockList.length === 0}
-        title="Applica le modifiche"
+        title={t("StockCloseDialog:apply-changes")}
       >
         <Badge color="secondary" badgeContent={stockList.length}>
           <DoneIcon />
@@ -67,30 +70,34 @@ export default function CloseDialog() {
       </IconButton>
 
       <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Applica le modifiche</DialogTitle>
+        <DialogTitle>{t("StockCloseDialog:apply-changes")}</DialogTitle>
         <DialogContent>
           <List>
-            <ListItem button onClick={handleClose} title="Applica le modifiche">
+            <ListItem
+              button
+              onClick={handleClose}
+              title={t("StockCloseDialog:apply-changes")}
+            >
               <ListItemIcon>
                 <DoneIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Applica le modifiche"
-                secondary="Aggiorna le quantità in magazzino"
+                primary={t("StockCloseDialog:apply-changes")}
+                secondary={t("StockCloseDialog:update-stock-quantities")}
               />
             </ListItem>
 
             <ListItem
               button
               onClick={handleDeleteAll}
-              title="Scarta le modifiche"
+              title={t("StockCloseDialog:discard-changes")}
             >
               <ListItemIcon>
                 <DeleteForeverIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Scarta le modifiche"
-                secondary="Non aggiorna il magazzino"
+                primary={t("StockCloseDialog:discard-changes")}
+                secondary={t("StockCloseDialog:dont-update-stock-quantities")}
               />
             </ListItem>
           </List>
@@ -100,10 +107,10 @@ export default function CloseDialog() {
           <Button
             color="primary"
             variant="contained"
-            title="Annulla"
+            title={t("Cancel")}
             onClick={() => setOpen(false)}
           >
-            Annulla
+            {t("Cancel")}
           </Button>
         </DialogActions>
       </Dialog>

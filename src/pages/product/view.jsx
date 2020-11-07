@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { useTranslation } from "react-i18next";
 import { useSnackbar } from "notistack";
 import { useParams } from "react-router-dom";
 
@@ -15,20 +16,21 @@ import Loading from "../loading";
 import { read } from "./model";
 
 function Component() {
+  const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams();
   const [model, setModel] = useState();
 
   useEffect(() => {
-    document.title = "Teepee - Scheda Prodotto";
+    document.title = `Teepee - ${t("ProductView:Header")}`;
   }, []);
 
   useEffect(() => {
     read(id)
-      .then(data => {
+      .then((data) => {
         setModel(data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
       });
@@ -36,7 +38,7 @@ function Component() {
 
   const handlePrint = () => window.print();
 
-  if (!model) return <Loading header="Scheda prodotto" />;
+  if (!model) return <Loading header="ProductView:Header" />;
 
   const { barcode, name, description, price, stock, _create, _update } = model;
 
@@ -44,11 +46,11 @@ function Component() {
     <Page
       header={
         <Header
-          LeftAction={<BackIconButton title="Torna indietro" />}
+          LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={[
             <IconButton
               key="print"
-              title="Stampa la scheda prodotto"
+              title={t("ProductView:Print-title")}
               onClick={handlePrint}
             >
               <PrintIcon />
@@ -57,27 +59,32 @@ function Component() {
               key="edit"
               href={`/product/e/${id}`}
               Component={IconButton}
-              title="Modifica prodotto"
+              title={t("ProductView:Edit-title")}
             >
-              {" "}
               <EditIcon />
-            </Push>
+            </Push>,
           ]}
         >
-          Scheda prodotto
+          {t("ProductView:Header")}
         </Header>
       }
       content={
         <Content>
           <List>
             <ListItem>
-              <ListItemText primary={barcode} secondary="Codice a barre" />
+              <ListItemText
+                primary={barcode}
+                secondary={t("Product:Barcode")}
+              />
             </ListItem>
             <ListItem>
-              <ListItemText primary={name} secondary="Nome" />
+              <ListItemText primary={name} secondary={t("Product:Name")} />
             </ListItem>
             <ListItem>
-              <ListItemText primary={description} secondary="Descrizione" />
+              <ListItemText
+                primary={description}
+                secondary={t("Product:Description")}
+              />
             </ListItem>
             <ListItem>
               <ListItemText
@@ -86,12 +93,12 @@ function Component() {
               />
             </ListItem>
             <ListItem>
-              <ListItemText primary={stock} secondary="Magazzino" />
+              <ListItemText primary={stock} secondary={t("Product:Stock")} />
             </ListItem>
             <ListItem>
               <ListItemText
                 primary={new Date(_create).toLocaleString()}
-                secondary="Data di creazione"
+                secondary={t("Product:Created")}
               />
             </ListItem>
             <ListItem>
@@ -99,7 +106,7 @@ function Component() {
                 primary={
                   _update === 0 ? "Mai" : new Date(_update).toLocaleString()
                 }
-                secondary="Ultima modifica"
+                secondary={t("Product:Updated")}
               />
             </ListItem>
           </List>
@@ -114,5 +121,5 @@ function Component() {
 export const route = {
   path: "/product/v/:id",
   exact: true,
-  component: Component
+  component: Component,
 };

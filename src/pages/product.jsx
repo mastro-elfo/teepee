@@ -1,4 +1,5 @@
 import React from "react";
+import i18n from "../i18n";
 
 import { Switch, Route } from "react-router-dom";
 
@@ -12,7 +13,7 @@ import { route as view } from "./product/view";
 function Component() {
   return (
     <Switch>
-      {[collection, create, edit, view].map(props => (
+      {[collection, create, edit, view].map((props) => (
         <Route key={props.path} {...props} />
       ))}
     </Switch>
@@ -21,13 +22,13 @@ function Component() {
 
 export const route = {
   path: "/product",
-  component: Component
+  component: Component,
 };
 
 export const drawer = {
   key: "product",
-  primary: "Prodotti",
+  primary: i18n.t("Product:drawer-primary"),
   secondary: "",
   icon: <EmojiObjectsIcon />,
-  title: "Gestione prodotti"
+  title: i18n.t("Product:drawer-title"),
 };

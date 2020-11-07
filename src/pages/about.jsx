@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+import i18n from "../i18n";
+import { useTranslation } from "react-i18next";
+
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
 import LogoIcon from "../assets/Logo";
 
@@ -7,15 +10,17 @@ import TopCard from "./about/TopCard";
 import changelog from "./about/changelog.json";
 
 function Component() {
+  const { t } = useTranslation();
+
   useEffect(() => {
-    document.title = "Teepee - Informazioni";
+    document.title = `Teepee - ${t("About:Header")}`;
   }, []);
 
   return (
     <Page
       header={
         <Header LeftAction={<BackIconButton title="Torna indietro" />}>
-          Informazioni
+          {t("About:Header")}
         </Header>
       }
       content={
@@ -34,13 +39,13 @@ function Component() {
 export const route = {
   path: "/about",
   exact: true,
-  component: Component
+  component: Component,
 };
 
 export const drawer = {
   key: "about",
-  primary: "Informazioni",
+  primary: i18n.t("About:Header"),
   secondary: "",
   icon: <LogoIcon style={{ stroke: "#ff9800" }} />,
-  title: "Informazioni sull'applicazione"
+  title: i18n.t("About:drawer-title"),
 };

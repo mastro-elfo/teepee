@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   Table,
@@ -7,27 +8,29 @@ import {
   TableContainer,
   TableFooter,
   TableHead,
-  TableRow
+  TableRow,
 } from "@material-ui/core";
 
 import { TableHeadCell } from "mastro-elfo-mui";
 
 export default function Component({ list = [], callback = () => {} }) {
+  const { t } = useTranslation();
+
   return (
     <TableContainer>
       <Table>
         <TableHead>
           <TableRow>
-            <TableHeadCell>Nome</TableHeadCell>
-            <TableHeadCell>Codice a barre</TableHeadCell>
-            <TableHeadCell>Prezzo</TableHeadCell>
-            <TableHeadCell>Magazzino</TableHeadCell>
-            <TableHeadCell>Creato</TableHeadCell>
-            <TableHeadCell>Modificato</TableHeadCell>
+            <TableHeadCell>{t("Product:Name")}</TableHeadCell>
+            <TableHeadCell>{t("Product:Barcode")}</TableHeadCell>
+            <TableHeadCell>{t("Product:Price")}</TableHeadCell>
+            <TableHeadCell>{t("Product:Stock")}</TableHeadCell>
+            <TableHeadCell>{t("Product:Created")}</TableHeadCell>
+            <TableHeadCell>{t("Product:Updated")}</TableHeadCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {list.map(item => (
+          {list.map((item) => (
             <Row key={item.id} {...item} />
           ))}
           {callback()}

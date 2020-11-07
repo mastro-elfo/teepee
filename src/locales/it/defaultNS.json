@@ -1,0 +1,155 @@
+{
+  "translation": {
+    "Add": "Aggiungi",
+    "Attributions": "Attribuzioni",
+    "Cancel": "Cancella",
+    "Delete": "Elimina",
+    "Delete row": "Elimina riga",
+    "Development": "Sviluppo",
+    "Go Back": "Torna indietro",
+    "License": "Licenza",
+    "Loading": "Caricando",
+    "Print": "Stampa",
+    "Read": "Letto",
+    "Read-it": "Leggi",
+    "Search": "Cerca",
+    "Search-placeholder": "Codice, nome o descrizione",
+    "Subtract": "Sottrai",
+    "Under development": "In sviluppo"
+  },
+  "About": {
+    "Header": "Informazioni",
+    "drawer-title": "Informazioni sull'applicazione",
+    "description": "Applicazione gestionale rivolto ad associazioni senza scopo di lucro",
+    "license-header": "Software distribuito con licenza MIT",
+    "open-source": "Software Open Source",
+    "code-button-title": "Open Github repository",
+    "code-button-label": "Codice",
+    "undraw-button-title": "Apri il sito unDraw"
+  },
+  "Backup": {
+    "Header": "Backup",
+    "drawer-title": "Crea/Ripristina Backup",
+    "Save backup": "Salva backup",
+    "Backup saved": "Backup salvato",
+    "Restore backup": "Ripristina backup",
+    "Invalid backup": "Backup non valido",
+    "Backup restored": "Backup ripristinato"
+  },
+  "Cart": {
+    "Header": "Totale spesa",
+    "drawer-primary": "Carrello",
+    "drawer-title": "Apri il carrello",
+    "Title": "Carrello",
+    "Remove from cart": "Rimuovi dal carrello"
+  },
+  "CartCloseDialog": {
+    "warning-content": "Ho riscontrato un problema con la quantità di \"{{name}}\" ({{barcode}}) in magazzino. Controlla quante unità sono presenti in magazzino e, se necessario, aggiorna il database.",
+    "snackbar-content": "Il magazzino è stato aggiornato",
+    "Button-title": "Chiudi il conto",
+    "Title": "Chiudi la spesa",
+    "Print invoice": "Stampa la ricevuta",
+    "Close shopping": "Chiudi la spesa",
+    "Update stock quantities": "Aggiorna le quantità in magazzino",
+    "Cancel shopping": "Annulla la spesa",
+    "Empty cart without update stock quantities": "Svuota il carrello senza aggiornare il magazzino"
+  },
+  "Dashboard": {
+    "Header": "Dashboard",
+    "Open Menu": "Apri il menù",
+    "Open Cart": "Apri il carrello"
+  },
+  "DashboardResultCard": {
+    "added-to-cart": "{{name}} aggiunto al carrello",
+    "open-product-view": "Apri scheda prodotto",
+    "add-to-cart": "Aggiungi al carrello",
+    "manage-stock": "Manage stock quantity"
+  },
+  "DashboardNoResultCard": {
+    "Header": "Nessun prodotto trovato",
+    "create-new-title": "Crea nuovo prodotto"
+  },
+  "Drawer": {
+    "Pages": "Pagine",
+    "Actions": "Azioni",
+    "Application": "Applicazione",
+    "cart-secondary": "1 prodotto",
+    "cart-secondary_plural": "{{count}} prodotti",
+    "stock-secondary": "1 modifica in sospeso",
+    "stock-secondary_plural": "{{count}} modifiche in sospeso"
+  },
+  "Help": {
+    "Header": "Aiuto"
+  },
+  "Loading": {
+    "Header": "Sto caricando..."
+  },
+  "Product": {
+    "drawer-primary": "Prodotti",
+    "drawer-title": "Gestione prodotti",
+    "subheader": "1 prodotto trovato",
+    "subheader_plural": "{{count}} prodotti trovati",
+    "Product": "Prodotto",
+    "Quantity": "Quantità",
+    "Difference": "Differenza",
+    "Actions": "Azioni",
+    "Price": "Prezzo",
+    "Total": "Totale",
+    "Barcode": "Codice a barre",
+    "Name": "Nome",
+    "Description": "Descrizione",
+    "Stock": "Magazzino",
+    "Created": "Data di creazione",
+    "Updated": "Ultima modifica",
+    "Save product": "Salva prodotto"
+  },
+  "ProductCollection": {
+    "Header": "Prodotti",
+    "add-title": "Crea un nuovo prodotto"
+  },
+  "ProductCreate": {
+    "Header": "Crea Prodotto",
+    "Save product": "Salva prodotto"
+  },
+  "ProductView": {
+    "Header": "Scheda prodotto",
+    "Print-title": "Stampa la scheda prodotto",
+    "Edit-title": "Modifica prodotto"
+  },
+  "ProductEdit": {
+    "Header": "Modifica Prodotto",
+    "product-deleted": "{{name}} eliminato",
+    "delete-product": "Elimina definitivamente",
+    "delete-product-title": "Vuoi davvero eliminare questo prodotto?",
+    "delete-product-content": [
+      "Una volta confermata l'operazione non può essere annullata. Un prodotto eliminato non può essere ripristinato, si consiglia di effettuare un backup."
+    ]
+  },
+  "ProductPrintDialog": {
+    "button-title": "Stampa l'elenco dei prodotti",
+    "dialog-title": "Stampa la lista",
+    "partial-primary": "Risultati di ricerca",
+    "partial-secondary": "Stampa i risulati della ricerca attuale",
+    "whole-primary": "Elenco completo",
+    "whole-secondary": "Stampa tutti i prodotti presenti nel database"
+  },
+  "Settings": {
+    "Header": "Impostazioni",
+    "drawer-title": "Apri le impostazioni",
+    "Light": "Chiaro",
+    "Dark": "Scuro",
+    "Toggle theme": "Inverti il tema",
+    "Theme": "Tema"
+  },
+  "Stock": {
+    "Header": "Magazzino",
+    "drawer-title": "Gestione magazzino"
+  },
+  "StockCloseDialog": {
+    "stock-updated": "Il magazzino è stato aggiornato",
+    "apply-changes": "Applica le modifiche",
+    "update-stock-quantities": "Aggiorna le quantità in magazzino",
+    "discard-changes": "Scarta le modifiche",
+    "dont-update-stock-quantities": "Non aggiorna il magazzino"
+  }
+}

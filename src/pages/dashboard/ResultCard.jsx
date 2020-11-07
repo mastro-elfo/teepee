@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 import { useSnackbar } from "notistack";
 
 import {
@@ -14,7 +15,7 @@ import {
   Divider,
   Grid,
   IconButton,
-  Typography
+  Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -27,20 +28,21 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 
 import { useCart } from "../cart/context";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   expand: {
     transform: "rotate(0deg)",
     // marginLeft: 'auto',
     transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
+      duration: theme.transitions.duration.shortest,
+    }),
   },
   expandOpen: {
-    transform: "rotate(180deg)"
-  }
+    transform: "rotate(180deg)",
+  },
 }));
 
 export default function ResultCard({ item, expand = false }) {
+  const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const classes = useStyles();
   const [expanded, setExpanded] = useState(expand);
@@ -48,14 +50,17 @@ export default function ResultCard({ item, expand = false }) {
 
   const handleAddCart = () => {
     const copy = cart.slice();
-    const index = copy.findIndex(i => i.id === item.id);
+    const index = copy.findIndex((i) => i.id === item.id);
     if (index !== -1) {
       copy[index].quantity += 1;
     } else {
       copy.push({ ...item, quantity: 1 });
     }
     setCart(copy);
-    enqueueSnackbar(`${item.name} aggiunto al carrello`, { variant: "info" });
+    enqueueSnackbar(
+      t("DashboardResultCard:added-to-cart", { name: item.name }),
+      { variant: "info" }
+    );
   };
 
   const { id, name, description, barcode, stock, price } = item;
@@ -71,7 +76,7 @@ export default function ResultCard({ item, expand = false }) {
               <Box mt={2} mr={1}>
                 <ExpandMoreIcon
                   className={clsx(classes.expand, {
-                    [classes.expandOpen]: expanded
+                    [classes.expandOpen]: expanded,
                   })}
                 />
               </Box>
@@ -88,14 +93,14 @@ export default function ResultCard({ item, expand = false }) {
                     2
                   )}€`}</Typography>
                   <Typography variant="body2" color="textSecondary">
-                    Prezzo
+                    {t("Product:Price")}
                   </Typography>
                 </Grid>
                 <Divider orientation="vertical" flexItem />
                 <Grid item>
                   <Typography variant="body1">{stock}</Typography>
                   <Typography variant="body2" color="textSecondary">
-                    Magazzino
+                    {t("Product:Stock")}
                   </Typography>
                 </Grid>
               </Grid>
@@ -108,19 +113,22 @@ export default function ResultCard({ item, expand = false }) {
             <Push
               Component={IconButton}
               href={`/product/v/${id}`}
-              title="Apri scheda prodotto"
+              title={t("DashboardResultCard:open-product-view")}
             >
               <VisibilityIcon />
             </Push>
 
-            <IconButton title="Aggiungi al carrello" onClick={handleAddCart}>
+            <IconButton
+              title={t("DashboardResultCard:add-to-cart")}
+              onClick={handleAddCart}
+            >
               <AddShoppingCartIcon />
             </IconButton>
 
             <Push
               href={`/stock?q=${name}`}
               Component={IconButton}
-              title="Gestisci magazzino"
+              title={t("DashboardResultCard:manage-stock")}
             >
               <StorageIcon />
             </Push>

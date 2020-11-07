@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+import { useTranslation } from "react-i18next";
 import { useSnackbar } from "notistack";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -12,7 +13,7 @@ import {
   ConfirmDialogButton,
   Content,
   Header,
-  Page
+  Page,
 } from "mastro-elfo-mui";
 
 import SaveIcon from "@material-ui/icons/Save";
@@ -21,21 +22,22 @@ import Loading from "../loading";
 import { del, read, update } from "./model";
 
 function Component() {
+  const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const { go, goBack } = useHistory();
   const { id } = useParams();
   const [model, setModel] = useState();
 
   useEffect(() => {
-    document.title = "Teepee - Modifica Prodotto";
+    document.title = `Teepee - ${t("ProductEdit:Header")}`;
   }, []);
 
   useEffect(() => {
     read(id)
-      .then(data => {
+      .then((data) => {
         setModel(data);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
       });
@@ -46,7 +48,7 @@ function Component() {
       .then(() => {
         goBack();
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
       });
@@ -55,16 +57,19 @@ function Component() {
   const handleDelete = () => {
     del(id)
       .then(({ name }) => {
-        enqueueSnackbar(`${name} eliminato`, { variant: "success" });
+        // enqueueSnackbar(`${name} eliminato`, { variant: "success" });
+        enqueueSnackbar(t("ProductEdit:product-deleted", { name }), {
+          variant: "success",
+        });
         go(-2);
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
       });
   };
 
-  if (!model) return <Loading header="Modifica prodotto" />;
+  if (!model) return <Loading header={t("ProductEdit:Header")} />;
 
   const { barcode, name, description, price, stock } = model;
 
@@ -72,14 +77,14 @@ function Component() {
     <Page
       header={
         <Header
-          LeftAction={<BackIconButton title="Torna indietro" />}
+          LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={
-            <IconButton title="Salva prodotto" onClick={handleSave}>
+            <IconButton title={t("Product:Save product")} onClick={handleSave}>
               <SaveIcon />
             </IconButton>
           }
         >
-          Modifica prodotto
+          {t("ProductEdit:Header")}
         </Header>
       }
       content={
@@ -88,7 +93,7 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                label="Codice a barre"
+                label={t("Product:Barcode")}
                 value={barcode}
                 onChange={({ target: { value } }) =>
                   setModel({ ...model, barcode: value })
@@ -99,7 +104,7 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                label="Nome"
+                label={t("Product:Name")}
                 value={name}
                 onChange={({ target: { value } }) =>
                   setModel({ ...model, name: value })
@@ -112,7 +117,7 @@ function Component() {
                 fullWidth
                 multiline
                 rowsMax={2}
-                label="Descrizione"
+                label={t("Product:Description")}
                 value={description}
                 onChange={({ target: { value } }) =>
                   setModel({ ...model, description: value })
@@ -123,7 +128,7 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                label="Prezzo"
+                label={t("Product:Price")}
                 type="number"
                 value={price}
                 onChange={({ target: { value } }) =>
@@ -133,7 +138,7 @@ function Component() {
                   setModel({ ...model, price: Math.abs(parseFloat(price)) })
                 }
                 inputProps={{
-                  min: 0
+                  min: 0,
                 }}
               />
             </ListItem>
@@ -141,7 +146,7 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                label="Magazzino"
+                label={t("Product:Stock")}
                 type="number"
                 value={stock}
                 onChange={({ target: { value } }) =>
@@ -151,7 +156,7 @@ function Component() {
                   setModel({ ...model, stock: Math.abs(parseInt(stock)) })
                 }
                 inputProps={{
-                  min: 0
+                  min: 0,
                 }}
               />
             </ListItem>
@@ -160,20 +165,18 @@ function Component() {
               <ConfirmDialogButton
                 variant="outlined"
                 color="primary"
-                title="Elimina definitivamente"
+                title={t("ProductEdit:delete-product")}
                 onConfirm={handleDelete}
                 DialogProps={{
-                  title: "Vuoi davvero eliminare questo prodotto?",
-                  content: [
-                    "Una volta confermata l'operazione non può essere annullata. Un prodotto eliminato non può essere ripristinato, si consiglia di effettuare un backup."
-                  ],
-                  confirm: "Elimina",
-                  cancel: "Annulla",
-                  ConfirmButtonProps: { title: "Elimina" },
-                  CancelButtonProps: { title: "Annulla" }
+                  title: t("ProductEdit:delete-product-title"),
+                  content: t("ProductEdit:delete-product-content"),
+                  confirm: t("Delete"),
+                  cancel: t("Cancel"),
+                  ConfirmButtonProps: { title: t("Delete") },
+                  CancelButtonProps: { title: t("Cancel") },
                 }}
               >
-                Elimina
+                {t("Delete")}
               </ConfirmDialogButton>
             </ListItem>
           </List>
@@ -187,5 +190,5 @@ function Component() {
 export const route = {
   path: "/product/e/:id",
   exact: true,
-  component: Component
+  component: Component,
 };

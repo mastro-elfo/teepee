@@ -1,0 +1,68 @@
+{
+  "H1": ["Prodotti", "Carrello", "Magazzino", "Dashboard", "Impostazioni"],
+  "H2": [
+    "Aggiungi un prodotto al database",
+    "Modifica un prodotto",
+    "Elimina un prodotto",
+    "Inizia una nuova spesa",
+    "Chiudi la spesa corrente",
+    "Aggiorna le quantità in magazzino",
+    "Cambia il tema"
+  ],
+  "H3": [
+    "La pagina principale consente un rapido accesso alle funzioni principali"
+  ],
+  "P": [
+    "Nella pagina principale (Dashboard), aprire il menù cliccando sull'icona in alto a sinistra",
+    ", poi selezionare la pagina",
+    ", infine clicca sull'icona in alto a destra",
+    "Dopo aver compilato i campi, cliccare sull'icona di salvataggio in alto a destra",
+    "Cercare il prodotto inserendo il codice a barre, oppure il nome, oppure la descrizione (la ricerca non fa differenza fra maiuscole e minuscole), poi cliccare sul risultato corrispondente.",
+    "Dopo aver modificato i campi, cliccare sull'icona di salvataggio in alto a destra",
+    "Per eliminare definitivamente il prodotto dal database, cliccare sul bottone in fondo alla pagina",
+    "Se la corrispondenza col codice a barre è esatta, il prodotto viene aggiunto automaticamente, altrimenti basta cliccare sul risultato corrispondente.",
+    "Si può regolare la quantità cliccando sui bottoni corrispondenti",
+    "Cliccare sull'icona in alto a destra",
+    "e selezionare l'azione desiderata:",
+    "Ogni volta che un prodotto è aggiunto, la quantità è automaticamente incrementata di 1.",
+    "Le modifiche al magazzino non sono immediatamente salvate sul database. Per completare la procedura è necessario cliccare sull'icona in alto a destra",
+    "Cliccare sull'icona in alto a sinistra",
+    "per aprire il menù e accedere alle diverse pagine dell'applicazione.",
+    "per accedere rapidamente al carrello. Quando ci sono prodotti nel carrello l'icona mostra la quantità.",
+    "I risultati di ricerca nella pagina principale mostrano le informazioni principali di ogni prodotto. Per ogni risultato sono presenti diverse azioni rapide:",
+    "Quando l'applicazione riscontra un problema, ad esempio con il calcolo delle quantità in magazzino, visualizza un messaggio nella pagina principale, ad esempio:",
+    "Cliccare sulla riga corrispondente al Tema per invertire i colori chiaro/scuro."
+  ],
+  "Li": [
+    [
+      "Stampa la ricevuta",
+      ", per salvare in formato PDF una copia della lista prodotti acquistati;"
+    ],
+    [
+      "Chiudi spesa",
+      ", per terminare l'operazione e aggiornare sul database le quantità in magazzino;"
+    ],
+    [
+      "Annulla spesa",
+      ", per eliminare il carrello senza agiornare il database."
+    ],
+    [
+      "Applica le modifiche",
+      ", per applicare le modifiche ed aggiornare il database;"
+    ],
+    [
+      "Scarta le modifiche",
+      ", per annullare le modifiche senza aggiornare il database."
+    ],
+    "per aprire la scheda prodotto;",
+    "per aggiungere il prodotto al carrello;",
+    "per gestire la quantità in magazzino del prodotto."
+  ],
+  "Label": ["Prodotti", "Carrello", "Magazzino", "Impostazioni"],
+  "title": [
+    "Apri la pagina prodotti",
+    "Crea prodotto",
+    "Apri la pagina carrello",
+    "Apri la pagina impostazioni"
+  ]
+}

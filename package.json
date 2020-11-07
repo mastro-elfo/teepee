@@ -1,6 +1,6 @@
 {
   "name": "teepee",
-  "productName": "teepee",
+  "productName": "Teepee",
   "version": "1.0.0",
   "description": "A simple management application",
   "main": ".webpack/main",
@@ -123,6 +123,8 @@
     "electron-fs-extra": "^1.0.0",
     "electron-squirrel-startup": "^1.0.0",
     "fs-extra": "^9.0.1",
+    "i18next": "^19.8.3",
+    "i18next-electron-language-detector": "^0.0.10",
     "lodash": "^4.17.20",
     "mastro-elfo-mui": "^1.16.0",
     "node-json-db": "^1.1.0",
@@ -132,6 +134,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-hot-loader": "^4.13.0",
+    "react-i18next": "^11.7.3",
     "react-markdown": "^4.3.1",
     "react-router-dom": "^5.2.0",
     "react-smooth-dnd": "^0.11.1"

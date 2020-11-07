@@ -1,5 +1,6 @@
 import React, { createRef, useEffect, useState } from "react";
-
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 // import { useSnackbar } from "notistack";
 
 import { IconButton, ListItemSecondaryAction } from "@material-ui/core";
@@ -11,7 +12,7 @@ import {
   Page,
   ResultList,
   SearchField,
-  useSearchParams
+  useSearchParams,
 } from "mastro-elfo-mui";
 
 import AddBoxIcon from "@material-ui/icons/AddBox";
@@ -30,6 +31,7 @@ import background from "../assets/stock.svg";
 const ref = createRef();
 
 function Component() {
+  const { t } = useTranslation();
   const { q } = useSearchParams();
   // const { enqueueSnackbar } = useSnackbar();
   const [stock, setStock] = useStock();
@@ -37,11 +39,11 @@ function Component() {
   const [query, setQuery] = useState(q || "");
 
   useEffect(() => {
-    document.title = "Teepee - Magazzino";
+    document.title = `Teepee - ${t("Stock:Header")}`;
     ref.current.focus();
   }, []);
 
-  const handleAdd = product => {
+  const handleAdd = (product) => {
     setStock(addStockProduct(stock, product, 1));
     setResults();
     ref.current.focus();
@@ -49,7 +51,7 @@ function Component() {
   };
 
   const handleSearch = (q, d) =>
-    search(d).then(r => {
+    search(d).then((r) => {
       if (!r) {
         setResults(r);
       } else if (r.length === 1) {
@@ -76,30 +78,32 @@ function Component() {
     <Page
       header={
         <Header
-          LeftAction={<BackIconButton title="Torna indietro" />}
+          LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={<CloseDialog />}
         >
-          Magazzino
+          {t("Stock:Header")}
         </Header>
       }
       content={
         <Content>
           <SearchField
             fullWidth
-            label="Cerca"
-            placeholder="Codice, nome o descrizione"
+            label={t("Search")}
+            placeholder={t("Search-placeholder")}
             inputRef={ref}
             onSearch={handleSearch}
             onClear={handleClear}
-            SearchButtonProps={{ title: "Cerca" }}
-            ClearButtonProps={{ title: "Cancella" }}
+            SearchButtonProps={{ title: t("Search") }}
+            ClearButtonProps={{ title: t("Cancel") }}
             value={query}
             onChange={({ target: { value } }) => setQuery(value)}
           />
           <ResultList
             results={results}
-            mapper={r => ({ ...mapper(r, stock, handleAdd) })}
-            subheader={subheader}
+            mapper={(r) => ({ ...mapper(r, stock, handleAdd) })}
+            subheader={(r) =>
+              !!r ? t("Product:subheader", { count: r.length }) : ""
+            }
           />
           {stock.length > 0 && <Table />}
         </Content>
@@ -111,8 +115,8 @@ function Component() {
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",
           backgroundPosition: "right bottom",
-          backgroundRepeat: "no-repeat"
-        }
+          backgroundRepeat: "no-repeat",
+        },
       }}
     />
   );
@@ -121,26 +125,26 @@ function Component() {
 export const route = {
   path: "/stock",
   exact: true,
-  component: Component
+  component: Component,
 };
 
 export const drawer = {
   key: "stock",
-  primary: "Magazzino",
+  primary: i18n.t("Stock:Header"),
   secondary: "",
   icon: <StorageIcon />,
-  title: "Gestione magazzino"
+  title: i18n.t("Stock:drawer-title"),
 };
 
 function mapper(product, stockList, handler) {
   const { id, name, description, barcode, stock } = product;
-  const productInStock = stockList.find(i => i.id === product.id);
+  const productInStock = stockList.find((i) => i.id === product.id);
 
   return {
     key: id,
     primary: name,
     secondary: description || barcode,
     LeftIcon: <span>{productInStock ? productInStock.stock : stock}</span>,
-    onClick: () => handler(product)
+    onClick: () => handler(product),
   };
 }

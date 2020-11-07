@@ -12,8 +12,11 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    webPreferences: { nodeIntegration: true, enableRemoteModule: true },
-    icon: path.join(__dirname, "assets/icons/png/64x64.png")
+    webPreferences: {
+      nodeIntegration: true,
+      enableRemoteModule: true,
+    },
+    icon: path.join(__dirname, "assets", "icons", "png", "64x64.png"),
   });
 
   // and load the index.html of the app.

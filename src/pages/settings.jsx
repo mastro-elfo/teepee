@@ -1,4 +1,6 @@
 import React, { useContext, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import i18n from "../i18n";
 
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 
@@ -7,7 +9,7 @@ import {
   Content,
   Header,
   Page,
-  usePalette
+  usePalette,
 } from "mastro-elfo-mui";
 
 import DarkIcon from "@material-ui/icons/Brightness4";
@@ -17,6 +19,8 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import { storePalette } from "./settings/store";
 
 function Component() {
+  const { t } = useTranslation();
+
   const [palette, setPalette] = usePalette();
 
   useEffect(() => {
@@ -24,11 +28,13 @@ function Component() {
   }, [palette]);
 
   useEffect(() => {
-    document.title = "Teepee - Impostazioni";
+    document.title = `Teepee - ${t("Settings:Header")}`;
   }, []);
 
   const { type } = palette;
-  const typeName = { dark: "Scuro", light: "Chiaro" }[type] || "Chiaro";
+  const typeName =
+    { dark: t("Settings:Dark"), light: t("Settings:Light") }[type] ||
+    t("Settings:Light");
 
   const handleToggleThemeType = () => {
     setPalette({ ...palette, type: type === "dark" ? "light" : "dark" });
@@ -37,8 +43,8 @@ function Component() {
   return (
     <Page
       header={
-        <Header LeftAction={<BackIconButton title="Torna indietro" />}>
-          Impostazioni
+        <Header LeftAction={<BackIconButton title={t("Go Back")} />}>
+          {t("Settings:Header")}
         </Header>
       }
       content={
@@ -47,12 +53,15 @@ function Component() {
             <ListItem
               button
               onClick={handleToggleThemeType}
-              title="Inverti il tema"
+              title={t("Settings:Toggle theme")}
             >
               <ListItemIcon>
                 {type === "dark" ? <LightIcon /> : <DarkIcon />}
               </ListItemIcon>
-              <ListItemText primary={typeName} secondary="Tema" />
+              <ListItemText
+                primary={typeName}
+                secondary={t("Settings:Theme")}
+              />
             </ListItem>
           </List>
         </Content>
@@ -65,13 +74,13 @@ function Component() {
 export const route = {
   path: "/settings",
   exact: true,
-  component: Component
+  component: Component,
 };
 
 export const drawer = {
   key: "settings",
-  primary: "Impostazioni",
+  primary: i18n.t("Settings:Header"),
   secondary: "",
   icon: <SettingsIcon />,
-  title: "Apri le impostazioni"
+  title: i18n.t("Settings:drawer-title"),
 };

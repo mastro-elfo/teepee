@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-
+import { useTranslation } from "react-i18next";
 import { useSnackbar } from "notistack";
 
 import {
@@ -13,7 +13,7 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
 } from "@material-ui/core/";
 
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
@@ -25,6 +25,7 @@ import { update } from "../product/model";
 import { useNotifications } from "../../components/notifications";
 
 export default function CloseDialog() {
+  const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const [_, pushNotification] = useNotifications();
   const [cart, setCart] = useCart();
@@ -33,15 +34,15 @@ export default function CloseDialog() {
   const handleClose = () => {
     //
     Promise.all(
-      cart.map(item => {
+      cart.map((item) => {
         const { id, quantity, stock, name, barcode } = item;
         const diff = stock - quantity;
         // if diff < 0 notify a warning in stock quantity
         if (diff < 0) {
           pushNotification({
-            content: `Ho riscontrato un problema con la quantità di "${name}" (${barcode}) in magazzino. Controlla quante unità sono presenti in magazzino e, se necessario, aggiorna il database.`,
+            content: t("CartCloseDialog:warning-content", { name, barcode }),
             type: "warning",
-            href: `/stock?q=${name}`
+            href: `/stock?q=${name}`,
           });
         }
         return update(id, { ...item, stock: Math.max(0, diff) });
@@ -50,9 +51,11 @@ export default function CloseDialog() {
       .then(() => {
         setCart([]);
         setOpen(false);
-        enqueueSnackbar("Il magazzino è stato aggiornato", { variant: "info" });
+        enqueueSnackbar(t("CartCloseDialog:snackbar-content"), {
+          variant: "info",
+        });
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
       });
@@ -71,39 +74,56 @@ export default function CloseDialog() {
         key="close"
         onClick={() => setOpen(true)}
         disabled={cart.length === 0}
-        title="Chiudi il conto"
+        title={t("CartCloseDialog:Button-title")}
       >
         <DoneIcon />
       </IconButton>
 
       <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Chiudi la spesa</DialogTitle>
+        <DialogTitle>{t("CartCloseDialog:Title")}</DialogTitle>
         <DialogContent>
           <List>
-            <ListItem button onClick={handlePrint} title="Stampa la ricevuta">
+            <ListItem
+              button
+              onClick={handlePrint}
+              title={t("CartCloseDialog:Print invoice")}
+            >
               <ListItemIcon>
                 <PrintIcon />
               </ListItemIcon>
-              <ListItemText primary="Stampa la ricevuta" secondary="" />
+              <ListItemText
+                primary={t("CartCloseDialog:Print invoice")}
+                secondary=""
+              />
             </ListItem>
 
-            <ListItem button onClick={handleClose} title="Chiudi la spesa">
+            <ListItem
+              button
+              onClick={handleClose}
+              title={t("CartCloseDialog:Close shopping")}
+            >
               <ListItemIcon>
                 <DoneIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Chiudi la spesa"
-                secondary="Aggiorna le quantità in magazzino"
+                primary={t("CartCloseDialog:Close shopping")}
+                secondary={t("CartCloseDialog:Update stock quantities")}
               />
             </ListItem>
 
-            <ListItem button onClick={handleDeleteAll} title="Annulla la spesa">
+            <ListItem
+              button
+              onClick={handleDeleteAll}
+              title={t("CartCloseDialog:Cancel shopping")}
+            >
               <ListItemIcon>
                 <DeleteForeverIcon />
               </ListItemIcon>
               <ListItemText
-                primary="Annulla la spesa"
-                secondary="Svuota il carrello senza aggiornare il magazzino"
+                primary={t("CartCloseDialog:Cancel shopping")}
+                secondary={t(
+                  "CartCloseDialog:Empty cart without update stock quantities"
+                )}
               />
             </ListItem>
           </List>
@@ -113,10 +133,10 @@ export default function CloseDialog() {
           <Button
             color="primary"
             variant="contained"
-            title="Annulla"
+            title={t("Cancel")}
             onClick={() => setOpen(false)}
           >
-            Annulla
+            {t("Cancel")}
           </Button>
         </DialogActions>
       </Dialog>

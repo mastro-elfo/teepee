@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   Button,
@@ -11,7 +12,7 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
 } from "@material-ui/core";
 
 import { AbsoluteCircularProgress, Loading } from "mastro-elfo-mui";
@@ -23,8 +24,9 @@ import SearchIcon from "@material-ui/icons/Search";
 export default function Component({
   onConfirm = (_, h) => {
     h();
-  }
+  },
 }) {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [printing, setPrinting] = useState(false);
 
@@ -33,7 +35,7 @@ export default function Component({
     setOpen(false);
   };
 
-  const handleConfirm = type => {
+  const handleConfirm = (type) => {
     setPrinting(type);
     onConfirm(type, handleDone);
   };
@@ -42,19 +44,19 @@ export default function Component({
     <Fragment>
       <IconButton
         onClick={() => setOpen(true)}
-        title="Stampa l'elenco dei prodotti"
+        title={t("ProductPrintDialog:button-title")}
       >
         <PrintIcon />
       </IconButton>
       <Dialog open={open} onClose={() => setOpen(false)}>
-        <DialogTitle>Stampa la lista</DialogTitle>
+        <DialogTitle>{t("ProductPrintDialog:dialog-title")}</DialogTitle>
         <DialogContent>
           <List>
             <ListItem
               button
               disabled={!!printing}
               onClick={() => handleConfirm("partial")}
-              title="Stampa"
+              title={t("Print")}
             >
               <ListItemIcon>
                 <SearchIcon />
@@ -65,15 +67,15 @@ export default function Component({
                 </Loading>
               </ListItemIcon>
               <ListItemText
-                primary="Risultati di ricerca"
-                secondary="Stampa i risulati della ricerca attuale"
+                primary={t("ProductPrintDialog:partial-primary")}
+                secondary={t("ProductPrintDialog:partial-secondary")}
               />
             </ListItem>
             <ListItem
               button
               disabled={!!printing}
               onClick={() => handleConfirm("whole")}
-              title="Stampa"
+              title={t("Print")}
             >
               <ListItemIcon>
                 <WholeIcon />
@@ -84,20 +86,20 @@ export default function Component({
                 </Loading>
               </ListItemIcon>
               <ListItemText
-                primary="Elenco completo"
-                secondary="Stampa tutti i prodotti presenti nel database"
+                primary={t("ProductPrintDialog:whole-primary")}
+                secondary={t("ProductPrintDialog:whole-secondary")}
               />
             </ListItem>
           </List>
         </DialogContent>
         <DialogActions>
           <Button
-            title="Annulla"
+            title={t("Cancel")}
             variant="contained"
             color="primary"
             onClick={() => setOpen(false)}
           >
-            Annulla
+            {t("Cancel")}
           </Button>
         </DialogActions>
       </Dialog>

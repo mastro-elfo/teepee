@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { Box, Typography } from "@material-ui/core";
 
@@ -28,7 +28,11 @@ export function P({ children }) {
 
 export function EM({ children }) {
   return (
-    <Typography component="strong" style={{ fontWeight: "bold" }}>
+    <Typography
+      component="strong"
+      style={{ fontWeight: "bold" }}
+      variant="inherit"
+    >
       {children}
     </Typography>
   );
@@ -44,5 +48,5 @@ export function UL({ children }) {
 }
 
 export function LI({ children }) {
-  return <Typography>{children}</Typography>;
+  return <Typography variant="body2">{children}</Typography>;
 }

@@ -1,7 +1,7 @@
 {
   "name": "teepee",
   "productName": "Teepee",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple management application",
   "main": ".webpack/main",
   "homepage": "https://github.com/mastro-elfo/teepee#README",

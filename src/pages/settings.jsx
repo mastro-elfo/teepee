@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+// TODO: #1 remove locales
 import { useTranslation } from "react-i18next";
 import i18n from "../i18n";
 
@@ -21,6 +22,7 @@ import { storePalette } from "./settings/store";
 function Component() {
   const { t } = useTranslation();
 
+  // TODO: #1 delete everything related to the palette
   const [palette, setPalette] = usePalette();
 
   useEffect(() => {

@@ -1,3 +1,5 @@
+// TODO: #1 delete file
+
 const palette = "palette";
 
 export function storePalette(obj) {

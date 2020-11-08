@@ -32,14 +32,17 @@
     "package": "electron-forge package",
     "init": "node ./scripts/init.js",
     "make": "electron-forge make",
-    "make:deb": "electron-forge make --targets @electron-forge/maker-deb",
+    "premake": "node ./scripts/premake.js",
+    "make:deb": "yarn run make --targets @electron-forge/maker-deb",
     "premake:deb": "node ./scripts/premakedeb.js",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "executableName": "teepee"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
@@ -67,7 +70,7 @@
             "name": "teepee",
             "productDescription": "A simple management app for non-profit organizations",
             "productName": "Teepee",
-            "version": "1.0.0"
+            "version": "1.1.0"
           }
         },
         {

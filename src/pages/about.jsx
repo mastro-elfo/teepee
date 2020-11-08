@@ -7,7 +7,6 @@ import LogoIcon from "../assets/Logo";
 
 import ChangelogCard from "./about/ChangelogCard";
 import TopCard from "./about/TopCard";
-import changelog from "./about/changelog.json";
 
 function Component() {
   const { t } = useTranslation();
@@ -26,7 +25,7 @@ function Component() {
       content={
         <Content>
           <TopCard />
-          {changelog.map((item, i) => (
+          {t("Changelog:Changelog").map((item, i) => (
             <ChangelogCard key={i} {...item} />
           ))}
         </Content>

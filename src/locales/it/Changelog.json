@@ -1,0 +1,14 @@
+{
+  "Changelog": [
+    {
+      "version": "1.1",
+      "date": "In sviluppo",
+      "content": [["Internazionalizzazione", ["Italiano", "Inglese"]]]
+    },
+    {
+      "version": "1.0.0",
+      "date": "03 novembre 2020",
+      "content": [["Gestione prodotti", "Gestione magazzino", "Gestione spesa"]]
+    }
+  ]
+}

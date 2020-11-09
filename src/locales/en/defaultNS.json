@@ -9,6 +9,7 @@
     "Go Back": "Go Back",
     "License": "License",
     "Loading": "Loading",
+    "Open": "Open",
     "Print": "Stampa",
     "Read": "Read",
     "Read-it": "Read",
@@ -75,8 +76,8 @@
     "Application": "Application",
     "cart-secondary": "1 product",
     "cart-secondary_plural": "{{count}} products",
-    "stock-secondary": "1 edit pending",
-    "stock-secondary_plural": "{{count}} edits pending"
+    "stock-secondary": "1 change",
+    "stock-secondary_plural": "{{count}} changes"
   },
   "Help": {
     "Header": "Help"

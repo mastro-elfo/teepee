@@ -9,6 +9,7 @@
     "Go Back": "Torna indietro",
     "License": "Licenza",
     "Loading": "Caricando",
+    "Open": "Apri",
     "Print": "Stampa",
     "Read": "Letto",
     "Read-it": "Leggi",
@@ -63,7 +64,7 @@
     "added-to-cart": "{{name}} aggiunto al carrello",
     "open-product-view": "Apri scheda prodotto",
     "add-to-cart": "Aggiungi al carrello",
-    "manage-stock": "Manage stock quantity"
+    "manage-stock": "Gestisci quantità in magazzino"
   },
   "DashboardNoResultCard": {
     "Header": "Nessun prodotto trovato",
@@ -75,8 +76,8 @@
     "Application": "Applicazione",
     "cart-secondary": "1 prodotto",
     "cart-secondary_plural": "{{count}} prodotti",
-    "stock-secondary": "1 modifica in sospeso",
-    "stock-secondary_plural": "{{count}} modifiche in sospeso"
+    "stock-secondary": "1 modifica",
+    "stock-secondary_plural": "{{count}} modifiche"
   },
   "Help": {
     "Header": "Aiuto"

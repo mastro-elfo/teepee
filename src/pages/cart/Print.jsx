@@ -25,15 +25,15 @@ export default function CartTable() {
       <Table>
         <TableHead>
           <TableRow>
-            <TableHeadCell>{t("Cart:Product")}</TableHeadCell>
-            <TableHeadCell>{t("Cart:Price")}</TableHeadCell>
-            <TableHeadCell>{t("Cart:Quantity")}</TableHeadCell>
-            <TableHeadCell>{t("Cart:Total")}</TableHeadCell>
+            <TableHeadCell>{t("Product:Product")}</TableHeadCell>
+            <TableHeadCell>{t("Product:Price")}</TableHeadCell>
+            <TableHeadCell>{t("Product:Quantity")}</TableHeadCell>
+            <TableHeadCell>{t("Product:Total")}</TableHeadCell>
           </TableRow>
         </TableHead>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={2}>{t("Cart:Product")}</TableCell>
+            <TableCell colSpan={2}>{t("Product:Product")}</TableCell>
             <TableCell> {totalCount(cart)}</TableCell>
             <TableCell>{total(cart).toFixed(2)}€</TableCell>
           </TableRow>

@@ -3,7 +3,13 @@
     {
       "version": "1.1",
       "date": "In sviluppo",
-      "content": [["Internazionalizzazione", ["Italiano", "Inglese"]]]
+      "content": [
+        [
+          "Internazionalizzazione",
+          ["Italiano", "Inglese"],
+          "Usa il tema (chiaro/scuro) di sistema"
+        ]
+      ]
     },
     {
       "version": "1.0.0",

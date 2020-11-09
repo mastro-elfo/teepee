@@ -272,26 +272,26 @@ function Component() {
             handleClose={() => {}}
           />
 
-          <H1>{t("HelpContent:H1.4")}</H1>
-          <H2>{t("HelpContent:H2.6")}</H2>
-          <P>
-            {t("HelpContent:P.0")}
-            <MenuIcon fontSize="small" />
-            {t("HelpContent:P.1")}
-            <Push
-              Component={Button}
-              href="/settings"
-              color="primary"
-              variant="contained"
-              size="small"
-              title={t("HelpContent:title.3")}
-            >
-              {t("HelpContent:Label.3")}
-            </Push>
-            .
-          </P>
-          <P>{t("HelpContent:P.18")}</P>
-
+          {
+            // Settings
+            // <H1>{t("HelpContent:H1.4")}</H1>
+            // <P>
+            //   t("HelpContent:P.0")
+            //   <MenuIcon fontSize="small" />
+            //   t("HelpContent:P.1")
+            //
+            //   <Push
+            //     Component={Button}
+            //     href="/settings"
+            //     color="primary"
+            //     variant="contained"
+            //     size="small"
+            //     title={t("HelpContent:title.3")}
+            //   >
+            //     {t("HelpContent:Label.3")}
+            //   </Push>.
+            // </P>
+          }
           <P></P>
         </Content>
       }

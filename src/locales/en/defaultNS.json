@@ -136,11 +136,7 @@
   },
   "Settings": {
     "Header": "Settings",
-    "drawer-title": "Apri le impostazioni",
-    "Light": "Light",
-    "Dark": "Dark",
-    "Toggle theme": "Toggle theme",
-    "Theme": "Theme"
+    "drawer-title": "Apri le impostazioni"
   },
   "Stock": {
     "Header": "Stock",

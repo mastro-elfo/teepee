@@ -1,7 +1,6 @@
 import React from "react";
 import { hot } from "react-hot-loader";
-// TODO: #1 uncomment next line
-// import { remote } from "electron";
+import { remote } from "electron";
 
 import { MemoryRouter } from "react-router-dom";
 import primary from "@material-ui/core/colors/orange";
@@ -15,23 +14,18 @@ import { route as cart } from "./pages/cart";
 import { route as dashboard } from "./pages/dashboard";
 import { route as help } from "./pages/help";
 import { route as product } from "./pages/product";
-// TODO: #1 comment next line until some settings are needed
-import { route as settings } from "./pages/settings";
+// import { route as settings } from "./pages/settings";
 import { route as stock } from "./pages/stock";
 
 import { CartProvider } from "./pages/cart/context";
 import { StockProvider } from "./pages/stock/context";
 import { NotificationsProvider } from "./components/notifications";
-import { loadPalette } from "./pages/settings/store";
 import { initdb } from "./utils/database";
 
 // Initialize i18n
 import "./i18n";
 // Initialize database
 initdb();
-// Load palette
-// TODO: #1 remove next line
-const palette = loadPalette({ type: "light" });
 
 function App() {
   return (
@@ -41,10 +35,7 @@ function App() {
           primary,
           secondary,
           warning,
-          // TODO: #1 remove next line
-          ...palette,
-          // TODO: #1 uncomment next line
-          // type: remote.nativeTheme.shouldUseDarkColors ? "dark" : "light",
+          type: remote.nativeTheme.shouldUseDarkColors ? "dark" : "light",
         },
       }}
       NotifyProps={{
@@ -60,8 +51,7 @@ function App() {
           dashboard,
           help,
           product,
-          // TODO: #1 comment next line until some settings are needed
-          settings,
+          // settings,
           stock,
         ],
       }}

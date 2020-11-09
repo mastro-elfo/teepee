@@ -6,8 +6,7 @@
     "Delete a product",
     "Start new shopping",
     "Close current shopping",
-    "Update stock quantities",
-    "Change theme setting"
+    "Update stock quantities"
   ],
   "H3": ["The Dashboard gives rapid access to the main functions"],
   "P": [
@@ -28,8 +27,7 @@
     "to open the menu and select the application's pages.",
     "to open the shopping cart. If there are products in the shopping cart, the quantity is displayed.",
     "Search results in the Dashboard show the main details for each product. There are some rapid actions:",
-    "When an error occurs, such as a mismatch of the stock quantity of a product, a warning message is displayed:",
-    "Click on the Theme row to toggle theme type: light/dark."
+    "When an error occurs, such as a mismatch of the stock quantity of a product, a warning message is displayed:"
   ],
   "LI": [
     ["Print the invoice", ", to save a PDF document with the shopping list;"],

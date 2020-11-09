@@ -136,11 +136,7 @@
   },
   "Settings": {
     "Header": "Impostazioni",
-    "drawer-title": "Apri le impostazioni",
-    "Light": "Chiaro",
-    "Dark": "Scuro",
-    "Toggle theme": "Inverti il tema",
-    "Theme": "Tema"
+    "drawer-title": "Apri le impostazioni"
   },
   "Stock": {
     "Header": "Magazzino",

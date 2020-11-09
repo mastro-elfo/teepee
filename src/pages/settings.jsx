@@ -5,42 +5,18 @@ import i18n from "../i18n";
 
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 
-import {
-  BackIconButton,
-  Content,
-  Header,
-  Page,
-  usePalette,
-} from "mastro-elfo-mui";
+import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
 
 import DarkIcon from "@material-ui/icons/Brightness4";
 import LightIcon from "@material-ui/icons/Brightness7";
 import SettingsIcon from "@material-ui/icons/Settings";
 
-import { storePalette } from "./settings/store";
-
 function Component() {
   const { t } = useTranslation();
-
-  // TODO: #1 delete everything related to the palette
-  const [palette, setPalette] = usePalette();
-
-  useEffect(() => {
-    storePalette(palette);
-  }, [palette]);
 
   useEffect(() => {
     document.title = `Teepee - ${t("Settings:Header")}`;
   }, []);
-
-  const { type } = palette;
-  const typeName =
-    { dark: t("Settings:Dark"), light: t("Settings:Light") }[type] ||
-    t("Settings:Light");
-
-  const handleToggleThemeType = () => {
-    setPalette({ ...palette, type: type === "dark" ? "light" : "dark" });
-  };
 
   return (
     <Page
@@ -51,21 +27,7 @@ function Component() {
       }
       content={
         <Content>
-          <List>
-            <ListItem
-              button
-              onClick={handleToggleThemeType}
-              title={t("Settings:Toggle theme")}
-            >
-              <ListItemIcon>
-                {type === "dark" ? <LightIcon /> : <DarkIcon />}
-              </ListItemIcon>
-              <ListItemText
-                primary={typeName}
-                secondary={t("Settings:Theme")}
-              />
-            </ListItem>
-          </List>
+          <List></List>
         </Content>
       }
       TopFabProps={{ color: "primary" }}

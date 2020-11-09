@@ -17,10 +17,6 @@ import {
 
 import { ConfirmDialogButton } from "mastro-elfo-mui";
 
-// TODO: use remote.app.getVersion()
-// If ok, version.json becomes useless, also the scripts that create it
-// import { version } from "../../version.json";
-
 export default function Component() {
   const { t } = useTranslation();
 

@@ -28,9 +28,7 @@
   },
   "scripts": {
     "start": "electron-forge start",
-    "prestart": "yarn run init",
     "package": "electron-forge package",
-    "init": "node ./scripts/init.js",
     "make": "electron-forge make",
     "premake": "node ./scripts/premake.js",
     "make:deb": "yarn run make --targets @electron-forge/maker-deb",

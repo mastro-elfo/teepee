@@ -4,7 +4,7 @@ import { promises } from "fs";
 import { useSnackbar } from "notistack";
 import path from "path";
 import { prefix } from "prefix-si";
-import i18n from "../i18n";
+import i18n from "../utils/i18n";
 import { useTranslation } from "react-i18next";
 
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";

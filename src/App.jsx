@@ -23,7 +23,7 @@ import { NotificationsProvider } from "./components/notifications";
 import { initdb } from "./utils/database";
 
 // Initialize i18n
-import "./i18n";
+import "./utils/i18n";
 // Initialize database
 initdb();
 

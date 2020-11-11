@@ -13,6 +13,7 @@
     "Print": "Stampa",
     "Read": "Letto",
     "Read-it": "Leggi",
+    "Save": "Salva",
     "Search": "Cerca",
     "Search-placeholder": "Codice, nome o descrizione",
     "Subtract": "Sottrai",
@@ -110,7 +111,7 @@
   },
   "ProductCreate": {
     "Header": "Crea Prodotto",
-    "Save product": "Salva prodotto"
+    "BarcodeDuplicateError": "Esiste già un prodotto con lo stesso codice: {{name}}"
   },
   "ProductView": {
     "Header": "Scheda prodotto",

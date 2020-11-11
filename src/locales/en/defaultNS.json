@@ -13,6 +13,7 @@
     "Print": "Stampa",
     "Read": "Read",
     "Read-it": "Read",
+    "Save": "Save",
     "Search": "Search",
     "Search-placeholder": "Barcode, name or description",
     "Subtract": "Subtract",
@@ -110,7 +111,7 @@
   },
   "ProductCreate": {
     "Header": "Create product",
-    "Save product": "Save product"
+    "BarcodeDuplicateError": "A product with the same barcode already exists: {{name}}"
   },
   "ProductView": {
     "Header": "Product Details",

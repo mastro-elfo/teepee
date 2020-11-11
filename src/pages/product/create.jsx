@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { debounce } from "lodash";
 
 import { IconButton, List, ListItem, TextField } from "@material-ui/core";
 
@@ -16,7 +17,7 @@ import {
 
 import SaveIcon from "@material-ui/icons/Save";
 
-import { create, defaultValue } from "./model";
+import { create, defaultValue, readAll } from "./model";
 
 function Component() {
   const { t } = useTranslation();
@@ -25,9 +26,42 @@ function Component() {
   const searchParams = useSearchParams();
   const [model, setModel] = useState({ ...defaultValue, ...searchParams });
 
+  // Input Errors
+  const [barcodeError, setBarcodeError] = useState(false);
+  const hasError = [barcodeError].some((a) => a);
+
+  // Model properties
+  const { barcode, name, description, price, stock } = model;
+
   useEffect(() => {
     document.title = `Teepee - ${t("ProductCreate:Header")}`;
   }, []);
+
+  const handleBarcodeDuplicateError = debounce(
+    () =>
+      readAll()
+        .then((r) => r.filter((item) => item.barcode === barcode))
+        .then((r) => {
+          if (r && r.length) {
+            setBarcodeError(
+              t("ProductCreate:BarcodeDuplicateError", { name: r[0].name })
+            );
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        }),
+    300
+  );
+
+  useEffect(() => {
+    setBarcodeError(false);
+    if (barcode) {
+      // Check for duplicates
+      handleBarcodeDuplicateError();
+      return () => handleBarcodeDuplicateError.cancel();
+    }
+  }, [barcode]);
 
   const handleSave = () => {
     create(model)
@@ -40,15 +74,17 @@ function Component() {
       });
   };
 
-  const { barcode, name, description, price, stock } = model;
-
   return (
     <Page
       header={
         <Header
           LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={
-            <IconButton title={t("Product:Save product")} onClick={handleSave}>
+            <IconButton
+              title={t("Save")}
+              onClick={handleSave}
+              disabled={hasError}
+            >
               <SaveIcon />
             </IconButton>
           }
@@ -67,6 +103,8 @@ function Component() {
                 onChange={({ target: { value } }) =>
                   setModel({ ...model, barcode: value })
                 }
+                error={!!barcodeError}
+                helperText={barcodeError}
               />
             </ListItem>
 

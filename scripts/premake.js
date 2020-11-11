@@ -3,7 +3,7 @@ const { exec } = require("child_process");
 // Check if src/i18n.js has `lng` option commented
 
 exec(
-  'cat ./src/i18n.js | grep "lng:" | cut -d "/" -f 1',
+  'cat ./src/utils/i18n.js | grep "lng:" | cut -d "/" -f 1',
   (error, stdout, stderr) => {
     if (error) {
       console.error(error);

@@ -1,5 +1,20 @@
 {
+  "Template": {
+    "version": "0.0.0",
+    "date": "In sviluppo",
+    "content": []
+  },
   "Changelog": [
+    {
+      "version": "1.1.0",
+      "date": "In sviluppo",
+      "content": [
+        [
+          "Controllo codice a barre duplicato",
+          "Aggiunto caricamento al bottone di salvataggio"
+        ]
+      ]
+    },
     {
       "version": "1.1.0",
       "date": "09 novembre 2020",

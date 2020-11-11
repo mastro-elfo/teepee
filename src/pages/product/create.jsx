@@ -8,9 +8,11 @@ import { debounce } from "lodash";
 import { IconButton, List, ListItem, TextField } from "@material-ui/core";
 
 import {
+  AbsoluteCircularProgress,
   BackIconButton,
   Content,
   Header,
+  Loading,
   Page,
   useSearchParams,
 } from "mastro-elfo-mui";
@@ -25,6 +27,9 @@ function Component() {
   const { enqueueSnackbar } = useSnackbar();
   const searchParams = useSearchParams();
   const [model, setModel] = useState({ ...defaultValue, ...searchParams });
+
+  // Saving
+  const [saving, setSaving] = useState(false);
 
   // Input Errors
   const [barcodeError, setBarcodeError] = useState(false);
@@ -64,6 +69,7 @@ function Component() {
   }, [barcode]);
 
   const handleSave = () => {
+    setSaving(true);
     create(model)
       .then(({ id }) => {
         replace(`/product/v/${id}`);
@@ -71,6 +77,7 @@ function Component() {
       .catch((err) => {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
+        setSaving(false);
       });
   };
 
@@ -83,9 +90,12 @@ function Component() {
             <IconButton
               title={t("Save")}
               onClick={handleSave}
-              disabled={hasError}
+              disabled={hasError || saving}
             >
               <SaveIcon />
+              <Loading show={saving}>
+                <AbsoluteCircularProgress color="secondary" />
+              </Loading>
             </IconButton>
           }
         >

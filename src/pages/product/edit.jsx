@@ -8,17 +8,19 @@ import { useParams } from "react-router-dom";
 import { IconButton, List, ListItem, TextField } from "@material-ui/core";
 
 import {
+  AbsoluteCircularProgress,
   BackIconButton,
   Conditional,
   ConfirmDialogButton,
   Content,
   Header,
+  Loading,
   Page,
 } from "mastro-elfo-mui";
 
 import SaveIcon from "@material-ui/icons/Save";
 
-import Loading from "../loading";
+import LoadingPage from "../loading";
 import { del, read, update } from "./model";
 
 function Component() {
@@ -27,6 +29,9 @@ function Component() {
   const { go, goBack } = useHistory();
   const { id } = useParams();
   const [model, setModel] = useState();
+
+  // Saving
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     document.title = `Teepee - ${t("ProductEdit:Header")}`;
@@ -44,6 +49,7 @@ function Component() {
   }, [id]);
 
   const handleSave = () => {
+    setSaving(true);
     update(id, model)
       .then(() => {
         goBack();
@@ -51,6 +57,7 @@ function Component() {
       .catch((err) => {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
+        setSaving(false);
       });
   };
 
@@ -69,7 +76,7 @@ function Component() {
       });
   };
 
-  if (!model) return <Loading header={t("ProductEdit:Header")} />;
+  if (!model) return <LoadingPage header={t("ProductEdit:Header")} />;
 
   const { barcode, name, description, price, stock } = model;
 
@@ -79,8 +86,15 @@ function Component() {
         <Header
           LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={
-            <IconButton title={t("Product:Save product")} onClick={handleSave}>
+            <IconButton
+              title={t("Save")}
+              onClick={handleSave}
+              disabled={saving}
+            >
               <SaveIcon />
+              <Loading show={saving}>
+                <AbsoluteCircularProgress color="secondary" />
+              </Loading>
             </IconButton>
           }
         >

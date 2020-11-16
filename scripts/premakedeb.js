@@ -1,4 +1,5 @@
 // Check if package version and maker version match
+// =============================================================================
 
 // Get version and makers from package
 const {

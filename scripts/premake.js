@@ -1,3 +1,7 @@
+// Check if src/i18n.js has `lng` option commented
+// Check if changelog(s) have an item about the actual version
+// =============================================================================
+
 const { exec } = require("child_process");
 const path = require("path");
 
@@ -40,6 +44,8 @@ exec(
   const date = new Date(log.date);
   if (!(date instanceof Date) || isNaN(date)) {
     console.error(`Changelog has invalid date: ${log.date}`);
+    console.error("Is instance?", date instanceof Date);
+    console.error("Is NaN?", isNaN(date));
     process.exit(4);
   }
 });

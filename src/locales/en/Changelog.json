@@ -7,12 +7,12 @@
   "Changelog": [
     {
       "version": "1.2.0",
-      "date": "Under development",
+      "date": "November 16 2020",
       "content": [["Check barcode duplicate", "Added loader to save button"]]
     },
     {
       "version": "1.1.0",
-      "date": "November 9th 2020",
+      "date": "November 9 2020",
       "content": [
         [
           "Internationalization",
@@ -23,7 +23,7 @@
     },
     {
       "version": "1.0.0",
-      "date": "November 3rd 2020",
+      "date": "November 3 2020",
       "content": [["Products management", "Stock management", "Shopping cart"]]
     }
   ]

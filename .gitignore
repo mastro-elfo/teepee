@@ -87,5 +87,8 @@ typings/
 
 # Electron-Forge
 out/
+
+# My ignores
 todo.md
 src/version.json
+api/vendor

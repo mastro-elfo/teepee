@@ -1,5 +1,15 @@
 [
   {
+    "version": "1.3.0",
+    "date": "Under development",
+    "content": [
+      [
+        "Check barcode duplicate when editing a product",
+        "Improved performances"
+      ]
+    ]
+  },
+  {
     "version": "1.2.0",
     "date": "November 16 2020",
     "content": [["Check barcode duplicate", "Added loader to save button"]]

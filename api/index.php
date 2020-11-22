@@ -2,11 +2,11 @@
 
 require 'vendor/autoload.php';
 
+// Get changelog file based on the requested language
+// If no language match use default (english)
 Flight::route("GET /api/changelog(/@lng)", function($lng){
   // If $lng is null, set default language (en)
-  if(!$lng) {
-    $lng = "en";
-  }
+  if(!$lng) $lng = "en";
   // join filename
   $filename = implode("/", ["changelog", "$lng.json"]);
   // Check $filename exists
@@ -21,14 +21,18 @@ Flight::route("GET /api/changelog(/@lng)", function($lng){
 });
 
 Flight::route("*", function(){
+  // Debug if no route match
   $request = Flight::request();
-
   Flight::json([
     "url" => $request->url,
     "method" => $request->method
   ]);
 });
 
+// Enable CORS
+Flight::response()->header("Access-Control-Allow-Origin", "*");
+
+// Start engine
 Flight::start();
 
 ?>

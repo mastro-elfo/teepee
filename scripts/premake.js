@@ -30,22 +30,22 @@ exec(
   }
 );
 
-// Check if changelog(s) have an item about the actual version
-["en", "it"].forEach((lng) => {
-  const filename = path.join("..", "src", "locales", lng, "Changelog.json");
-  const { Changelog } = require(filename);
-  const log = Changelog.find((item) => item.version === version);
-  if (!log) {
-    console.error(
-      `Changelog not found for version ${version} in language ${lng}`
-    );
-    process.exit(3);
-  }
-  const date = new Date(log.date);
-  if (!(date instanceof Date) || isNaN(date)) {
-    console.error(`Changelog has invalid date: ${log.date}`);
-    console.error("Is instance?", date instanceof Date);
-    console.error("Is NaN?", isNaN(date));
-    process.exit(4);
-  }
-});
+// // Check if changelog(s) have an item about the actual version
+// ["en", "it"].forEach((lng) => {
+//   const filename = path.join("..", "src", "locales", lng, "Changelog.json");
+//   const { Changelog } = require(filename);
+//   const log = Changelog.find((item) => item.version === version);
+//   if (!log) {
+//     console.error(
+//       `Changelog not found for version ${version} in language ${lng}`
+//     );
+//     process.exit(3);
+//   }
+//   const date = new Date(log.date);
+//   if (!(date instanceof Date) || isNaN(date)) {
+//     console.error(`Changelog has invalid date: ${log.date}`);
+//     console.error("Is instance?", date instanceof Date);
+//     console.error("Is NaN?", isNaN(date));
+//     process.exit(4);
+//   }
+// });

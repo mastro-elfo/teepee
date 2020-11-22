@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
+import { debounce } from "lodash";
+import { useSnackbar } from "notistack";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
-import { useSnackbar } from "notistack";
-import { debounce } from "lodash";
 
 import { IconButton, List, ListItem, TextField } from "@material-ui/core";
 
@@ -26,11 +26,10 @@ function Component() {
   const { replace } = useHistory();
   const { enqueueSnackbar } = useSnackbar();
   const searchParams = useSearchParams();
+  // Product model
   const [model, setModel] = useState({ ...defaultValue, ...searchParams });
-
   // Saving
   const [saving, setSaving] = useState(false);
-
   // Input Errors
   const [barcodeError, setBarcodeError] = useState(false);
   const hasError = [barcodeError].some((a) => a);

@@ -25,7 +25,7 @@ exec(
       return;
     }
     if (!stdout.match(/\s*\/\/\s*lng/)) {
-      console.error("Option lng in src/i18n.js must be commented");
+      console.error("Option lng in src/utils/i18n.js must be commented");
     }
   }
 );

@@ -34,7 +34,9 @@
     "make:deb": "yarn run make --targets @electron-forge/maker-deb",
     "premake:deb": "node ./scripts/premakedeb.js",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "deploy": "node ./scripts/deploy.js",
+    "predeploy": "yarn run make:deb"
   },
   "config": {
     "forge": {

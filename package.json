@@ -12,7 +12,7 @@
     "react",
     "reactjs",
     "electron",
-    "electro-app",
+    "electron-app",
     "webpack",
     "material-ui"
   ],
@@ -33,10 +33,12 @@
     "premake": "node ./scripts/premake.js",
     "make:deb": "yarn run make --targets @electron-forge/maker-deb",
     "premake:deb": "node ./scripts/premakedeb.js",
+    "postmake:deb": "node ./scripts/postmake deb",
+    "make:rpm": "yarn run make --targets @electron-forge/maker-rpm",
+    "premake:rpm": "node ./scripts/premakerpm.js",
+    "postmake:rpm": "node ./scripts/postmake rpm",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\"",
-    "deploy": "node ./scripts/deploy.js",
-    "predeploy": "yarn run make:deb"
+    "lint": "echo \"No linting configured\""
   },
   "config": {
     "forge": {

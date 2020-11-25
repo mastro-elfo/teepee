@@ -75,7 +75,18 @@
         },
         {
           "name": "@electron-forge/maker-rpm",
-          "config": {}
+          "config": {
+            "categories": [
+              "Office"
+            ],
+            "description": "A simple management app for non-profit organizations",
+            "genericName": "Management",
+            "icon": "./src/assets/logo.png",
+            "name": "teepee",
+            "productDescription": "A simple management app for non-profit organizations",
+            "productName": "Teepee",
+            "version": "1.3.0"
+          }
         }
       ],
       "plugins": [

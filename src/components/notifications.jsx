@@ -2,22 +2,9 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  // CardHeader,
-  Typography,
-  Zoom,
-} from "@material-ui/core";
-
-// import InfoIcon from "@material-ui/icons/Info";
-// import SuccessIcon from "@material-ui/icons/CheckCircle";
-// import WarningIcon from "@material-ui/icons/Warning";
-// import ErrorIcon from "@material-ui/icons/Error";
+import { Button, Typography } from "@material-ui/core";
 
 // Context
 const Context = createContext();
@@ -36,12 +23,6 @@ export function NotificationsProvider({ children }) {
   }, [ns]);
 
   const dismiss = (id) => {
-    // console.log(
-    //   "dismiss",
-    //   id,
-    //   ns,
-    //   ns.filter(n => n.id !== id)
-    // );
     set(ns.filter((n) => n.id !== id));
   };
 
@@ -79,16 +60,6 @@ function load() {
   }
 }
 
-// Card styles
-const useStyles = makeStyles(
-  ({ palette: { info, success, warning, error } }) => ({
-    info: { backgroundColor: info.main, color: info.contrastText },
-    success: { backgroundColor: success.main, color: success.contrastText },
-    warning: { backgroundColor: warning.main, color: warning.contrastText },
-    error: { backgroundColor: error.main, color: error.contrastText },
-  })
-);
-
 // Main component
 export default function Notifications() {
   const [ns, _, dismiss] = useNotifications();
@@ -104,75 +75,46 @@ export default function Notifications() {
 
 function NotificationContainer({ id, content, href, dismiss, type }) {
   const { push } = useHistory();
-  const theme = useTheme();
-  const classes = useStyles();
-  const [zoom, setZoom] = useState(true);
-  const [open, setOpen] = useState(false);
-  // Effect
-  useEffect(() => {
-    if (!zoom) {
-      const to = setTimeout(() => {
-        dismiss(id);
-        if (open) {
-          push(href);
-        }
-      }, theme.transitions.duration.standard);
-      return () => clearTimeout(to);
-    }
-  }, [zoom]);
   // Define handlers
   const handleClose = () => {
-    setZoom(false);
+    dismiss(id);
   };
   const handleOpen = () => {
-    setZoom(false);
-    setOpen(true);
+    dismiss(id);
+    push(href);
   };
   // Render
   return (
-    <Zoom in={zoom}>
-      <NotificationCard
-        type={type}
-        content={content}
-        handleOpen={!!href && handleOpen}
-        handleClose={handleClose}
-      />
-    </Zoom>
+    <NotificationAlert
+      type={type}
+      content={content}
+      handleOpen={!!href && handleOpen}
+      handleClose={handleClose}
+    />
   );
 }
 
-export function NotificationCard({ type, content, handleOpen, handleClose }) {
+export function NotificationAlert({ type, content, handleOpen, handleClose }) {
   const { t } = useTranslation();
-  const classes = useStyles();
-
   return (
-    <Card className={classes[type]}>
-      <CardContent>
-        <Typography>{content}</Typography>
-      </CardContent>
-      <CardActions>
-        {!!handleOpen && (
-          <Button
-            size="small"
-            title={t("Open")}
-            color="inherit"
-            variant="outlined"
-            onClick={handleOpen}
-          >
-            {t("Open")}
-          </Button>
-        )}
-
+    <Alert severity={type} onClose={handleClose} closeText={t("Close")}>
+      <AlertTitle>
+        {t(type.slice(0, 1).toUpperCase() + type.slice(1))}
+      </AlertTitle>
+      <Typography paragraph variant="body2">
+        {content}
+      </Typography>
+      {!!handleOpen && (
         <Button
           size="small"
-          title={t("Cancel")}
+          title={t("Open")}
           color="inherit"
           variant="outlined"
-          onClick={handleClose}
+          onClick={handleOpen}
         >
-          {t("Cancel")}
+          {t("Open")}
         </Button>
-      </CardActions>
-    </Card>
+      )}
+    </Alert>
   );
 }

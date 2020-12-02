@@ -24,7 +24,7 @@ import SaveIcon from "@material-ui/icons/Save";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import StorageIcon from "@material-ui/icons/Storage";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import { NotificationCard } from "../components/notifications";
+import { NotificationAlert } from "../components/notifications";
 
 function Component() {
   const { t } = useTranslation();
@@ -262,7 +262,7 @@ function Component() {
 
           <P>{t("HelpContent:P.17")}</P>
 
-          <NotificationCard
+          <NotificationAlert
             type="warning"
             content={t("CartCloseDialog:warning-content", {
               name: t("Product:Product"),

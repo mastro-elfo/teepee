@@ -22,7 +22,7 @@ import { drawer as backup } from "./backup";
 import { drawer as cart } from "./cart";
 import { drawer as help } from "./help";
 import { drawer as product } from "./product";
-// import { drawer as settings } from "./settings";
+import { drawer as settings } from "./settings";
 import { drawer as stock } from "./stock";
 
 import { useCart } from "./cart/context";
@@ -112,7 +112,7 @@ function Component() {
                     leftFill: true,
                     items: [
                       { ...backup, onClick: () => push("/backup") },
-                      // { ...settings, onClick: () => push("/settings") },
+                      { ...settings, onClick: () => push("/settings") },
                     ],
                   },
                   {

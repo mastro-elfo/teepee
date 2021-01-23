@@ -14,7 +14,7 @@ import { route as cart } from "./pages/cart";
 import { route as dashboard } from "./pages/dashboard";
 import { route as help } from "./pages/help";
 import { route as product } from "./pages/product";
-// import { route as settings } from "./pages/settings";
+import { route as settings } from "./pages/settings";
 import { route as stock } from "./pages/stock";
 
 import { CartProvider } from "./pages/cart/context";
@@ -51,7 +51,7 @@ function App() {
           dashboard,
           help,
           product,
-          // settings,
+          settings,
           stock,
         ],
       }}

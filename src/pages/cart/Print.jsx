@@ -15,10 +15,13 @@ import { TableHeadCell } from "mastro-elfo-mui";
 
 import { total, totalCount } from "./utils";
 import { useCart } from "./context";
+import { loadCurrency } from "../settings/store";
 
 export default function CartTable() {
   const { t } = useTranslation();
   const [cart, setCart] = useCart();
+
+  const currency = loadCurrency();
 
   return (
     <TableContainer>
@@ -35,16 +38,25 @@ export default function CartTable() {
           <TableRow>
             <TableCell colSpan={2}>{t("Product:Product")}</TableCell>
             <TableCell> {totalCount(cart)}</TableCell>
-            <TableCell>{total(cart).toFixed(2)}€</TableCell>
+            <TableCell>
+              {total(cart).toFixed(2)}
+              {currency}
+            </TableCell>
           </TableRow>
         </TableFooter>
         <TableBody>
           {cart.map(({ id, name, price, quantity }) => (
             <TableRow key={id}>
               <TableCell>{name}</TableCell>
-              <TableCell>{price.toFixed(2)}€</TableCell>
+              <TableCell>
+                {price.toFixed(2)}
+                {currency}
+              </TableCell>
               <TableCell>{quantity}</TableCell>
-              <TableCell>{(price * quantity).toFixed(2)}€</TableCell>
+              <TableCell>
+                {(price * quantity).toFixed(2)}
+                {currency}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

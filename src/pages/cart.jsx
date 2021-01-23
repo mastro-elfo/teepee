@@ -22,6 +22,7 @@ import { total } from "./cart/utils";
 import { search } from "./product/model";
 // import subheader from "../utils/subheader";
 import background from "../assets/cart.svg";
+import { loadCurrency } from "./settings/store";
 
 const ref = createRef();
 
@@ -76,6 +77,8 @@ function Component() {
   };
   const handleChange = ({ target: { value } }) => setQuery(value);
 
+  const currency = loadCurrency();
+
   return (
     <Page
       header={
@@ -83,7 +86,8 @@ function Component() {
           LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={<CloseDialog />}
         >
-          {t("Cart:Header")}: {total(cart).toFixed(2)}€
+          {t("Cart:Header")}: {total(cart).toFixed(2)}
+          {currency}
         </Header>
       }
       content={

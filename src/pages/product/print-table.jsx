@@ -13,8 +13,12 @@ import {
 
 import { TableHeadCell } from "mastro-elfo-mui";
 
+import { loadCurrency } from "../settings/store";
+
 export default function Component({ list = [], callback = () => {} }) {
   const { t } = useTranslation();
+
+  const currency = loadCurrency();
 
   return (
     <TableContainer>
@@ -45,7 +49,10 @@ function Row({ name, description, barcode, price, stock, _create, _update }) {
     <TableRow>
       <TableCell>{name}</TableCell>
       <TableCell>{barcode}</TableCell>
-      <TableCell>{price.toFixed(2)}€</TableCell>
+      <TableCell>
+        {price.toFixed(2)}
+        {currency}
+      </TableCell>
       <TableCell>{stock}</TableCell>
       <TableCell>{new Date(_create).toLocaleString()}</TableCell>
       <TableCell>{new Date(_update).toLocaleString()}</TableCell>

@@ -21,6 +21,7 @@ import MinusBoxIcon from "@material-ui/icons/IndeterminateCheckBox";
 
 import { total, totalCount } from "./utils";
 import { useCart } from "./context";
+import { loadCurrency } from "../settings/store";
 
 export default function CartTable() {
   const { t } = useTranslation();
@@ -50,6 +51,8 @@ export default function CartTable() {
     setCart(copy);
   };
 
+  const currency = loadCurrency();
+
   return (
     <Paper elevation={0}>
       <TableContainer>
@@ -67,7 +70,10 @@ export default function CartTable() {
             <TableRow>
               <TableCell colSpan={2}>{t("Product:Total")}</TableCell>
               <TableCell> {totalCount(cart)}</TableCell>
-              <TableCell>{total(cart).toFixed(2)}€</TableCell>
+              <TableCell>
+                {total(cart).toFixed(2)}
+                {currency}
+              </TableCell>
               <TableCell></TableCell>
             </TableRow>
           </TableFooter>
@@ -75,9 +81,15 @@ export default function CartTable() {
             {cart.map(({ id, name, price, quantity }) => (
               <TableRow key={id}>
                 <TableCell>{name}</TableCell>
-                <TableCell>{price.toFixed(2)}€</TableCell>
+                <TableCell>
+                  {price.toFixed(2)}
+                  {currency}
+                </TableCell>
                 <TableCell>{quantity}</TableCell>
-                <TableCell>{(price * quantity).toFixed(2)}€</TableCell>
+                <TableCell>
+                  {(price * quantity).toFixed(2)}
+                  {currency}
+                </TableCell>
                 <TableCell>
                   <IconButton title={t("Add")} onClick={() => handleAdd(id)}>
                     <AddBoxIcon />

@@ -27,6 +27,7 @@ import StorageIcon from "@material-ui/icons/Storage";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 
 import { useCart } from "../cart/context";
+import { loadCurrency } from "../settings/store";
 
 const useStyles = makeStyles((theme) => ({
   expand: {
@@ -64,6 +65,7 @@ export default function ResultCard({ item, expand = false }) {
   };
 
   const { id, name, description, barcode, stock, price } = item;
+  const currency = loadCurrency();
 
   return (
     <Box py={1}>
@@ -91,7 +93,7 @@ export default function ResultCard({ item, expand = false }) {
                 <Grid item>
                   <Typography variant="body1">{`${price.toFixed(
                     2
-                  )}€`}</Typography>
+                  )}${currency}`}</Typography>
                   <Typography variant="body2" color="textSecondary">
                     {t("Product:Price")}
                   </Typography>

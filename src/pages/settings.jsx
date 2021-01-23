@@ -1,22 +1,35 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // TODO: #1 remove locales
 import { useTranslation } from "react-i18next";
 import i18n from "../utils/i18n";
 
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  TextField,
+} from "@material-ui/core";
 
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
+
+import { loadCurrency, storeCurrency } from "./settings/store";
 
 import DarkIcon from "@material-ui/icons/Brightness4";
 import LightIcon from "@material-ui/icons/Brightness7";
 import SettingsIcon from "@material-ui/icons/Settings";
 
 function Component() {
+  const [currency, setCurrency] = useState(loadCurrency());
   const { t } = useTranslation();
 
   useEffect(() => {
     document.title = `Teepee - ${t("Settings:Header")}`;
   }, []);
+
+  useEffect(() => {
+    storeCurrency(currency);
+  }, [currency]);
 
   return (
     <Page
@@ -27,7 +40,16 @@ function Component() {
       }
       content={
         <Content>
-          <List></List>
+          <List>
+            <ListItem>
+              <TextField
+                fullWidth
+                label="Currency"
+                value={currency}
+                onChange={({ target: { value } }) => setCurrency(value)}
+              />
+            </ListItem>
+          </List>
         </Content>
       }
       TopFabProps={{ color: "primary" }}

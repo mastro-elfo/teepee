@@ -44,7 +44,7 @@ function Component() {
             <ListItem>
               <TextField
                 fullWidth
-                label="Currency"
+                label={t("Settings:Currency-label")}
                 value={currency}
                 onChange={({ target: { value } }) => setCurrency(value)}
               />

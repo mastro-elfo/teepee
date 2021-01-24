@@ -1,7 +1,18 @@
 [
   {
+    "version": "1.4.1",
+    "date": "24 gennaio 2021",
+    "content": [
+      [
+        "Bug Fix: se la valuta non è impostata non mostra alcun simbolo",
+        "Bug Fix: traduzioni mancanti",
+        "Aggiunte informazioni nella pagina di aiuto"
+      ]
+    ]
+  },
+  {
     "version": "1.4.0",
-    "date": "23 novembre 2021",
+    "date": "23 gennaio 2021",
     "content": [
       [
         "Messaggio di alert in caso di prodotto esaurito",

@@ -1,7 +1,18 @@
 [
   {
+    "version": "1.4.1",
+    "date": "January 24 2021",
+    "content": [
+      [
+        "Bug Fix: if currency symbol is not set, doesn't show any symbol",
+        "Bug Fix: missing translations",
+        "Added informations in help page"
+      ]
+    ]
+  },
+  {
     "version": "1.4.0",
-    "date": "November 23 2021",
+    "date": "January 23 2021",
     "content": [
       [
         "Alert message when a product is out of stock",

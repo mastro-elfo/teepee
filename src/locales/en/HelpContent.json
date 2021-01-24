@@ -6,7 +6,8 @@
     "Delete a product",
     "Start new shopping",
     "Close current shopping",
-    "Update stock quantities"
+    "Update stock quantities",
+    "Change currency symbol"
   ],
   "H3": ["The Dashboard gives rapid access to the main functions"],
   "P": [

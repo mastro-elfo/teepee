@@ -139,7 +139,8 @@
   },
   "Settings": {
     "Header": "Impostazioni",
-    "drawer-title": "Apri le impostazioni"
+    "drawer-title": "Apri le impostazioni",
+    "Currency-label": "Valuta"
   },
   "Stock": {
     "Header": "Magazzino",

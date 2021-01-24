@@ -130,16 +130,17 @@
     ]
   },
   "ProductPrintDialog": {
-    "button-title": "Stampa l'elenco dei prodotti",
-    "dialog-title": "Stampa la lista",
-    "partial-primary": "Risultati di ricerca",
-    "partial-secondary": "Stampa i risulati della ricerca attuale",
-    "whole-primary": "Elenco completo",
-    "whole-secondary": "Stampa tutti i prodotti presenti nel database"
+    "button-title": "Print the product list",
+    "dialog-title": "Print the product list",
+    "partial-primary": "Search results",
+    "partial-secondary": "Prints only current search results",
+    "whole-primary": "Entire list",
+    "whole-secondary": "Prints all the products in the database"
   },
   "Settings": {
     "Header": "Settings",
-    "drawer-title": "Apri le impostazioni"
+    "drawer-title": "Open settings",
+    "Currency-label": "Currency"
   },
   "Stock": {
     "Header": "Stock",

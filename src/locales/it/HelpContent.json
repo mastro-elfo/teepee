@@ -6,7 +6,8 @@
     "Elimina un prodotto",
     "Inizia una nuova spesa",
     "Chiudi la spesa corrente",
-    "Aggiorna le quantità in magazzino"
+    "Aggiorna le quantità in magazzino",
+    "Modifica il simbolo della valuta"
   ],
   "H3": [
     "La pagina principale consente un rapido accesso alle funzioni principali"

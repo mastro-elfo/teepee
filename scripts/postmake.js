@@ -14,7 +14,10 @@ if (!match || match.length < 2) {
 }
 const major = match[1];
 // Print publish command
-console.log("Use the following command to publish");
+console.log("Use the following command to publish:");
 console.log(
   `scp out/make/${target}/x64/* mastro-elfo@frs.sourceforge.net:/home/frs/project/teepee-management/v${major}`
 );
+// Print install command
+console.log("Use the following command to install:");
+console.log("sudo apt install out/make/${target}/x64/<.deb file>");

@@ -2,6 +2,11 @@
   {
     "version": "1.4.1",
     "date": "24 gennaio 2021",
+    "content": [["Bug Fix: non stampa l'inventario"]]
+  },
+  {
+    "version": "1.4.1",
+    "date": "24 gennaio 2021",
     "content": [
       [
         "Bug Fix: se la valuta non è impostata non mostra alcun simbolo",

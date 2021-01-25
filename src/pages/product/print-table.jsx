@@ -13,6 +13,7 @@ import {
 
 import { TableHeadCell } from "mastro-elfo-mui";
 
+import Row from "./print-table-row";
 import { loadCurrency } from "../settings/store";
 
 export default function Component({ list = [], callback = () => {} }) {
@@ -35,27 +36,11 @@ export default function Component({ list = [], callback = () => {} }) {
         </TableHead>
         <TableBody>
           {list.map((item) => (
-            <Row key={item.id} {...item} />
+            <Row key={item.id} {...item} currency={currency} />
           ))}
           {callback()}
         </TableBody>
       </Table>
     </TableContainer>
-  );
-}
-
-function Row({ name, description, barcode, price, stock, _create, _update }) {
-  return (
-    <TableRow>
-      <TableCell>{name}</TableCell>
-      <TableCell>{barcode}</TableCell>
-      <TableCell>
-        {price.toFixed(2)}
-        {currency}
-      </TableCell>
-      <TableCell>{stock}</TableCell>
-      <TableCell>{new Date(_create).toLocaleString()}</TableCell>
-      <TableCell>{new Date(_update).toLocaleString()}</TableCell>
-    </TableRow>
   );
 }

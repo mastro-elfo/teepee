@@ -20,4 +20,4 @@ console.log(
 );
 // Print install command
 console.log("Use the following command to install:");
-console.log("sudo apt install out/make/${target}/x64/<.deb file>");
+console.log(`sudo apt install ./out/make/${target}/x64/<.deb file>`);

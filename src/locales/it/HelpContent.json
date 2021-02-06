@@ -32,7 +32,7 @@
     "I risultati di ricerca nella pagina principale mostrano le informazioni principali di ogni prodotto. Per ogni risultato sono presenti diverse azioni rapide:",
     "Quando l'applicazione riscontra un problema, ad esempio con il calcolo delle quantità in magazzino, visualizza un messaggio nella pagina principale, ad esempio:"
   ],
-  "Li": [
+  "LI": [
     [
       "Stampa la ricevuta",
       ", per salvare in formato PDF una copia della lista prodotti acquistati;"

@@ -7,7 +7,8 @@
         "Add currency symbol to new/edit product",
         "Fix error message when a backup is restored",
         "Fix translations",
-        "Check if price is a valid number"
+        "Add title to 'To top' buttons",
+        "Check if price and stock are valid numbers"
       ]
     ]
   },

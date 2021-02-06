@@ -67,7 +67,7 @@ function Component() {
             changelog.map((item, i) => <ChangelogCard key={i} {...item} />)}
         </Content>
       }
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
     />
   );
 }

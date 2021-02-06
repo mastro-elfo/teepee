@@ -120,7 +120,7 @@ function Component() {
           </List>
         </Content>
       }
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
     />
   );
 }

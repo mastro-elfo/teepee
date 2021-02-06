@@ -115,7 +115,7 @@ function Component() {
         </Content>
       }
       print={<Print />}
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
       PaperProps={{
         style: {
           backgroundImage: `url(${background})`,

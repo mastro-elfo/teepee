@@ -115,7 +115,7 @@ function Component() {
         </Content>
       }
       print={<Details {...model} />}
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
     />
   );
 }

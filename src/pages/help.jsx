@@ -296,7 +296,7 @@ function Component() {
           <P></P>
         </Content>
       }
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
     />
   );
 }

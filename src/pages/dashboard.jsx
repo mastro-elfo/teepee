@@ -181,7 +181,7 @@ function Component() {
             ))}
         </Content>
       }
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
       PaperProps={{
         style: {
           // minHeight: "100%",

@@ -160,7 +160,10 @@ function Component() {
                   setModel({ ...model, price: value })
                 }
                 onBlur={() =>
-                  setModel({ ...model, price: Math.abs(parseFloat(price)) })
+                  setModel({
+                    ...model,
+                    price: Math.abs(parseFloat(price === "" ? 0 : price)),
+                  })
                 }
                 inputProps={{
                   min: 0,
@@ -183,7 +186,10 @@ function Component() {
                   setModel({ ...model, stock: value })
                 }
                 onBlur={() =>
-                  setModel({ ...model, stock: Math.abs(parseInt(stock)) })
+                  setModel({
+                    ...model,
+                    stock: Math.abs(parseInt(stock === "" ? 0 : stock)),
+                  })
                 }
                 inputProps={{
                   min: 0,

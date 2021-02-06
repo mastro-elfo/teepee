@@ -1,5 +1,17 @@
 [
   {
+    "version": "1.5.0",
+    "date": "In sviluppo",
+    "content": [
+      [
+        "Aggiunto simbolo valuta al prezzo nelle schede di nuovo e modifica prodotto",
+        "Corretto messaggio di errore quando i backup non è valido",
+        "Corrette traduzioni",
+        "Controllo validità prezzo"
+      ]
+    ]
+  },
+  {
     "version": "1.4.2",
     "date": "25 gennaio 2021",
     "content": [["Bug Fix: non stampa l'inventario"]]

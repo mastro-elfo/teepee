@@ -1,5 +1,17 @@
 [
   {
+    "version": "1.5.0",
+    "date": "Under development",
+    "content": [
+      [
+        "Add currency symbol to new/edit product",
+        "Fix error message when a backup is restored",
+        "Fix translations",
+        "Check if price is a valid number"
+      ]
+    ]
+  },
+  {
     "version": "1.4.2",
     "date": "January 25 2021",
     "content": [["Bug Fix: can't print inventory"]]

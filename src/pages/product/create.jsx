@@ -5,7 +5,13 @@ import { useSnackbar } from "notistack";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
-import { IconButton, List, ListItem, TextField } from "@material-ui/core";
+import {
+  IconButton,
+  InputAdornment,
+  List,
+  ListItem,
+  TextField,
+} from "@material-ui/core";
 
 import {
   AbsoluteCircularProgress,
@@ -20,6 +26,7 @@ import {
 import SaveIcon from "@material-ui/icons/Save";
 
 import { create, defaultValue, readAll } from "./model";
+import { loadCurrency } from "../settings/store";
 
 function Component() {
   const { t } = useTranslation();
@@ -36,6 +43,8 @@ function Component() {
 
   // Model properties
   const { barcode, name, description, price, stock } = model;
+  // Currency
+  const currency = loadCurrency();
 
   useEffect(() => {
     document.title = `Teepee - ${t("ProductCreate:Header")}`;
@@ -155,6 +164,11 @@ function Component() {
                 }
                 inputProps={{
                   min: 0,
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">{currency}</InputAdornment>
+                  ),
                 }}
               />
             </ListItem>

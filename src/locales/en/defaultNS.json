@@ -38,7 +38,8 @@
     "Backup saved": "Backup saved",
     "Restore backup": "Restore backup",
     "Invalid backup": "Invalid backup",
-    "Backup restored": "Backup restored"
+    "Backup restored": "Backup restored",
+    "SyntaxError": "Not a valid backup file"
   },
   "Cart": {
     "Header": "Total shopping",

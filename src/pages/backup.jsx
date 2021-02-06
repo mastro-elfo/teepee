@@ -74,7 +74,13 @@ function Component() {
             });
         }
       })
-      .catch((err) => enqueueSnackbar(err.message, { variant: "error" }));
+      .catch((err) => {
+        if (err.name === "SyntaxError") {
+          enqueueSnackbar(t("Backup:SyntaxError"), { variant: "error" });
+        } else {
+          enqueueSnackbar(err.message, { variant: "error" });
+        }
+      });
   };
 
   return (

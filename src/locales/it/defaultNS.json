@@ -38,7 +38,8 @@
     "Backup saved": "Backup salvato",
     "Restore backup": "Ripristina backup",
     "Invalid backup": "Backup non valido",
-    "Backup restored": "Backup ripristinato"
+    "Backup restored": "Backup ripristinato",
+    "SyntaxError": "File backup non valido"
   },
   "Cart": {
     "Header": "Totale spesa",

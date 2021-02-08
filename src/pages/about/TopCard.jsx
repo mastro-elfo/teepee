@@ -1,10 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { remote } from "electron";
+import { remote, shell } from "electron";
 
 import LogoIcon from "../../assets/Logo";
-
-import { shell } from "electron";
 
 import {
   Avatar,

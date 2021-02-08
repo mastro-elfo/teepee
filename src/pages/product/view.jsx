@@ -91,7 +91,7 @@ function Component() {
             <ListItem>
               <ListItemText
                 primary={`${price.toFixed(2)}${currency}`}
-                secondary="Prezzo"
+                secondary={t("Product:Price")}
               />
             </ListItem>
             <ListItem>
@@ -106,7 +106,9 @@ function Component() {
             <ListItem>
               <ListItemText
                 primary={
-                  _update === 0 ? "Mai" : new Date(_update).toLocaleString()
+                  _update === 0
+                    ? t("Never")
+                    : new Date(_update).toLocaleString()
                 }
                 secondary={t("Product:Updated")}
               />

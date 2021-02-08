@@ -115,7 +115,7 @@ function Component() {
           <P>
             {t("HelpContent:P.6")}
             <Button variant="outlined" color="primary" size="small">
-              Elimina
+              {t("Delete")}
             </Button>
             .
           </P>

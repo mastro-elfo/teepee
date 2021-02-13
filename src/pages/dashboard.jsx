@@ -33,6 +33,7 @@ import Notifications from "../components/notifications";
 import { search } from "./product/model";
 import { useStock } from "./stock/context";
 // import subheader from "../utils/subheader";
+import delay from "../utils/delay";
 import background from "../assets/dashboard.svg";
 
 const ref = createRef();
@@ -56,7 +57,7 @@ function Component() {
 
   const handleSearch = (q, d) => {
     setQuery(q);
-    return search(d).then((r) => {
+    return delay(0, search, d).then((r) => {
       setResults(r);
       replace({ state: { q, results: r } });
     });

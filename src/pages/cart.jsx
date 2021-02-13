@@ -21,6 +21,7 @@ import { useCart } from "./cart/context";
 import { total } from "./cart/utils";
 import { search } from "./product/model";
 // import subheader from "../utils/subheader";
+import delay from "../utils/delay";
 import background from "../assets/cart.svg";
 import { loadCurrency } from "./settings/store";
 
@@ -53,7 +54,7 @@ function Component() {
   };
 
   const handleSearch = (q, d) =>
-    search(d).then((r) => {
+    delay(0, search, d).then((r) => {
       if (!r) {
         setResults(r);
       } else if (r.length === 1) {

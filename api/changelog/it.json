@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.6.0",
+    "date": "In sviluppo",
+    "content": [
+      [
+        "La pagina prodotti stampa tutti i risultati",
+        "Corretto il padding nel sottotitolo della Dashboard",
+        "Ricerca ritardata per consentire l'aggiornamento dell'interfaccia"
+      ]
+    ]
+  },
+  {
     "version": "1.5.1",
     "date": "9 febbraio 2021",
     "content": [["Corrette traduzioni"]]

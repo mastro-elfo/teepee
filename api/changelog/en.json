@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.6.0",
+    "date": "Under development",
+    "content": [
+      [
+        "Fix product list prints only one page",
+        "Fix subheader padding in Dashboard results",
+        "Delayed search to update UI"
+      ]
+    ]
+  },
+  {
     "version": "1.5.1",
     "date": "February 9 2021",
     "content": [["Fix translations"]]

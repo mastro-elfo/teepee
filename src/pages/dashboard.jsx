@@ -163,7 +163,7 @@ function Component() {
           {!!results && results.length === 0 && <NoResults query={query} />}
 
           {!!results && results.length > 0 && (
-            <Box px={2}>
+            <Box px={2} pt={2}>
               <Typography variant="body2" color="textSecondary">
                 {t("Product:subheader", { count: results.length })}
               </Typography>

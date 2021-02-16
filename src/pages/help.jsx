@@ -4,10 +4,10 @@ import i18n from "../utils/i18n";
 
 import { Button, IconButton } from "@material-ui/core";
 
-import { BackIconButton, Content, Header, Page, Push } from "mastro-elfo-mui";
+import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
 // import Markdown from "../components/Markdown";
 
-import { H1, H2, H3, P, UL, LI, EM } from "./help/HelpContent";
+import { H1, H2, H3, P, UL, LI, EM, PushButton } from "./help/HelpContent";
 import Loading from "./loading";
 
 import AddIcon from "@material-ui/icons/Add";
@@ -47,26 +47,17 @@ function Component() {
           <P>
             {t("HelpContent:P.0")} <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push href="/product">
-              <Button
-                color="primary"
-                variant="contained"
-                size="small"
-                title={t("HelpContent:title.0")}
-              >
-                {t("HelpContent:Label.0")}
-              </Button>
-            </Push>
+            <PushButton href="/product" title={t("HelpContent:title.0")}>
+              {t("HelpContent:Label.0")}
+            </PushButton>
             {t("HelpContent:P.2")}
-            <Push href="/product/c">
-              <IconButton
-                color="primary"
-                size="small"
-                title={t("HelpContent:title.1")}
-              >
-                <AddIcon />
-              </IconButton>
-            </Push>
+            <PushButton
+              isIcon
+              href="/product/c"
+              title={t("HelpContent:title.1")}
+            >
+              <AddIcon />
+            </PushButton>
             .
           </P>
           <P>
@@ -77,16 +68,9 @@ function Component() {
           <P>
             {t("HelpContent:P.0")} <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push href="/product">
-              <Button
-                color="primary"
-                variant="contained"
-                size="small"
-                title={t("HelpContent:title.0")}
-              >
-                {t("HelpContent:Label.0")}
-              </Button>
-            </Push>
+            <PushButton href="/product" title={t("HelpContent:title.0")}>
+              {t("HelpContent:Label.0")}
+            </PushButton>
             .
           </P>
           <P>{t("HelpContent:P.4")}</P>
@@ -99,16 +83,9 @@ function Component() {
           <P>
             {t("HelpContent:P.0")} <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push href="/product">
-              <Button
-                color="primary"
-                variant="contained"
-                size="small"
-                title={t("HelpContent:title.0")}
-              >
-                {t("HelpContent:Label.0")}
-              </Button>
-            </Push>
+            <PushButton href="/product" title={t("HelpContent:title.0")}>
+              {t("HelpContent:Label.0")}
+            </PushButton>
             .
           </P>
           <P>{t("HelpContent:P.4")}</P>
@@ -126,16 +103,9 @@ function Component() {
             {t("HelpContent:P.0")}
             <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push href="/cart">
-              <Button
-                color="primary"
-                variant="contained"
-                size="small"
-                title={t("HelpContent:title.2")}
-              >
-                {t("HelpContent:Label.1")}
-              </Button>
-            </Push>
+            <PushButton href="/cart" title={t("HelpContent:title.2")}>
+              {t("HelpContent:Label.1")}
+            </PushButton>
             .
           </P>
           <P>{t("HelpContent:P.4")}</P>
@@ -151,16 +121,9 @@ function Component() {
             {t("HelpContent:P.0")}
             <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push href="/cart">
-              <Button
-                color="primary"
-                variant="contained"
-                size="small"
-                title={t("HelpContent:title.2")}
-              >
-                {t("HelpContent:Label.1")}
-              </Button>
-            </Push>
+            <PushButton href="/cart" title={t("HelpContent:title.2")}>
+              {t("HelpContent:Label.1")}
+            </PushButton>
             .
           </P>
           <P>
@@ -188,9 +151,9 @@ function Component() {
             {t("HelpContent:P.0")}
             <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push href="/stock">
-              <Button>{t("HelpContent:Label.2")}</Button>
-            </Push>
+            <PushButton href="/stock" title={t("HelpContent.title.4")}>
+              {t("HelpContent:Label.2")}
+            </PushButton>
             .
           </P>
           <P>{t("HelpContent:P.4")}</P>
@@ -226,11 +189,9 @@ function Component() {
           </P>
           <P>
             {t("HelpContent:P.9")}
-            <Push href="/cart">
-              <IconButton color="primary" size="small" title="Apri il carrello">
-                <ShoppingCartIcon />
-              </IconButton>
-            </Push>
+            <PushButton href="/cart" isIcon title={t("Dashboard:Open Cart")}>
+              <ShoppingCartIcon />
+            </PushButton>
             {t("HelpContent:P.15")}
           </P>
           <P>{t("HelpContent:P.16")}</P>
@@ -269,16 +230,9 @@ function Component() {
             {t("HelpContent:P.0")}
             <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push href="/settings">
-              <Button
-                color="primary"
-                variant="contained"
-                size="small"
-                title={t("HelpContent:title.3")}
-              >
-                {t("HelpContent:Label.3")}
-              </Button>
-            </Push>
+            <PushButton href="/settings" title={t("HelpContent:title.3")}>
+              {t("HelpContent:Label.3")}
+            </PushButton>
             .
           </P>
 

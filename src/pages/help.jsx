@@ -47,25 +47,25 @@ function Component() {
           <P>
             {t("HelpContent:P.0")} <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push
-              Component={Button}
-              href="/product"
-              color="primary"
-              variant="contained"
-              size="small"
-              title={t("HelpContent:title.0")}
-            >
-              {t("HelpContent:Label.0")}
+            <Push href="/product">
+              <Button
+                color="primary"
+                variant="contained"
+                size="small"
+                title={t("HelpContent:title.0")}
+              >
+                {t("HelpContent:Label.0")}
+              </Button>
             </Push>
             {t("HelpContent:P.2")}
-            <Push
-              Component={IconButton}
-              href="/product/c"
-              color="primary"
-              size="small"
-              title={t("HelpContent:title.1")}
-            >
-              <AddIcon />
+            <Push href="/product/c">
+              <IconButton
+                color="primary"
+                size="small"
+                title={t("HelpContent:title.1")}
+              >
+                <AddIcon />
+              </IconButton>
             </Push>
             .
           </P>
@@ -77,15 +77,15 @@ function Component() {
           <P>
             {t("HelpContent:P.0")} <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push
-              Component={Button}
-              href="/product"
-              color="primary"
-              variant="contained"
-              size="small"
-              title={t("HelpContent:title.0")}
-            >
-              {t("HelpContent:Label.0")}
+            <Push href="/product">
+              <Button
+                color="primary"
+                variant="contained"
+                size="small"
+                title={t("HelpContent:title.0")}
+              >
+                {t("HelpContent:Label.0")}
+              </Button>
             </Push>
             .
           </P>
@@ -99,15 +99,15 @@ function Component() {
           <P>
             {t("HelpContent:P.0")} <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push
-              Component={Button}
-              href="/product"
-              color="primary"
-              variant="contained"
-              size="small"
-              title={t("HelpContent:title.0")}
-            >
-              {t("HelpContent:Label.0")}
+            <Push href="/product">
+              <Button
+                color="primary"
+                variant="contained"
+                size="small"
+                title={t("HelpContent:title.0")}
+              >
+                {t("HelpContent:Label.0")}
+              </Button>
             </Push>
             .
           </P>
@@ -126,15 +126,15 @@ function Component() {
             {t("HelpContent:P.0")}
             <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push
-              Component={Button}
-              href="/cart"
-              color="primary"
-              variant="contained"
-              size="small"
-              title={t("HelpContent:title.2")}
-            >
-              {t("HelpContent:Label.1")}
+            <Push href="/cart">
+              <Button
+                color="primary"
+                variant="contained"
+                size="small"
+                title={t("HelpContent:title.2")}
+              >
+                {t("HelpContent:Label.1")}
+              </Button>
             </Push>
             .
           </P>
@@ -151,15 +151,15 @@ function Component() {
             {t("HelpContent:P.0")}
             <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push
-              Component={Button}
-              href="/cart"
-              color="primary"
-              variant="contained"
-              size="small"
-              title={t("HelpContent:title.2")}
-            >
-              {t("HelpContent:Label.1")}
+            <Push href="/cart">
+              <Button
+                color="primary"
+                variant="contained"
+                size="small"
+                title={t("HelpContent:title.2")}
+              >
+                {t("HelpContent:Label.1")}
+              </Button>
             </Push>
             .
           </P>
@@ -188,15 +188,8 @@ function Component() {
             {t("HelpContent:P.0")}
             <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push
-              Component={Button}
-              href="/stock"
-              color="primary"
-              variant="contained"
-              size="small"
-              title={t("HelpContent:title.2")}
-            >
-              {t("HelpContent:Label.2")}
+            <Push href="/stock">
+              <Button>{t("HelpContent:Label.2")}</Button>
             </Push>
             .
           </P>
@@ -233,14 +226,10 @@ function Component() {
           </P>
           <P>
             {t("HelpContent:P.9")}
-            <Push
-              Component={IconButton}
-              href="/cart"
-              color="primary"
-              size="small"
-              ttle="Apri il carrello"
-            >
-              <ShoppingCartIcon />
+            <Push href="/cart">
+              <IconButton color="primary" size="small" title="Apri il carrello">
+                <ShoppingCartIcon />
+              </IconButton>
             </Push>
             {t("HelpContent:P.15")}
           </P>
@@ -280,15 +269,15 @@ function Component() {
             {t("HelpContent:P.0")}
             <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
-            <Push
-              Component={Button}
-              href="/settings"
-              color="primary"
-              variant="contained"
-              size="small"
-              title={t("HelpContent:title.3")}
-            >
-              {t("HelpContent:Label.3")}
+            <Push href="/settings">
+              <Button
+                color="primary"
+                variant="contained"
+                size="small"
+                title={t("HelpContent:title.3")}
+              >
+                {t("HelpContent:Label.3")}
+              </Button>
             </Push>
             .
           </P>

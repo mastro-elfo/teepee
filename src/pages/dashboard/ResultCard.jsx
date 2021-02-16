@@ -112,12 +112,10 @@ export default function ResultCard({ item, expand = false }) {
 
         <Collapse in={expanded} unmountOnExit>
           <CardActions>
-            <Push
-              Component={IconButton}
-              href={`/product/v/${id}`}
-              title={t("DashboardResultCard:open-product-view")}
-            >
-              <VisibilityIcon />
+            <Push href={`/product/v/${id}`}>
+              <IconButton title={t("DashboardResultCard:open-product-view")}>
+                <VisibilityIcon />
+              </IconButton>
             </Push>
 
             <IconButton
@@ -127,12 +125,10 @@ export default function ResultCard({ item, expand = false }) {
               <AddShoppingCartIcon />
             </IconButton>
 
-            <Push
-              href={`/stock?q=${name}`}
-              Component={IconButton}
-              title={t("DashboardResultCard:manage-stock")}
-            >
-              <StorageIcon />
+            <Push href={`/stock?q=${name}`}>
+              <IconButton title={t("DashboardResultCard:manage-stock")}>
+                <StorageIcon />
+              </IconButton>
             </Push>
           </CardActions>
         </Collapse>

@@ -26,6 +26,7 @@ export default function Component({ list = [], callback = () => {} }) {
       <Table>
         <TableHead>
           <TableRow>
+            <TableHeadCell>#</TableHeadCell>
             <TableHeadCell>{t("Product:Name")}</TableHeadCell>
             <TableHeadCell>{t("Product:Barcode")}</TableHeadCell>
             <TableHeadCell>{t("Product:Price")}</TableHeadCell>
@@ -35,8 +36,8 @@ export default function Component({ list = [], callback = () => {} }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {list.map((item) => (
-            <Row key={item.id} {...item} currency={currency} />
+          {list.map((item, i) => (
+            <Row key={item.id} i={i} {...item} currency={currency} />
           ))}
           {callback()}
         </TableBody>

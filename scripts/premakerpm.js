@@ -9,26 +9,26 @@ const {
   },
 } = require("../package.json");
 
-// Find the deb maker
-const deb =
+// Find the rpm maker
+const rpm =
   makers &&
   makers.find &&
-  makers.find(({ name }) => name === "@electron-forge/maker-deb");
+  makers.find(({ name }) => name === "@electron-forge/maker-rpm");
 
-if (!deb) {
-  console.error("Maker '@electron-forge/maker-deb' not found, exit");
+if (!rpm) {
+  console.error("Maker '@electron-forge/maker-rpm' not found, exit");
   process.exit(1);
 }
 
 // Get maker version in config
 const {
-  config: { version: debversion },
-} = deb;
+  config: { version: rpmversion },
+} = rpm;
 
 // Check versions
-if (version !== debversion) {
+if (version !== rpmversion) {
   console.error(
-    `Package version (${version}) and deb version (${debversion}) don't match, exit`
+    `Package version (${version}) and rpm version (${rpmversion}) don't match, exit`
   );
   process.exit(2);
 }

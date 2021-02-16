@@ -1,44 +1,35 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
+// TODO: #1 remove locales
 import { useTranslation } from "react-i18next";
-import i18n from "../i18n";
-
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import i18n from "../utils/i18n";
 
 import {
-  BackIconButton,
-  Content,
-  Header,
-  Page,
-  usePalette,
-} from "mastro-elfo-mui";
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  TextField,
+} from "@material-ui/core";
+
+import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
+
+import { loadCurrency, storeCurrency } from "./settings/store";
 
 import DarkIcon from "@material-ui/icons/Brightness4";
 import LightIcon from "@material-ui/icons/Brightness7";
 import SettingsIcon from "@material-ui/icons/Settings";
 
-import { storePalette } from "./settings/store";
-
 function Component() {
+  const [currency, setCurrency] = useState(loadCurrency());
   const { t } = useTranslation();
-
-  const [palette, setPalette] = usePalette();
-
-  useEffect(() => {
-    storePalette(palette);
-  }, [palette]);
 
   useEffect(() => {
     document.title = `Teepee - ${t("Settings:Header")}`;
   }, []);
 
-  const { type } = palette;
-  const typeName =
-    { dark: t("Settings:Dark"), light: t("Settings:Light") }[type] ||
-    t("Settings:Light");
-
-  const handleToggleThemeType = () => {
-    setPalette({ ...palette, type: type === "dark" ? "light" : "dark" });
-  };
+  useEffect(() => {
+    storeCurrency(currency);
+  }, [currency]);
 
   return (
     <Page
@@ -50,23 +41,18 @@ function Component() {
       content={
         <Content>
           <List>
-            <ListItem
-              button
-              onClick={handleToggleThemeType}
-              title={t("Settings:Toggle theme")}
-            >
-              <ListItemIcon>
-                {type === "dark" ? <LightIcon /> : <DarkIcon />}
-              </ListItemIcon>
-              <ListItemText
-                primary={typeName}
-                secondary={t("Settings:Theme")}
+            <ListItem>
+              <TextField
+                fullWidth
+                label={t("Settings:Currency-label")}
+                value={currency}
+                onChange={({ target: { value } }) => setCurrency(value)}
               />
             </ListItem>
           </List>
         </Content>
       }
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
     />
   );
 }

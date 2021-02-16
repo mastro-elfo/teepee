@@ -3,19 +3,25 @@
     "Add": "Add",
     "Attributions": "Attributions",
     "Cancel": "Cancel",
+    "Close": "Close",
     "Delete": "Delete",
     "Delete row": "Delete row",
     "Development": "Development",
     "Go Back": "Go Back",
     "License": "License",
     "Loading": "Loading",
+    "Never": "Never",
+    "Open": "Open",
     "Print": "Stampa",
     "Read": "Read",
     "Read-it": "Read",
+    "Save": "Save",
     "Search": "Search",
     "Search-placeholder": "Barcode, name or description",
     "Subtract": "Subtract",
-    "Under development": "Under development"
+    "Under development": "Under development",
+    "Warning": "Warning",
+    "ToTop": "To top"
   },
   "About": {
     "Header": "About",
@@ -34,7 +40,8 @@
     "Backup saved": "Backup saved",
     "Restore backup": "Restore backup",
     "Invalid backup": "Invalid backup",
-    "Backup restored": "Backup restored"
+    "Backup restored": "Backup restored",
+    "SyntaxError": "Not a valid backup file"
   },
   "Cart": {
     "Header": "Total shopping",
@@ -75,8 +82,8 @@
     "Application": "Application",
     "cart-secondary": "1 product",
     "cart-secondary_plural": "{{count}} products",
-    "stock-secondary": "1 edit pending",
-    "stock-secondary_plural": "{{count}} edits pending"
+    "stock-secondary": "1 change",
+    "stock-secondary_plural": "{{count}} changes"
   },
   "Help": {
     "Header": "Help"
@@ -109,7 +116,7 @@
   },
   "ProductCreate": {
     "Header": "Create product",
-    "Save product": "Save product"
+    "BarcodeDuplicateError": "A product with the same barcode already exists: {{name}}"
   },
   "ProductView": {
     "Header": "Product Details",
@@ -126,20 +133,17 @@
     ]
   },
   "ProductPrintDialog": {
-    "button-title": "Stampa l'elenco dei prodotti",
-    "dialog-title": "Stampa la lista",
-    "partial-primary": "Risultati di ricerca",
-    "partial-secondary": "Stampa i risulati della ricerca attuale",
-    "whole-primary": "Elenco completo",
-    "whole-secondary": "Stampa tutti i prodotti presenti nel database"
+    "button-title": "Print the product list",
+    "dialog-title": "Print the product list",
+    "partial-primary": "Search results",
+    "partial-secondary": "Prints only current search results",
+    "whole-primary": "Entire list",
+    "whole-secondary": "Prints all the products in the database"
   },
   "Settings": {
     "Header": "Settings",
-    "drawer-title": "Apri le impostazioni",
-    "Light": "Light",
-    "Dark": "Dark",
-    "Toggle theme": "Toggle theme",
-    "Theme": "Theme"
+    "drawer-title": "Open settings",
+    "Currency-label": "Currency"
   },
   "Stock": {
     "Header": "Stock",

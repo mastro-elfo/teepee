@@ -1,35 +1,83 @@
 import React, { useEffect, useState } from "react";
 
+import { debounce } from "lodash";
+import { useSnackbar } from "notistack";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
-import { useSnackbar } from "notistack";
-
-import { IconButton, List, ListItem, TextField } from "@material-ui/core";
 
 import {
+  IconButton,
+  InputAdornment,
+  List,
+  ListItem,
+  TextField,
+} from "@material-ui/core";
+
+import {
+  AbsoluteCircularProgress,
   BackIconButton,
   Content,
   Header,
+  Loading,
   Page,
   useSearchParams,
 } from "mastro-elfo-mui";
 
 import SaveIcon from "@material-ui/icons/Save";
 
-import { create, defaultValue } from "./model";
+import { create, defaultValue, readAll } from "./model";
+import { loadCurrency } from "../settings/store";
 
 function Component() {
   const { t } = useTranslation();
   const { replace } = useHistory();
   const { enqueueSnackbar } = useSnackbar();
   const searchParams = useSearchParams();
+  // Product model
   const [model, setModel] = useState({ ...defaultValue, ...searchParams });
+  // Saving
+  const [saving, setSaving] = useState(false);
+  // Input Errors
+  const [barcodeError, setBarcodeError] = useState(false);
+  const hasError = [barcodeError].some((a) => a);
+
+  // Model properties
+  const { barcode, name, description, price, stock } = model;
+  // Currency
+  const currency = loadCurrency();
 
   useEffect(() => {
     document.title = `Teepee - ${t("ProductCreate:Header")}`;
   }, []);
 
+  const handleBarcodeDuplicateError = debounce(
+    () =>
+      readAll()
+        .then((r) => r.filter((item) => item.barcode === barcode))
+        .then((r) => {
+          if (r && r.length) {
+            setBarcodeError(
+              t("ProductCreate:BarcodeDuplicateError", { name: r[0].name })
+            );
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        }),
+    300
+  );
+
+  useEffect(() => {
+    setBarcodeError(false);
+    if (barcode) {
+      // Check for duplicates
+      handleBarcodeDuplicateError();
+      return () => handleBarcodeDuplicateError.cancel();
+    }
+  }, [barcode]);
+
   const handleSave = () => {
+    setSaving(true);
     create(model)
       .then(({ id }) => {
         replace(`/product/v/${id}`);
@@ -37,10 +85,9 @@ function Component() {
       .catch((err) => {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
+        setSaving(false);
       });
   };
-
-  const { barcode, name, description, price, stock } = model;
 
   return (
     <Page
@@ -48,8 +95,15 @@ function Component() {
         <Header
           LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={
-            <IconButton title={t("Product:Save product")} onClick={handleSave}>
+            <IconButton
+              title={t("Save")}
+              onClick={handleSave}
+              disabled={hasError || saving}
+            >
               <SaveIcon />
+              <Loading show={saving}>
+                <AbsoluteCircularProgress color="secondary" />
+              </Loading>
             </IconButton>
           }
         >
@@ -67,6 +121,8 @@ function Component() {
                 onChange={({ target: { value } }) =>
                   setModel({ ...model, barcode: value })
                 }
+                error={!!barcodeError}
+                helperText={barcodeError}
               />
             </ListItem>
 
@@ -104,10 +160,18 @@ function Component() {
                   setModel({ ...model, price: value })
                 }
                 onBlur={() =>
-                  setModel({ ...model, price: Math.abs(parseFloat(price)) })
+                  setModel({
+                    ...model,
+                    price: Math.abs(parseFloat(price === "" ? 0 : price)),
+                  })
                 }
                 inputProps={{
                   min: 0,
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">{currency}</InputAdornment>
+                  ),
                 }}
               />
             </ListItem>
@@ -122,7 +186,10 @@ function Component() {
                   setModel({ ...model, stock: value })
                 }
                 onBlur={() =>
-                  setModel({ ...model, stock: Math.abs(parseInt(stock)) })
+                  setModel({
+                    ...model,
+                    stock: Math.abs(parseInt(stock === "" ? 0 : stock)),
+                  })
                 }
                 inputProps={{
                   min: 0,
@@ -132,7 +199,7 @@ function Component() {
           </List>
         </Content>
       }
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
     />
   );
 }

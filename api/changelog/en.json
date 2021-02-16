@@ -1,0 +1,88 @@
+[
+  {
+    "version": "1.6.0",
+    "date": "February 15 2021",
+    "content": [
+      [
+        "Fix product list prints only one page",
+        "Fix subheader padding in Dashboard results",
+        "Delayed search to update UI"
+      ]
+    ]
+  },
+  {
+    "version": "1.5.1",
+    "date": "February 9 2021",
+    "content": [["Fix translations"]]
+  },
+  {
+    "version": "1.5.0",
+    "date": "February 8 2021",
+    "content": [
+      [
+        "Add currency symbol to new/edit product",
+        "Fix error message when a backup is restored",
+        "Fix translations",
+        "Add title to 'To top' buttons",
+        "Check if price and stock are valid numbers"
+      ]
+    ]
+  },
+  {
+    "version": "1.4.2",
+    "date": "January 25 2021",
+    "content": [["Bug Fix: can't print inventory"]]
+  },
+  {
+    "version": "1.4.1",
+    "date": "January 24 2021",
+    "content": [
+      [
+        "Bug Fix: if currency symbol is not set, doesn't show any symbol",
+        "Bug Fix: missing translations",
+        "Added informations in help page"
+      ]
+    ]
+  },
+  {
+    "version": "1.4.0",
+    "date": "January 23 2021",
+    "content": [
+      [
+        "Alert message when a product is out of stock",
+        "Configure currency symbol"
+      ]
+    ]
+  },
+  {
+    "version": "1.3.0",
+    "date": "November 23 2020",
+    "content": [
+      [
+        "Check barcode duplicate when editing a product",
+        "Improved performances"
+      ]
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "date": "November 16 2020",
+    "content": [["Check barcode duplicate", "Added loader to save button"]]
+  },
+  {
+    "version": "1.1.0",
+    "date": "November 9 2020",
+    "content": [
+      [
+        "Internationalization",
+        ["Italian", "English"],
+        "Use same theme (dark/light) as the system"
+      ]
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "date": "November 3 2020",
+    "content": [["Products management", "Stock management", "Shopping cart"]]
+  }
+]

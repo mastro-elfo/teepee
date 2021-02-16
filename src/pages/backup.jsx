@@ -4,7 +4,7 @@ import { promises } from "fs";
 import { useSnackbar } from "notistack";
 import path from "path";
 import { prefix } from "prefix-si";
-import i18n from "../i18n";
+import i18n from "../utils/i18n";
 import { useTranslation } from "react-i18next";
 
 import { BackIconButton, Content, Header, Page } from "mastro-elfo-mui";
@@ -15,8 +15,7 @@ import RestoreBackupIcon from "@material-ui/icons/Restore";
 
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 
-import { resetdb } from "../utils/database";
-import { filename, stat } from "../database";
+import { filename, resetdb, stat } from "../utils/database";
 
 const defaultPath = path.join(remote.app.getPath("documents"), "teepee.backup");
 
@@ -75,7 +74,13 @@ function Component() {
             });
         }
       })
-      .catch((err) => enqueueSnackbar(err.message, { variant: "error" }));
+      .catch((err) => {
+        if (err.name === "SyntaxError") {
+          enqueueSnackbar(t("Backup:SyntaxError"), { variant: "error" });
+        } else {
+          enqueueSnackbar(err.message, { variant: "error" });
+        }
+      });
   };
 
   return (
@@ -115,7 +120,7 @@ function Component() {
           </List>
         </Content>
       }
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
     />
   );
 }

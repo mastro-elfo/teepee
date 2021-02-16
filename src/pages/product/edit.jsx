@@ -1,39 +1,59 @@
 import React, { useEffect, useState } from "react";
 
-import { useTranslation } from "react-i18next";
+import { debounce } from "lodash";
 import { useSnackbar } from "notistack";
-import { useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
-
-import { IconButton, List, ListItem, TextField } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
+import { useHistory, useParams } from "react-router-dom";
 
 import {
+  IconButton,
+  InputAdornment,
+  List,
+  ListItem,
+  TextField,
+} from "@material-ui/core";
+
+import {
+  AbsoluteCircularProgress,
   BackIconButton,
   Conditional,
   ConfirmDialogButton,
   Content,
   Header,
+  Loading,
   Page,
 } from "mastro-elfo-mui";
 
 import SaveIcon from "@material-ui/icons/Save";
 
-import Loading from "../loading";
-import { del, read, update } from "./model";
+import LoadingPage from "../loading";
+import { del, read, readAll, update } from "./model";
+import { loadCurrency } from "../settings/store";
 
 function Component() {
   const { t } = useTranslation();
   const { enqueueSnackbar } = useSnackbar();
   const { go, goBack } = useHistory();
-  const { id } = useParams();
+  // `id` from `useParams` is a string
+  const { id: _id } = useParams();
+  // Product model
   const [model, setModel] = useState();
-
+  // Saving
+  const [saving, setSaving] = useState(false);
+  // Input Errors
+  const [barcodeError, setBarcodeError] = useState(false);
+  const hasError = [barcodeError].some((a) => a);
+  // Explode properties
+  const { id, barcode, name, description, price, stock } = model || {};
+  // Currency
+  const currency = loadCurrency();
+  // Set title
   useEffect(() => {
     document.title = `Teepee - ${t("ProductEdit:Header")}`;
   }, []);
-
+  // Read model data
   useEffect(() => {
-    read(id)
+    read(_id)
       .then((data) => {
         setModel(data);
       })
@@ -41,21 +61,23 @@ function Component() {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
       });
-  }, [id]);
-
+  }, [_id]);
+  // Handle save click
   const handleSave = () => {
-    update(id, model)
+    setSaving(true);
+    update(_id, model)
       .then(() => {
         goBack();
       })
       .catch((err) => {
         console.error(err);
         enqueueSnackbar(err.message, { variant: "error" });
+        setSaving(false);
       });
   };
-
+  // Handle delete click
   const handleDelete = () => {
-    del(id)
+    del(_id)
       .then(({ name }) => {
         // enqueueSnackbar(`${name} eliminato`, { variant: "success" });
         enqueueSnackbar(t("ProductEdit:product-deleted", { name }), {
@@ -68,19 +90,54 @@ function Component() {
         enqueueSnackbar(err.message, { variant: "error" });
       });
   };
-
-  if (!model) return <Loading header={t("ProductEdit:Header")} />;
-
-  const { barcode, name, description, price, stock } = model;
-
+  // Handle duplicate barcode check
+  const handleBarcodeDuplicateError = debounce(
+    () =>
+      readAll()
+        .then((r) =>
+          // No duplicate if same `id`
+          r.filter((item) => item.id !== id && item.barcode === barcode)
+        )
+        .then((r) => {
+          if (r && r.length) {
+            setBarcodeError(
+              t("ProductCreate:BarcodeDuplicateError", { name: r[0].name })
+            );
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        }),
+    300
+  );
+  // When `barcode` changes
+  useEffect(() => {
+    setBarcodeError(false);
+    if (barcode) {
+      // Check for duplicates
+      handleBarcodeDuplicateError();
+      return () => handleBarcodeDuplicateError.cancel();
+    }
+  }, [barcode]);
+  // If model still not loaded display a loading page
+  if (!model) return <LoadingPage header={t("ProductEdit:Header")} />;
+  // Render
   return (
     <Page
       header={
         <Header
           LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={
-            <IconButton title={t("Product:Save product")} onClick={handleSave}>
+            // Save button
+            <IconButton
+              title={t("Save")}
+              onClick={handleSave}
+              disabled={hasError || saving}
+            >
               <SaveIcon />
+              <Loading show={saving}>
+                <AbsoluteCircularProgress color="secondary" />
+              </Loading>
             </IconButton>
           }
         >
@@ -90,6 +147,7 @@ function Component() {
       content={
         <Content>
           <List>
+            {/* Barcode */}
             <ListItem>
               <TextField
                 fullWidth
@@ -98,9 +156,11 @@ function Component() {
                 onChange={({ target: { value } }) =>
                   setModel({ ...model, barcode: value })
                 }
+                error={!!barcodeError}
+                helperText={barcodeError}
               />
             </ListItem>
-
+            {/* Name */}
             <ListItem>
               <TextField
                 fullWidth
@@ -111,7 +171,7 @@ function Component() {
                 }
               />
             </ListItem>
-
+            {/* Description */}
             <ListItem>
               <TextField
                 fullWidth
@@ -124,7 +184,7 @@ function Component() {
                 }
               />
             </ListItem>
-
+            {/* Price */}
             <ListItem>
               <TextField
                 fullWidth
@@ -140,9 +200,14 @@ function Component() {
                 inputProps={{
                   min: 0,
                 }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">{currency}</InputAdornment>
+                  ),
+                }}
               />
             </ListItem>
-
+            {/* Stock quantity */}
             <ListItem>
               <TextField
                 fullWidth
@@ -160,7 +225,7 @@ function Component() {
                 }}
               />
             </ListItem>
-
+            {/* Delete button */}
             <ListItem>
               <ConfirmDialogButton
                 variant="outlined"
@@ -182,11 +247,12 @@ function Component() {
           </List>
         </Content>
       }
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
     />
   );
 }
 
+// Route object
 export const route = {
   path: "/product/e/:id",
   exact: true,

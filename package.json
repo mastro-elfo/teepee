@@ -1,7 +1,7 @@
 {
   "name": "teepee",
   "productName": "Teepee",
-  "version": "1.0.0",
+  "version": "1.6.0",
   "description": "A simple management application",
   "main": ".webpack/main",
   "homepage": "https://github.com/mastro-elfo/teepee#README",
@@ -12,7 +12,7 @@
     "react",
     "reactjs",
     "electron",
-    "electro-app",
+    "electron-app",
     "webpack",
     "material-ui"
   ],
@@ -28,18 +28,24 @@
   },
   "scripts": {
     "start": "electron-forge start",
-    "prestart": "yarn run init",
     "package": "electron-forge package",
-    "init": "node ./scripts/init.js",
     "make": "electron-forge make",
-    "make:deb": "electron-forge make --targets @electron-forge/maker-deb",
+    "premake": "yarn run test && node ./scripts/premake.js",
+    "make:deb": "yarn run make --targets @electron-forge/maker-deb",
     "premake:deb": "node ./scripts/premakedeb.js",
+    "postmake:deb": "node ./scripts/postmake deb",
+    "make:rpm": "yarn run make --targets @electron-forge/maker-rpm",
+    "premake:rpm": "node ./scripts/premakerpm.js",
+    "postmake:rpm": "node ./scripts/postmake rpm",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "test": "jest"
   },
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "executableName": "teepee"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
@@ -67,12 +73,23 @@
             "name": "teepee",
             "productDescription": "A simple management app for non-profit organizations",
             "productName": "Teepee",
-            "version": "1.0.0"
+            "version": "1.6.0"
           }
         },
         {
           "name": "@electron-forge/maker-rpm",
-          "config": {}
+          "config": {
+            "categories": [
+              "Office"
+            ],
+            "description": "A simple management app for non-profit organizations",
+            "genericName": "Management",
+            "icon": "./src/assets/logo.png",
+            "name": "teepee",
+            "productDescription": "A simple management app for non-profit organizations",
+            "productName": "Teepee",
+            "version": "1.6.0"
+          }
         }
       ],
       "plugins": [
@@ -111,7 +128,9 @@
     "electron": "10.1.3",
     "electron-icon-maker": "^0.0.5",
     "file-loader": "^6.1.1",
+    "jest": "^26.6.3",
     "node-loader": "^0.6.0",
+    "react-test-renderer": "^17.0.1",
     "style-loader": "^0.23.1",
     "svg-inline-loader": "^0.8.2"
   },

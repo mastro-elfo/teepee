@@ -1,7 +1,8 @@
 import React, { createRef, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import i18n from "../i18n";
+import i18n from "../utils/i18n";
 // import { useSnackbar } from "notistack";
+import delay from "../utils/delay";
 
 import { IconButton, ListItemSecondaryAction } from "@material-ui/core";
 
@@ -51,7 +52,7 @@ function Component() {
   };
 
   const handleSearch = (q, d) =>
-    search(d).then((r) => {
+    delay(0, search, d).then((r) => {
       if (!r) {
         setResults(r);
       } else if (r.length === 1) {
@@ -108,7 +109,7 @@ function Component() {
           {stock.length > 0 && <Table />}
         </Content>
       }
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
       PaperProps={{
         style: {
           // minHeight: "100%",

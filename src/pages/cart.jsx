@@ -1,6 +1,6 @@
 import React, { createRef, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import i18n from "../i18n";
+import i18n from "../utils/i18n";
 // import { useSnackbar } from "notistack";
 
 import {
@@ -21,7 +21,9 @@ import { useCart } from "./cart/context";
 import { total } from "./cart/utils";
 import { search } from "./product/model";
 // import subheader from "../utils/subheader";
+import delay from "../utils/delay";
 import background from "../assets/cart.svg";
+import { loadCurrency } from "./settings/store";
 
 const ref = createRef();
 
@@ -52,7 +54,7 @@ function Component() {
   };
 
   const handleSearch = (q, d) =>
-    search(d).then((r) => {
+    delay(0, search, d).then((r) => {
       if (!r) {
         setResults(r);
       } else if (r.length === 1) {
@@ -76,6 +78,8 @@ function Component() {
   };
   const handleChange = ({ target: { value } }) => setQuery(value);
 
+  const currency = loadCurrency();
+
   return (
     <Page
       header={
@@ -83,7 +87,8 @@ function Component() {
           LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={<CloseDialog />}
         >
-          {t("Cart:Header")}: {total(cart).toFixed(2)}€
+          {t("Cart:Header")}: {total(cart).toFixed(2)}
+          {currency}
         </Header>
       }
       content={
@@ -111,7 +116,7 @@ function Component() {
         </Content>
       }
       print={<Print />}
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
       PaperProps={{
         style: {
           backgroundImage: `url(${background})`,

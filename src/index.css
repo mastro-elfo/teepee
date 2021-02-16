@@ -9,11 +9,15 @@ body {
   margin: auto;
 }
 
-html,
+/* html,
 body,
 #root,
 #root > div {
   height: 100%;
+} */
+
+#root > div:first-child {
+  height: 100vh;
 }
 
 @media print {

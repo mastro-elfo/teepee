@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import i18n from "../i18n";
+import i18n from "../utils/i18n";
 
 import { Button, IconButton } from "@material-ui/core";
 
@@ -24,7 +24,7 @@ import SaveIcon from "@material-ui/icons/Save";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import StorageIcon from "@material-ui/icons/Storage";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-import { NotificationCard } from "../components/notifications";
+import { NotificationAlert } from "../components/notifications";
 
 function Component() {
   const { t } = useTranslation();
@@ -115,7 +115,7 @@ function Component() {
           <P>
             {t("HelpContent:P.6")}
             <Button variant="outlined" color="primary" size="small">
-              Elimina
+              {t("Delete")}
             </Button>
             .
           </P>
@@ -262,7 +262,7 @@ function Component() {
 
           <P>{t("HelpContent:P.17")}</P>
 
-          <NotificationCard
+          <NotificationAlert
             type="warning"
             content={t("CartCloseDialog:warning-content", {
               name: t("Product:Product"),
@@ -273,7 +273,9 @@ function Component() {
           />
 
           <H1>{t("HelpContent:H1.4")}</H1>
+
           <H2>{t("HelpContent:H2.6")}</H2>
+
           <P>
             {t("HelpContent:P.0")}
             <MenuIcon fontSize="small" />
@@ -290,12 +292,11 @@ function Component() {
             </Push>
             .
           </P>
-          <P>{t("HelpContent:P.18")}</P>
 
           <P></P>
         </Content>
       }
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
     />
   );
 }

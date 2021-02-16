@@ -14,6 +14,7 @@ import PrintIcon from "@material-ui/icons/Print";
 import Details from "./details";
 import Loading from "../loading";
 import { read } from "./model";
+import { loadCurrency } from "../settings/store";
 
 function Component() {
   const { t } = useTranslation();
@@ -41,6 +42,7 @@ function Component() {
   if (!model) return <Loading header="ProductView:Header" />;
 
   const { barcode, name, description, price, stock, _create, _update } = model;
+  const currency = loadCurrency();
 
   return (
     <Page
@@ -88,8 +90,8 @@ function Component() {
             </ListItem>
             <ListItem>
               <ListItemText
-                primary={`${price.toFixed(2)}€`}
-                secondary="Prezzo"
+                primary={`${price.toFixed(2)}${currency}`}
+                secondary={t("Product:Price")}
               />
             </ListItem>
             <ListItem>
@@ -104,7 +106,9 @@ function Component() {
             <ListItem>
               <ListItemText
                 primary={
-                  _update === 0 ? "Mai" : new Date(_update).toLocaleString()
+                  _update === 0
+                    ? t("Never")
+                    : new Date(_update).toLocaleString()
                 }
                 secondary={t("Product:Updated")}
               />
@@ -113,7 +117,7 @@ function Component() {
         </Content>
       }
       print={<Details {...model} />}
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
     />
   );
 }

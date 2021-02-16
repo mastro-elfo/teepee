@@ -3,19 +3,25 @@
     "Add": "Aggiungi",
     "Attributions": "Attribuzioni",
     "Cancel": "Cancella",
+    "Close": "Chiudi",
     "Delete": "Elimina",
     "Delete row": "Elimina riga",
     "Development": "Sviluppo",
     "Go Back": "Torna indietro",
     "License": "Licenza",
     "Loading": "Caricando",
+    "Never": "Mai",
+    "Open": "Apri",
     "Print": "Stampa",
     "Read": "Letto",
     "Read-it": "Leggi",
+    "Save": "Salva",
     "Search": "Cerca",
     "Search-placeholder": "Codice, nome o descrizione",
     "Subtract": "Sottrai",
-    "Under development": "In sviluppo"
+    "Under development": "In sviluppo",
+    "Warning": "Attenzione",
+    "ToTop": "Torna su"
   },
   "About": {
     "Header": "Informazioni",
@@ -23,7 +29,7 @@
     "description": "Applicazione gestionale rivolto ad associazioni senza scopo di lucro",
     "license-header": "Software distribuito con licenza MIT",
     "open-source": "Software Open Source",
-    "code-button-title": "Open Github repository",
+    "code-button-title": "Apri repository su Github",
     "code-button-label": "Codice",
     "undraw-button-title": "Apri il sito unDraw"
   },
@@ -34,7 +40,8 @@
     "Backup saved": "Backup salvato",
     "Restore backup": "Ripristina backup",
     "Invalid backup": "Backup non valido",
-    "Backup restored": "Backup ripristinato"
+    "Backup restored": "Backup ripristinato",
+    "SyntaxError": "File backup non valido"
   },
   "Cart": {
     "Header": "Totale spesa",
@@ -63,7 +70,7 @@
     "added-to-cart": "{{name}} aggiunto al carrello",
     "open-product-view": "Apri scheda prodotto",
     "add-to-cart": "Aggiungi al carrello",
-    "manage-stock": "Manage stock quantity"
+    "manage-stock": "Gestisci quantità in magazzino"
   },
   "DashboardNoResultCard": {
     "Header": "Nessun prodotto trovato",
@@ -75,8 +82,8 @@
     "Application": "Applicazione",
     "cart-secondary": "1 prodotto",
     "cart-secondary_plural": "{{count}} prodotti",
-    "stock-secondary": "1 modifica in sospeso",
-    "stock-secondary_plural": "{{count}} modifiche in sospeso"
+    "stock-secondary": "1 modifica",
+    "stock-secondary_plural": "{{count}} modifiche"
   },
   "Help": {
     "Header": "Aiuto"
@@ -109,7 +116,7 @@
   },
   "ProductCreate": {
     "Header": "Crea Prodotto",
-    "Save product": "Salva prodotto"
+    "BarcodeDuplicateError": "Esiste già un prodotto con lo stesso codice: {{name}}"
   },
   "ProductView": {
     "Header": "Scheda prodotto",
@@ -136,10 +143,7 @@
   "Settings": {
     "Header": "Impostazioni",
     "drawer-title": "Apri le impostazioni",
-    "Light": "Chiaro",
-    "Dark": "Scuro",
-    "Toggle theme": "Inverti il tema",
-    "Theme": "Tema"
+    "Currency-label": "Valuta"
   },
   "Stock": {
     "Header": "Magazzino",

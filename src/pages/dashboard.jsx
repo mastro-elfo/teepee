@@ -24,7 +24,6 @@ import { drawer as help } from "./help";
 import { drawer as product } from "./product";
 import { drawer as settings } from "./settings";
 import { drawer as stock } from "./stock";
-// import { drawer as update } from "./update";
 
 import { useCart } from "./cart/context";
 import { totalCount } from "./cart/utils";
@@ -34,6 +33,7 @@ import Notifications from "../components/notifications";
 import { search } from "./product/model";
 import { useStock } from "./stock/context";
 // import subheader from "../utils/subheader";
+import delay from "../utils/delay";
 import background from "../assets/dashboard.svg";
 
 const ref = createRef();
@@ -57,7 +57,7 @@ function Component() {
 
   const handleSearch = (q, d) => {
     setQuery(q);
-    return search(d).then((r) => {
+    return delay(0, search, d).then((r) => {
       setResults(r);
       replace({ state: { q, results: r } });
     });
@@ -164,7 +164,7 @@ function Component() {
           {!!results && results.length === 0 && <NoResults query={query} />}
 
           {!!results && results.length > 0 && (
-            <Box px={2}>
+            <Box px={2} pt={2}>
               <Typography variant="body2" color="textSecondary">
                 {t("Product:subheader", { count: results.length })}
               </Typography>
@@ -182,7 +182,7 @@ function Component() {
             ))}
         </Content>
       }
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
       PaperProps={{
         style: {
           // minHeight: "100%",

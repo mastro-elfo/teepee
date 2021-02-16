@@ -7,7 +7,7 @@
     "Inizia una nuova spesa",
     "Chiudi la spesa corrente",
     "Aggiorna le quantità in magazzino",
-    "Cambia il tema"
+    "Modifica il simbolo della valuta"
   ],
   "H3": [
     "La pagina principale consente un rapido accesso alle funzioni principali"
@@ -30,10 +30,9 @@
     "per aprire il menù e accedere alle diverse pagine dell'applicazione.",
     "per accedere rapidamente al carrello. Quando ci sono prodotti nel carrello l'icona mostra la quantità.",
     "I risultati di ricerca nella pagina principale mostrano le informazioni principali di ogni prodotto. Per ogni risultato sono presenti diverse azioni rapide:",
-    "Quando l'applicazione riscontra un problema, ad esempio con il calcolo delle quantità in magazzino, visualizza un messaggio nella pagina principale, ad esempio:",
-    "Cliccare sulla riga corrispondente al Tema per invertire i colori chiaro/scuro."
+    "Quando l'applicazione riscontra un problema, ad esempio con il calcolo delle quantità in magazzino, visualizza un messaggio nella pagina principale, ad esempio:"
   ],
-  "Li": [
+  "LI": [
     [
       "Stampa la ricevuta",
       ", per salvare in formato PDF una copia della lista prodotti acquistati;"

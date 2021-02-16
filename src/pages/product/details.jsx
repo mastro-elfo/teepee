@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 
 import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 
+import { loadCurrency } from "../settings/store";
+
 export default function Component({
   barcode,
   name,
@@ -13,6 +15,8 @@ export default function Component({
   _update,
 }) {
   const { t } = useTranslation();
+
+  const currency = loadCurrency();
 
   return (
     <Fragment>
@@ -37,7 +41,7 @@ export default function Component({
         </ListItem>
         <ListItem>
           <ListItemText
-            primary={`${price.toFixed(2)}€`}
+            primary={`${price.toFixed(2)}${currency}`}
             secondary={t("Product:Price")}
           />
         </ListItem>

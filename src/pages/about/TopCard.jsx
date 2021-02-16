@@ -1,9 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { remote, shell } from "electron";
 
 import LogoIcon from "../../assets/Logo";
-
-import { shell } from "electron";
 
 import {
   Avatar,
@@ -16,8 +15,6 @@ import {
 
 import { ConfirmDialogButton } from "mastro-elfo-mui";
 
-import { version } from "../../version.json";
-
 export default function Component() {
   const { t } = useTranslation();
 
@@ -29,7 +26,7 @@ export default function Component() {
             <LogoIcon style={{ stroke: "#ff9800" }} />
           </Avatar>
         }
-        title={`Teepee (${version})`}
+        title={`Teepee (${remote.app.getVersion()})`}
         subheader={t("About:description")}
       />
       <CardContent>

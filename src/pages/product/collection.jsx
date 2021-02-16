@@ -21,6 +21,7 @@ import PrintDialogIconButton from "./print-dialog";
 import PrintTable from "./print-table";
 import { readAll, search } from "./model";
 import subheader from "../../utils/subheader";
+import delay from "../../utils/delay";
 import background from "../../assets/product.svg";
 
 function Component() {
@@ -58,7 +59,7 @@ function Component() {
   };
 
   const handleSearch = (q, d) =>
-    search(d).then((r) => {
+    delay(0, search, d).then((r) => {
       setResults(r);
     });
 
@@ -111,7 +112,7 @@ function Component() {
         </Content>
       }
       print={<PrintTable {...printList} />}
-      TopFabProps={{ color: "primary" }}
+      TopFabProps={{ color: "primary", title: t("ToTop") }}
       PaperProps={{
         style: {
           // minHeight: "100%",

@@ -227,7 +227,11 @@ function Component() {
           <P>
             {t("HelpContent:P.9")}
             <Push href="/cart">
-              <IconButton color="primary" size="small" title="Apri il carrello">
+              <IconButton
+                color="primary"
+                size="small"
+                title={t("Dashboard:Open Cart")}
+              >
                 <ShoppingCartIcon />
               </IconButton>
             </Push>

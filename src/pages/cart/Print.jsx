@@ -36,7 +36,7 @@ export default function CartTable() {
         </TableHead>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={2}>{t("Product:Product")}</TableCell>
+            <TableCell colSpan={2}>{t("Product:Total")}</TableCell>
             <TableCell> {totalCount(cart)}</TableCell>
             <TableCell>
               {total(cart).toFixed(2)}

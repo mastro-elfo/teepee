@@ -42,7 +42,7 @@ export default function Component() {
             content: license.split("\n"),
             confirm: t("Read"),
           }}
-          title="Legi il testo"
+          title={t("Read-it")}
         >
           {t("Read-it")}
         </ConfirmDialogButton>

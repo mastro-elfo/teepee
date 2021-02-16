@@ -76,13 +76,13 @@ function Component() {
           LeftAction={<BackIconButton title={t("Go Back")} />}
           RightActions={[
             <PrintDialogIconButton key="print" onConfirm={handlePrint} />,
-            <Push
-              key="create"
-              Component={IconButton}
-              href="/product/c"
-              title={t("ProductCollection:add-title")}
-            >
-              <AddIcon />
+            <Push key="create" Component={IconButton}>
+              <IconButton
+                href="/product/c"
+                title={t("ProductCollection:add-title")}
+              >
+                <AddIcon />
+              </IconButton>
             </Push>,
           ]}
         >

@@ -50,15 +50,15 @@ export default function NoResultFound({ query }) {
         </CardContent>
 
         <CardActions>
-          <Push
-            Component={Button}
-            href={`/product/c?${field}=${query}`}
-            color="primary"
-            variant="contained"
-            title={t("DashboardNoResultCard:create-new-title")}
-            size="small"
-          >
-            {t("Add")}
+          <Push href={`/product/c?${field}=${query}`}>
+            <Button
+              color="primary"
+              variant="contained"
+              title={t("DashboardNoResultCard:create-new-title")}
+              size="small"
+            >
+              {t("Add")}
+            </Button>
           </Push>
         </CardActions>
       </Card>

@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 
-import { Box, Typography } from "@material-ui/core";
+import { Box, Button, IconButton, Typography } from "@material-ui/core";
+import { Push } from "mastro-elfo-mui";
 
 export function H1({ children }) {
   return (
@@ -49,4 +50,26 @@ export function UL({ children }) {
 
 export function LI({ children }) {
   return <Typography variant="body2">{children}</Typography>;
+}
+
+export function BaseButton({ children, isIcon = false, ...props }) {
+  if (isIcon)
+    return (
+      <IconButton color="primary" size="small" {...props}>
+        {children}
+      </IconButton>
+    );
+  return (
+    <Button color="primary" variant="contained" size="small" {...props}>
+      {children}
+    </Button>
+  );
+}
+
+export function PushButton({ children, href, ...props }) {
+  return (
+    <Push href={href}>
+      <BaseButton {...props}>{children}</BaseButton>
+    </Push>
+  );
 }

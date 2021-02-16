@@ -189,7 +189,14 @@ function Component() {
             <MenuIcon fontSize="small" />
             {t("HelpContent:P.1")}
             <Push href="/stock">
-              <Button>{t("HelpContent:Label.2")}</Button>
+              <Button
+                color="primary"
+                variant="contained"
+                size="small"
+                title={t("HelpContent.title.4")}
+              >
+                {t("HelpContent:Label.2")}
+              </Button>
             </Push>
             .
           </P>

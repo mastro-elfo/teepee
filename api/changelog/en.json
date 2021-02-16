@@ -2,7 +2,13 @@
   {
     "version": "1.7.0",
     "date": "Under development",
-    "content": [["Add index to product list table"]]
+    "content": [
+      [
+        "Add index to product list table",
+        "Upgrade libraries",
+        "Fix translations"
+      ]
+    ]
   },
   {
     "version": "1.6.0",

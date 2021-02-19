@@ -2,7 +2,13 @@
   {
     "version": "1.7.0",
     "date": "In sviluppo",
-    "content": [["Aggiunto indice alla tabella prodotti"]]
+    "content": [
+      [
+        "Aggiunto indice alla tabella prodotti",
+        "Agiornamento librerie",
+        "Corrette traduzioni"
+      ]
+    ]
   },
   {
     "version": "1.6.0",

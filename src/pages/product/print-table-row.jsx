@@ -3,17 +3,19 @@ import React from "react";
 import { TableCell, TableRow } from "@material-ui/core";
 
 export default function Row({
-  name,
-  description,
   barcode,
+  currency,
+  description,
+  i,
+  name,
   price,
   stock,
   _create,
   _update,
-  currency,
 }) {
   return (
     <TableRow>
+      <TableCell>{i}</TableCell>
       <TableCell>{name}</TableCell>
       <TableCell>{barcode}</TableCell>
       <TableCell>

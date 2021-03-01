@@ -57,13 +57,11 @@ function Component() {
             >
               <PrintIcon />
             </IconButton>,
-            <Push
-              key="edit"
-              href={`/product/e/${id}`}
-              Component={IconButton}
-              title={t("ProductView:Edit-title")}
-            >
-              <EditIcon />
+            <Push key="edit" href={`/product/e/${id}`}>
+              <IconButton title={t("ProductView:Edit-title")}>
+                {" "}
+                <EditIcon />
+              </IconButton>
             </Push>,
           ]}
         >

@@ -74,9 +74,7 @@ function Component() {
       header={
         <Header
           LeftAction={
-            <DrawerIconButton
-              IconButtonProps={{ title: t("Dashboard:Open Menu") }}
-            >
+            <DrawerIconButton title={t("Dashboard:Open Menu")}>
               <DrawerLists
                 lists={[
                   {
@@ -130,14 +128,15 @@ function Component() {
             </DrawerIconButton>
           }
           RightActions={
-            <Push
-              Component={IconButton}
-              href="/cart"
-              title={t("Dashboard:Open Cart")}
-            >
-              <Badge color="secondary" badgeContent={totalCount(shoppingCart)}>
-                <ShoppingCartIcon />
-              </Badge>
+            <Push href="/cart">
+              <IconButton title={t("Dashboard:Open Cart")}>
+                <Badge
+                  color="secondary"
+                  badgeContent={totalCount(shoppingCart)}
+                >
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
             </Push>
           }
         >

@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.7.0",
+    "date": "01 marzo 2021",
+    "content": [
+      [
+        "Aggiunto indice alla tabella prodotti",
+        "Agiornamento librerie software",
+        "Corrette traduzioni"
+      ]
+    ]
+  },
+  {
     "version": "1.6.0",
     "date": "15 febbraio 2021",
     "content": [

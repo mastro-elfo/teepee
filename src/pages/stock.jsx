@@ -145,7 +145,7 @@ function mapper(product, stockList, handler) {
     key: id,
     primary: name,
     secondary: description || barcode,
-    LeftIcon: <span>{productInStock ? productInStock.stock : stock}</span>,
+    leftIcon: <span>{productInStock ? productInStock.stock : stock}</span>,
     onClick: () => handler(product),
   };
 }

@@ -1,11 +1,11 @@
 [
   {
     "version": "1.7.0",
-    "date": "Under development",
+    "date": "March 01 2021",
     "content": [
       [
         "Add index to product list table",
-        "Upgrade libraries",
+        "Upgrade backend libraries",
         "Fix translations"
       ]
     ]

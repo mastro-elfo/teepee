@@ -4,6 +4,7 @@
     "Attributions": "Attributions",
     "Cancel": "Cancel",
     "Close": "Close",
+    "DateUnknown": "Unknown",
     "Delete": "Delete",
     "Delete row": "Delete row",
     "Development": "Development",
@@ -106,6 +107,7 @@
     "Name": "Name",
     "Description": "Description",
     "Stock": "Stock",
+    "StockQty": "Stock",
     "Created": "Created Date/Time",
     "Updated": "Updated Date/Time",
     "Save product": "Save product"

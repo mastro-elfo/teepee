@@ -4,6 +4,7 @@
     "Attributions": "Attribuzioni",
     "Cancel": "Cancella",
     "Close": "Chiudi",
+    "DateUnknown": "Sconosciuta",
     "Delete": "Elimina",
     "Delete row": "Elimina riga",
     "Development": "Sviluppo",
@@ -106,6 +107,7 @@
     "Name": "Nome",
     "Description": "Descrizione",
     "Stock": "Magazzino",
+    "StockQty": "Qtà",
     "Created": "Data di creazione",
     "Updated": "Ultima modifica",
     "Save product": "Salva prodotto"

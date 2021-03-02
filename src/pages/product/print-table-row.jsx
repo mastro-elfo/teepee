@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { TableCell, TableRow } from "@material-ui/core";
+
+import date2str from "../../utils/date2str";
 
 export default function Row({
   barcode,
@@ -13,6 +16,8 @@ export default function Row({
   _create,
   _update,
 }) {
+  const { t } = useTranslation();
+
   return (
     <TableRow>
       <TableCell>{i}</TableCell>
@@ -23,8 +28,8 @@ export default function Row({
         {currency}
       </TableCell>
       <TableCell>{stock}</TableCell>
-      <TableCell>{new Date(_create).toLocaleString()}</TableCell>
-      <TableCell>{new Date(_update).toLocaleString()}</TableCell>
+      <TableCell>{date2str(_create, t("DateUnknown"))}</TableCell>
+      <TableCell>{date2str(_update, t("DateUnknown"))}</TableCell>
     </TableRow>
   );
 }

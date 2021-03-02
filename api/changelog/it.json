@@ -1,5 +1,17 @@
 [
   {
+    "version": "1.8.0",
+    "date": "In sviluppo",
+    "content": [
+      [
+        "Fix, quando stampa la tabella si vede la barra di scorrimento orizzontale",
+        "Fix, la proprietà `LeftIcon` in gestione magazzino",
+        "Fix la tabella prodotti stampa 'Invalid Date'",
+        "Usare uno 'scroller' per mostrare una lunga lista di risultati"
+      ]
+    ]
+  },
+  {
     "version": "1.7.0",
     "date": "01 marzo 2021",
     "content": [

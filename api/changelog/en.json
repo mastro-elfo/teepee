@@ -1,5 +1,16 @@
 [
   {
+    "version": "1.8.0",
+    "date": "Under development",
+    "content": [
+      [
+        "Fix print table has horizontal scrollbar at the end",
+        "Fix deprecated property `LeftIcon` in product/collection",
+        "Use a scroller to print long result list"
+      ]
+    ]
+  },
+  {
     "version": "1.7.0",
     "date": "March 01 2021",
     "content": [

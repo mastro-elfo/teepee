@@ -6,6 +6,7 @@
       [
         "Fix print table has horizontal scrollbar at the end",
         "Fix deprecated property `LeftIcon` in product/collection",
+        "Fix table prints 'Invalid Date'",
         "Use a scroller to print long result list"
       ]
     ]

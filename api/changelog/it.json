@@ -6,6 +6,7 @@
       [
         "Fix, quando stampa la tabella si vede la barra di scorrimento orizzontale",
         "Fix, la proprietà `LeftIcon` in product/collection",
+        "Fix la tabella prodotti stampa 'Invalid Date'",
         "Usare uno 'scroller' per mostrare una lunga lista di risultati"
       ]
     ]

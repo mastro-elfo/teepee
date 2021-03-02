@@ -5,7 +5,7 @@
     "content": [
       [
         "Fix print table has horizontal scrollbar at the end",
-        "Fix deprecated property `LeftIcon` in product/collection",
+        "Fix deprecated property `LeftIcon` in stock management",
         "Fix table prints 'Invalid Date'",
         "Use a scroller to print long result list"
       ]

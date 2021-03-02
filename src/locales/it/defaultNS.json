@@ -106,6 +106,7 @@
     "Name": "Nome",
     "Description": "Descrizione",
     "Stock": "Magazzino",
+    "StockQty": "Qtà",
     "Created": "Data di creazione",
     "Updated": "Ultima modifica",
     "Save product": "Salva prodotto"

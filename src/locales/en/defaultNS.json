@@ -106,6 +106,7 @@
     "Name": "Name",
     "Description": "Description",
     "Stock": "Stock",
+    "StockQty": "Stock",
     "Created": "Created Date/Time",
     "Updated": "Updated Date/Time",
     "Save product": "Save product"

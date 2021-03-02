@@ -30,7 +30,7 @@ export default function Component({ list = [], callback = () => {} }) {
             <TableHeadCell>{t("Product:Name")}</TableHeadCell>
             <TableHeadCell>{t("Product:Barcode")}</TableHeadCell>
             <TableHeadCell>{t("Product:Price")}</TableHeadCell>
-            <TableHeadCell>{t("Product:Stock")}</TableHeadCell>
+            <TableHeadCell>{t("Product:StockQty")}</TableHeadCell>
             <TableHeadCell>{t("Product:Created")}</TableHeadCell>
             <TableHeadCell>{t("Product:Updated")}</TableHeadCell>
           </TableRow>

@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import { TableCell, TableRow } from "@material-ui/core";
 
@@ -15,6 +16,8 @@ export default function Row({
   _create,
   _update,
 }) {
+  const { t } = useTranslation();
+
   return (
     <TableRow>
       <TableCell>{i}</TableCell>
@@ -25,8 +28,8 @@ export default function Row({
         {currency}
       </TableCell>
       <TableCell>{stock}</TableCell>
-      <TableCell>{date2str(_create, "")}</TableCell>
-      <TableCell>{date2str(_update, "")}</TableCell>
+      <TableCell>{date2str(_create, t("DateUnknown"))}</TableCell>
+      <TableCell>{date2str(_update, t("DateUnknown"))}</TableCell>
     </TableRow>
   );
 }

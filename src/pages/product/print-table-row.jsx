@@ -2,6 +2,8 @@ import React from "react";
 
 import { TableCell, TableRow } from "@material-ui/core";
 
+import date2str from "../../utils/date2str";
+
 export default function Row({
   barcode,
   currency,
@@ -23,8 +25,8 @@ export default function Row({
         {currency}
       </TableCell>
       <TableCell>{stock}</TableCell>
-      <TableCell>{new Date(_create).toLocaleString()}</TableCell>
-      <TableCell>{new Date(_update).toLocaleString()}</TableCell>
+      <TableCell>{date2str(_create, "")}</TableCell>
+      <TableCell>{date2str(_update, "")}</TableCell>
     </TableRow>
   );
 }

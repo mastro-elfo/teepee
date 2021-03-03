@@ -11,12 +11,13 @@ import {
   Page,
   Push,
   SearchField,
-  ResultList,
+  // ResultList,
   pluralize,
 } from "mastro-elfo-mui";
 
 import AddIcon from "@material-ui/icons/Add";
 
+import ResultList from "./result-list";
 import PrintDialogIconButton from "./print-dialog";
 import PrintTable from "./print-table";
 import { readAll, search } from "./model";
@@ -99,13 +100,16 @@ function Component() {
             value={query}
             onChange={handleChange}
           />
-          <ResultList
-            mapper={mapper}
-            results={results}
-            subheader={(r) =>
-              !!r ? t("Product:subheader", { count: r.length }) : ""
-            }
-          />
+          {
+            // <ResultList
+            //   mapper={mapper}
+            //   results={results}
+            //   subheader={(r) =>
+            //     !!r ? t("Product:subheader", { count: r.length }) : ""
+            //   }
+            // />
+          }
+          <ResultList results={results} />
         </Content>
       }
       print={<PrintTable {...printList} />}

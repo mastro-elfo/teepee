@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { Badge, Box, IconButton, Typography } from "@material-ui/core";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import {
   Content,
@@ -49,11 +50,16 @@ function Component() {
   const [stockList] = useStock();
   const [results, setResults] = useState((state && state.results) || undefined);
   const [query, setQuery] = useState((state && state.q) || "");
+  const [ifLimit, setIfLimit] = useState(10);
 
   useEffect(() => {
     document.title = "Teepee";
     ref.current.focus();
   }, []);
+
+  useEffect(() => {
+    setIfLimit(10);
+  }, [query]);
 
   const handleSearch = (q, d) => {
     setQuery(q);
@@ -170,15 +176,33 @@ function Component() {
             </Box>
           )}
 
-          {!!results &&
-            results.length > 0 &&
-            results.map((item, i) => (
-              <ResultCard
-                key={`${item.id}-${i === 0}`}
-                item={item}
-                expand={i === 0}
-              />
-            ))}
+          {
+            // !!results &&
+            // results.length > 0 &&
+            // results.map((item, i) => (
+            //   <ResultCard
+            //     key={`${item.id}-${i === 0}`}
+            //     item={item}
+            //     expand={i === 0}
+            //   />
+            // ))
+          }
+
+          {!!results && results.length > 0 && (
+            <InfiniteScroll
+              dataLength={ifLimit}
+              next={() => setIfLimit(ifLimit + 10)}
+              hasMore={ifLimit < results.length}
+            >
+              {results.slice(0, ifLimit).map((item, i) => (
+                <ResultCard
+                  key={`${item.id}-${i === 0}`}
+                  item={item}
+                  expand={i === 0}
+                />
+              ))}
+            </InfiniteScroll>
+          )}
         </Content>
       }
       TopFabProps={{ color: "primary", title: t("ToTop") }}

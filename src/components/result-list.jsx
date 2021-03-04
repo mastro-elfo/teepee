@@ -15,7 +15,7 @@ import {
 
 // import { Condition } from "mastro-elfo-mui";
 
-export default function ResultList({ results }) {
+export default function ResultList({ Component, results, subheader }) {
   const { push } = useHistory();
   const { t } = useTranslation();
   const [scrollLimit, setScrollLimit] = useState(10);
@@ -41,18 +41,9 @@ export default function ResultList({ results }) {
         next={handleNext}
         hasMore={scrollLimit < results.length}
       >
-        {results
-          .slice(0, scrollLimit)
-          .map(({ id, name, description, barcode }) => (
-            <ListItem
-              key={id}
-              button={true}
-              onClick={() => push(`/product/v/${id}`)}
-              title="Apri la scheda prodotto"
-            >
-              <ListItemText primary={name} secondary={description || barcode} />
-            </ListItem>
-          ))}
+        {results.slice(0, scrollLimit).map(({ id, ...rest }) => (
+          <Component key={id} id={id} {...rest} />
+        ))}
       </InfiniteScroll>
     </List>
   );

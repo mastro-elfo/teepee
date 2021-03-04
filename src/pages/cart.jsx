@@ -3,12 +3,14 @@ import { useTranslation } from "react-i18next";
 import i18n from "../utils/i18n";
 // import { useSnackbar } from "notistack";
 
+import { ListItem, ListItemText } from "@material-ui/core";
+
 import {
   BackIconButton,
   Content,
   Header,
   Page,
-  ResultList,
+  // ResultList,
   SearchField,
 } from "mastro-elfo-mui";
 
@@ -24,6 +26,7 @@ import { search } from "./product/model";
 import delay from "../utils/delay";
 import background from "../assets/cart.svg";
 import { loadCurrency } from "./settings/store";
+import ResultList from "../components/result-list";
 
 const ref = createRef();
 
@@ -105,12 +108,22 @@ function Component() {
             value={query}
             onChange={handleChange}
           />
+          {
+            //   <ResultList
+            //   results={results}
+            //   mapper={(r) => ({ ...mapper(r, handleAdd) })}
+            //   subheader={(r) =>
+            //     !!r ? t("Product:subheader", { count: r.length }) : ""
+            //   }
+            // />
+          }
           <ResultList
             results={results}
-            mapper={(r) => ({ ...mapper(r, handleAdd) })}
-            subheader={(r) =>
-              !!r ? t("Product:subheader", { count: r.length }) : ""
+            subheader={
+              !!results && t("Product:subheader", { count: results.length })
             }
+            Component={ResultItem}
+            ComponentProps={{ handler: handleAdd }}
           />
           {cart.length > 0 && <Table />}
         </Content>
@@ -143,12 +156,25 @@ export const drawer = {
   title: i18n.t("Cart:drawer-title"),
 };
 
-function mapper(product, handler) {
-  const { id, name, description, barcode } = product;
-  return {
-    key: id,
-    primary: name,
-    secondary: description || barcode,
-    onClick: () => handler(product),
-  };
+// function mapper(product, handler) {
+//   const { id, name, description, barcode } = product;
+//   return {
+//     key: id,
+//     primary: name,
+//     secondary: description || barcode,
+//     onClick: () => handler(product),
+//   };
+// }
+function ResultItem({ handler, ...product }) {
+  const { t } = useTranslation();
+  const { name, description, barcode } = product;
+  return (
+    <ListItem
+      button={true}
+      onClick={() => handler(product)}
+      title={t("Cart:AddToCart")}
+    >
+      <ListItemText primary={name} secondary={description || barcode} />
+    </ListItem>
+  );
 }

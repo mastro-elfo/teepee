@@ -5,7 +5,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import { List, ListSubheader } from "@material-ui/core";
 
-export default function ResultList({ Component, results, subheader }) {
+export default function ResultList({
+  Component,
+  ComponentProps = {},
+  results,
+  subheader,
+}) {
   const [scrollLimit, setScrollLimit] = useState(10);
 
   useEffect(() => {
@@ -24,7 +29,7 @@ export default function ResultList({ Component, results, subheader }) {
         hasMore={scrollLimit < results.length}
       >
         {results.slice(0, scrollLimit).map(({ id, ...rest }) => (
-          <Component key={id} id={id} {...rest} />
+          <Component key={id} {...ComponentProps} id={id} {...rest} />
         ))}
       </InfiniteScroll>
     </List>

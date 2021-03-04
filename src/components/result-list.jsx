@@ -1,23 +1,11 @@
 import React, { useEffect, useState } from "react";
 // import PropTypes from "prop-types";
 
-import { useHistory } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import {
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  ListSubheader,
-} from "@material-ui/core";
-
-// import { Condition } from "mastro-elfo-mui";
+import { List, ListSubheader } from "@material-ui/core";
 
 export default function ResultList({ Component, results, subheader }) {
-  const { push } = useHistory();
-  const { t } = useTranslation();
   const [scrollLimit, setScrollLimit] = useState(10);
 
   useEffect(() => {
@@ -29,13 +17,7 @@ export default function ResultList({ Component, results, subheader }) {
   if (results === null || results === undefined) return null;
 
   return (
-    <List
-      subheader={
-        <ListSubheader>
-          {t("Product:subheader", { count: results.length })}
-        </ListSubheader>
-      }
-    >
+    <List subheader={<ListSubheader>{subheader}</ListSubheader>}>
       <InfiniteScroll
         dataLength={scrollLimit}
         next={handleNext}

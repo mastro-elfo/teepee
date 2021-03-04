@@ -131,6 +131,7 @@ export const route = {
 
 function ResultItem({ id, name, description, barcode }) {
   const { t } = useTranslation();
+  const { push } = useHistory();
   return (
     <ListItem
       button={true}

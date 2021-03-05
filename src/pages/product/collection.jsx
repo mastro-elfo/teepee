@@ -112,7 +112,6 @@ function Component() {
       TopFabProps={{ color: "primary", title: t("ToTop") }}
       PaperProps={{
         style: {
-          // minHeight: "100%",
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",
           backgroundPosition: "right bottom",

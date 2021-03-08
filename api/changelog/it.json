@@ -1,7 +1,7 @@
 [
   {
     "version": "1.8.0",
-    "date": "In sviluppo",
+    "date": "8 marzo 2021",
     "content": [
       [
         "Fix, quando stampa la tabella dei prodotti si vede la barra di scorrimento orizzontale",
@@ -13,7 +13,7 @@
   },
   {
     "version": "1.7.0",
-    "date": "01 marzo 2021",
+    "date": "1 marzo 2021",
     "content": [
       [
         "Aggiunto indice alla tabella prodotti",
@@ -99,7 +99,7 @@
   },
   {
     "version": "1.1.0",
-    "date": "09 novembre 2020",
+    "date": "9 novembre 2020",
     "content": [
       [
         "Internazionalizzazione",
@@ -110,7 +110,7 @@
   },
   {
     "version": "1.0.0",
-    "date": "03 novembre 2020",
+    "date": "3 novembre 2020",
     "content": [["Gestione prodotti", "Gestione magazzino", "Gestione spesa"]]
   }
 ]

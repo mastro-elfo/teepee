@@ -33,7 +33,6 @@ import { useStock } from "./stock/context";
 import { addStockProduct } from "./stock/utils";
 import background from "../assets/stock.svg";
 import ResultList from "../components/result-list";
-// import subheader from "../utils/subheader";
 
 const ref = createRef();
 

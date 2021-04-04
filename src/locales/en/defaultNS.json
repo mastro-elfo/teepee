@@ -49,7 +49,8 @@
     "drawer-primary": "Cart",
     "drawer-title": "Open shoppping cart",
     "Title": "Shopping Cart",
-    "Remove from cart": "Remove from cart"
+    "Remove from cart": "Remove from cart",
+    "AddToCart": "Add to cart"
   },
   "CartCloseDialog": {
     "warning-content": "Ther's a problem with the quantity of \"{{name}}\" ({{barcode}}) in stock. Check how many units are in stock and, if necessary, update the database.",
@@ -114,7 +115,8 @@
   },
   "ProductCollection": {
     "Header": "Products",
-    "add-title": "Create a new product"
+    "add-title": "Create a new product",
+    "OpenDetail": "Apri scheda prodotto"
   },
   "ProductCreate": {
     "Header": "Create product",
@@ -149,7 +151,8 @@
   },
   "Stock": {
     "Header": "Stock",
-    "drawer-title": "Stock management"
+    "drawer-title": "Stock management",
+    "AddToStock": "Add to stock"
   },
   "StockCloseDialog": {
     "stock-updated": "Stock quantities have been updated",

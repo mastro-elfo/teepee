@@ -1,5 +1,10 @@
 [
   {
+    "version": "1.8.1",
+    "date": "April 4 2021",
+    "content": ["Fix translations"]
+  },
+  {
     "version": "1.8.0",
     "date": "March 8 2021",
     "content": [

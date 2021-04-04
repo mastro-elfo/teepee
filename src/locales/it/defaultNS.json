@@ -49,7 +49,8 @@
     "drawer-primary": "Carrello",
     "drawer-title": "Apri il carrello",
     "Title": "Carrello",
-    "Remove from cart": "Rimuovi dal carrello"
+    "Remove from cart": "Rimuovi dal carrello",
+    "AddToCart": "Aggiungi al carrello"
   },
   "CartCloseDialog": {
     "warning-content": "Ho riscontrato un problema con la quantità di \"{{name}}\" ({{barcode}}) in magazzino. Controlla quante unità sono presenti in magazzino e, se necessario, aggiorna il database.",
@@ -114,7 +115,8 @@
   },
   "ProductCollection": {
     "Header": "Prodotti",
-    "add-title": "Crea un nuovo prodotto"
+    "add-title": "Crea un nuovo prodotto",
+    "OpenDetail": "Apri scheda prodotto"
   },
   "ProductCreate": {
     "Header": "Crea Prodotto",
@@ -149,7 +151,8 @@
   },
   "Stock": {
     "Header": "Magazzino",
-    "drawer-title": "Gestione magazzino"
+    "drawer-title": "Gestione magazzino",
+    "AddToStock": "Aggiungi al magazzino"
   },
   "StockCloseDialog": {
     "stock-updated": "Il magazzino è stato aggiornato",

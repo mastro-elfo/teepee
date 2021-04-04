@@ -53,7 +53,7 @@ function Component() {
   return (
     <Page
       header={
-        <Header LeftAction={<BackIconButton title="Torna indietro" />}>
+        <Header LeftAction={<BackIconButton title={t("Go Back")} />}>
           {t("About:Header")}
         </Header>
       }

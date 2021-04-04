@@ -20,7 +20,6 @@ import ResultList from "../../components/result-list";
 import PrintDialogIconButton from "./print-dialog";
 import PrintTable from "./print-table";
 import { readAll, search } from "./model";
-import subheader from "../../utils/subheader";
 import delay from "../../utils/delay";
 import background from "../../assets/product.svg";
 
@@ -135,7 +134,7 @@ function ResultItem({ id, name, description, barcode }) {
     <ListItem
       button={true}
       onClick={() => push(`/product/v/${id}`)}
-      title={t("Product:OpenDetail")}
+      title={t("ProductCollection:OpenDetail")}
     >
       <ListItemText primary={name} secondary={description || barcode} />
     </ListItem>

@@ -1,5 +1,12 @@
 [
   {
+    "version": "1.9.0",
+    "date": "10 giugno 2021",
+    "content": [
+      "Fix: prodotto acquistato mentre è in corso una modifica in magazzino"
+    ]
+  },
+  {
     "version": "1.8.1",
     "date": "4 aprile 2021",
     "content": ["Corrette traduzioni"]

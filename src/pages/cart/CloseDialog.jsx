@@ -22,6 +22,8 @@ import PrintIcon from "@material-ui/icons/Print";
 
 import { useCart } from "./context";
 import { update } from "../product/model";
+import { useStock } from "../stock/context";
+import { addStockProduct } from "../stock/utils";
 import { useNotifications } from "../../components/notifications";
 
 export default function CloseDialog() {
@@ -29,6 +31,7 @@ export default function CloseDialog() {
   const { enqueueSnackbar } = useSnackbar();
   const [_, pushNotification] = useNotifications();
   const [cart, setCart] = useCart();
+  const [stockList, setStock] = useStock();
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -48,6 +51,21 @@ export default function CloseDialog() {
         return update(id, { ...item, stock: Math.max(0, diff) });
       })
     )
+      .then(() => {
+        // Update pending stock quantity
+        const copy = stockList.slice();
+        cart.forEach((item) => {
+          // Search item in pending list
+          const index = copy.findIndex((i) => i.id === item.id);
+          if (index !== -1) {
+            // Update stock quantity in pending list
+            const diff = item.stock - item.quantity;
+            copy[index].stock = Math.max(0, diff);
+          }
+        });
+        // Update pending list
+        setStock(copy);
+      })
       .then(() => {
         setCart([]);
         setOpen(false);

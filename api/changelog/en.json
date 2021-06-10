@@ -1,5 +1,10 @@
 [
   {
+    "version": "1.9.0",
+    "date": "June 10 2021",
+    "content": ["Fix: product bought while a stock change is pending"]
+  },
+  {
     "version": "1.8.1",
     "date": "April 4 2021",
     "content": ["Fix translations"]

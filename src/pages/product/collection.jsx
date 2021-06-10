@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 
-import { IconButton } from "@material-ui/core";
+import { IconButton, ListItem, ListItemText } from "@material-ui/core";
 
 import {
   BackIconButton,
@@ -11,17 +11,15 @@ import {
   Page,
   Push,
   SearchField,
-  // ResultList,
   pluralize,
 } from "mastro-elfo-mui";
 
 import AddIcon from "@material-ui/icons/Add";
 
-import ResultList from "./result-list";
+import ResultList from "../../components/result-list";
 import PrintDialogIconButton from "./print-dialog";
 import PrintTable from "./print-table";
 import { readAll, search } from "./model";
-import subheader from "../../utils/subheader";
 import delay from "../../utils/delay";
 import background from "../../assets/product.svg";
 
@@ -100,23 +98,19 @@ function Component() {
             value={query}
             onChange={handleChange}
           />
-          {
-            // <ResultList
-            //   mapper={mapper}
-            //   results={results}
-            //   subheader={(r) =>
-            //     !!r ? t("Product:subheader", { count: r.length }) : ""
-            //   }
-            // />
-          }
-          <ResultList results={results} />
+          <ResultList
+            results={results}
+            subheader={
+              !!results && t("Product:subheader", { count: results.length })
+            }
+            Component={ResultItem}
+          />
         </Content>
       }
       print={<PrintTable {...printList} />}
       TopFabProps={{ color: "primary", title: t("ToTop") }}
       PaperProps={{
         style: {
-          // minHeight: "100%",
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",
           backgroundPosition: "right bottom",
@@ -133,13 +127,16 @@ export const route = {
   component: Component,
 };
 
-function mapper({ id, name, description, barcode }) {
+function ResultItem({ id, name, description, barcode }) {
+  const { t } = useTranslation();
   const { push } = useHistory();
-  return {
-    key: id,
-    primary: name,
-    secondary: description || barcode,
-    onClick: () => push(`/product/v/${id}`),
-    title: `Apri la scheda prodotto`,
-  };
+  return (
+    <ListItem
+      button={true}
+      onClick={() => push(`/product/v/${id}`)}
+      title={t("ProductCollection:OpenDetail")}
+    >
+      <ListItemText primary={name} secondary={description || barcode} />
+    </ListItem>
+  );
 }

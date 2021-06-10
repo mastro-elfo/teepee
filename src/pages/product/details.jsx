@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { List, ListItem, ListItemText, Typography } from "@material-ui/core";
 
 import { loadCurrency } from "../settings/store";
+import date2str from "../../utils/date2str";
 
 export default function Component({
   barcode,
@@ -24,7 +25,9 @@ export default function Component({
       <Typography variant="h6" color="textSecondary">
         {name}
       </Typography>
-      <Typography>{new Date().toLocaleString()}</Typography>
+      <Typography>
+        {date2str(new Date().toLocaleString(), t("DateUnknown"))}
+      </Typography>
 
       <List>
         <ListItem>
@@ -50,13 +53,19 @@ export default function Component({
         </ListItem>
         <ListItem>
           <ListItemText
-            primary={new Date(_create).toLocaleString()}
+            primary={date2str(
+              new Date(_create).toLocaleString(),
+              t("DateUnknown")
+            )}
             secondary={t("Product:Created")}
           />
         </ListItem>
         <ListItem>
           <ListItemText
-            primary={new Date(_update).toLocaleString()}
+            primary={date2str(
+              new Date(_update).toLocaleString(),
+              t("DateUnknown")
+            )}
             secondary={t("Product:Updated")}
           />
         </ListItem>

@@ -33,7 +33,6 @@ import ResultCard from "./dashboard/ResultCard";
 import Notifications from "../components/notifications";
 import { search } from "./product/model";
 import { useStock } from "./stock/context";
-// import subheader from "../utils/subheader";
 import delay from "../utils/delay";
 import background from "../assets/dashboard.svg";
 

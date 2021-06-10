@@ -4,14 +4,19 @@ import i18n from "../utils/i18n";
 // import { useSnackbar } from "notistack";
 import delay from "../utils/delay";
 
-import { IconButton, ListItemSecondaryAction } from "@material-ui/core";
+import {
+  IconButton,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@material-ui/core";
 
 import {
   BackIconButton,
   Content,
   Header,
   Page,
-  ResultList,
+  // ResultList,
   SearchField,
   useSearchParams,
 } from "mastro-elfo-mui";
@@ -21,13 +26,13 @@ import CloseIcon from "@material-ui/icons/CheckCircle";
 import MinusBoxIcon from "@material-ui/icons/IndeterminateCheckBox";
 import StorageIcon from "@material-ui/icons/Storage";
 
-import CloseDialog from "./stock/CloseDialog";
-import { useStock } from "./stock/context";
-import Table from "./stock/Table";
-import { addStockProduct } from "./stock/utils";
 import { search } from "./product/model";
-import subheader from "../utils/subheader";
+import CloseDialog from "./stock/CloseDialog";
+import Table from "./stock/Table";
+import { useStock } from "./stock/context";
+import { addStockProduct } from "./stock/utils";
 import background from "../assets/stock.svg";
+import ResultList from "../components/result-list";
 
 const ref = createRef();
 
@@ -101,10 +106,11 @@ function Component() {
           />
           <ResultList
             results={results}
-            mapper={(r) => ({ ...mapper(r, stock, handleAdd) })}
-            subheader={(r) =>
-              !!r ? t("Product:subheader", { count: r.length }) : ""
+            subheader={
+              !!results && t("Product:subheader", { count: results.length })
             }
+            Component={ResultItem}
+            ComponentProps={{ handler: handleAdd }}
           />
           {stock.length > 0 && <Table />}
         </Content>
@@ -112,7 +118,6 @@ function Component() {
       TopFabProps={{ color: "primary", title: t("ToTop") }}
       PaperProps={{
         style: {
-          // minHeight: "100%",
           backgroundImage: `url(${background})`,
           backgroundSize: "50%",
           backgroundPosition: "right bottom",
@@ -137,15 +142,21 @@ export const drawer = {
   title: i18n.t("Stock:drawer-title"),
 };
 
-function mapper(product, stockList, handler) {
+function ResultItem({ handler, ...product }) {
+  const { t } = useTranslation();
+  const [stockList] = useStock();
   const { id, name, description, barcode, stock } = product;
   const productInStock = stockList.find((i) => i.id === product.id);
-
-  return {
-    key: id,
-    primary: name,
-    secondary: description || barcode,
-    leftIcon: <span>{productInStock ? productInStock.stock : stock}</span>,
-    onClick: () => handler(product),
-  };
+  return (
+    <ListItem
+      button={true}
+      onClick={() => handler(product)}
+      title={t("Stock:AddToStock")}
+    >
+      <ListItemIcon>
+        {stock + (productInStock ? productInStock.delta : 0)}
+      </ListItemIcon>
+      <ListItemText primary={name} secondary={description || barcode} />
+    </ListItem>
+  );
 }

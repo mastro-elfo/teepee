@@ -1,7 +1,12 @@
 [
   {
+    "version": "1.8.1",
+    "date": "April 4 2021",
+    "content": ["Fix translations"]
+  },
+  {
     "version": "1.8.0",
-    "date": "Under development",
+    "date": "March 8 2021",
     "content": [
       [
         "Fix print table has horizontal scrollbar at the end",
@@ -13,7 +18,7 @@
   },
   {
     "version": "1.7.0",
-    "date": "March 01 2021",
+    "date": "March 1 2021",
     "content": [
       [
         "Add index to product list table",

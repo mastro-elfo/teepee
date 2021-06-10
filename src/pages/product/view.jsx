@@ -15,6 +15,7 @@ import Details from "./details";
 import Loading from "../loading";
 import { read } from "./model";
 import { loadCurrency } from "../settings/store";
+import date2str from "../../utils/date2str";
 
 function Component() {
   const { t } = useTranslation();
@@ -97,7 +98,10 @@ function Component() {
             </ListItem>
             <ListItem>
               <ListItemText
-                primary={new Date(_create).toLocaleString()}
+                primary={date2str(
+                  new Date(_create).toLocaleString(),
+                  t("DateUnknown")
+                )}
                 secondary={t("Product:Created")}
               />
             </ListItem>
@@ -106,7 +110,10 @@ function Component() {
                 primary={
                   _update === 0
                     ? t("Never")
-                    : new Date(_update).toLocaleString()
+                    : date2str(
+                        new Date(_update).toLocaleString(),
+                        t("DateUnknown")
+                      )
                 }
                 secondary={t("Product:Updated")}
               />
